@@ -1,6 +1,6 @@
 # BookIn Scripts
 
-Utility scripts for managing book data and LemonSqueezy products.
+Utility scripts for managing book data and Stripe products.
 
 ## Available Scripts
 
@@ -69,21 +69,20 @@ node scripts/generate-app-books.js
 }
 ```
 
-### 3. create-lemonsqueezy-products.js
+### 3. create-stripe-products.js
 
-Automatically creates all **214 products** (107 books × 2 payment options) in your LemonSqueezy store using their API.
+Automatically creates all **214 products** (107 books × 2 payment options) in your Stripe account using their API.
 
 **Prerequisites:**
-1. LemonSqueezy account created at https://lemonsqueezy.com
-2. Store created in the dashboard
-3. API key generated (Settings → API → Create API Key)
-4. Store ID obtained (Settings → Stores - numeric ID)
+1. Stripe account created at https://stripe.com
+2. API keys obtained (Dashboard → Developers → API Keys)
+3. Set environment variables in `.env`
 
 **Usage:**
 ```bash
-npm run lemonsqueezy:create
+npm run stripe:create
 # or
-LEMONSQUEEZY_API_KEY=lmsk_your_key LEMONSQUEEZY_STORE_ID=12345 node scripts/create-lemonsqueezy-products.js
+STRIPE_SECRET_KEY=sk_test_xxx node scripts/create-stripe-products.js
 ```
 
 **What it does:**
@@ -91,8 +90,7 @@ LEMONSQUEEZY_API_KEY=lmsk_your_key LEMONSQUEEZY_STORE_ID=12345 node scripts/crea
   - **Lifetime access**: $9 one-time payment
   - **Subscription**: $3 every 3 months (quarterly)
 - Generates bilingual product names: "Book Title (書名) - Lifetime/Subscription"
-- Creates variants for each pricing option
-- **Saves configuration to `.lemonsqueezy-products.json` (gitignored state file)**
+- Creates price objects for each product
 - Shows progress: `[1/107] 📚 $100M Leads (百萬潛在客戶)`
 - Displays category breakdown at the end
 
@@ -102,47 +100,25 @@ The script includes 100ms delays between API calls to avoid rate limiting.
 
 **Example Output:**
 ```
-🍋 LemonSqueezy Product Creator
+💳 Stripe Product Creator
 
-Store ID: 12345
 Creating 214 products (107 books × 2 payment options)
 This will take approximately 11 minutes...
 
 [1/107] 📚 $100M Leads (百萬潛在客戶)
          Category: Business & Marketing
 Creating: $100M Leads (百萬潛在客戶) - Lifetime...
-  ✓ Product created (ID: 123)
-  ✓ Variant created (ID: 456)
-  ✓ Checkout URL: https://yourstore.lemonsqueezy.com/checkout/buy/abc123
+  ✓ Product created (ID: prod_xxx)
+  ✓ Price created (ID: price_xxx)
 
 Creating: $100M Leads (百萬潛在客戶) - Subscription...
-  ✓ Product created (ID: 124)
-  ✓ Variant created (ID: 457)
-  ✓ Checkout URL: https://yourstore.lemonsqueezy.com/checkout/buy/def456
+  ✓ Product created (ID: prod_yyy)
+  ✓ Price created (ID: price_yyy)
 
 [2/107] 📚 All Marketers Are Liars (行銷人都是說故事高手)
 ...
 
 ✅ All products created successfully!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 Copy this to src/services/lemonsqueezy.ts:
-
-export const PRODUCT_URLS: Record<string, string> = {
-  '100m-leads-lifetime': 'https://yourstore.lemonsqueezy.com/...',
-  '100m-leads-subscription': 'https://yourstore.lemonsqueezy.com/...',
-  ...
-};
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💾 Configuration saved to: .lemonsqueezy-products.json
-📝 This file is gitignored and contains your LemonSqueezy product URLs
-
-🎉 Next steps:
-1. Go to LemonSqueezy dashboard and publish the draft products
-2. Copy the PRODUCT_URLS configuration above to src/services/lemonsqueezy.ts
-3. Test checkout flow with test mode enabled
 ```
 
 ## Complete Setup Workflow
@@ -154,82 +130,27 @@ npm run books:generate
 
 This creates/updates `public/data/books-paid.json` with all 107 books.
 
-### Step 2: Create LemonSqueezy Products
+### Step 2: Create Stripe Products
 ```bash
-LEMONSQUEEZY_API_KEY=lmsk_your_key \
-LEMONSQUEEZY_STORE_ID=12345 \
-npm run lemonsqueezy:create
+npm run stripe:create
 ```
 
-This creates all 214 products in LemonSqueezy and saves URLs to `.lemonsqueezy-products.json`.
+This creates all 214 products in Stripe.
 
 **⏱️ Time required**: ~10-15 minutes
 **☕ Tip**: Grab a coffee while it runs!
 
-### Step 3: Verify State File
-Check that `.lemonsqueezy-products.json` was created in the project root:
+### Step 3: Test the App
 ```bash
-ls -la .lemonsqueezy-products.json
-```
-
-The file should contain:
-```json
-{
-  "generatedAt": "2024-01-01T00:00:00.000Z",
-  "storeId": "12345",
-  "products": [...],
-  "productUrls": {
-    "100m-leads-lifetime": "https://...",
-    "100m-leads-subscription": "https://...",
-    ...
-  }
-}
-```
-
-### Step 4: Publish Products (Optional)
-1. Go to your LemonSqueezy dashboard
-2. Find the draft products
-3. Publish them (or test in test mode)
-
-### Step 5: Test the App
-```bash
+make dev
+# or
 npm run dev
 ```
 
 The app will automatically:
 - Load book metadata from `public/data/books-paid.json`
-- Load product URLs from `.lemonsqueezy-products.json`
-- Display: "✅ Loaded 214 product URLs from state file" in console
-
-## State File Pattern
-
-**Important:** Product URLs are stored in `.lemonsqueezy-products.json` (gitignored), **not in source code**.
-
-### Why State File?
-- ✅ Keeps sensitive checkout URLs out of source control
-- ✅ Allows different URLs per environment (dev, staging, prod)
-- ✅ Easy to regenerate without code changes
-- ✅ Loaded at runtime by `src/services/lemonsqueezy-state.ts`
-
-### File Location
-```
-bookin/
-├── .lemonsqueezy-products.json   ← State file (gitignored)
-├── .gitignore                     ← Contains .lemonsqueezy-products.json
-├── public/
-│   └── data/
-│       └── books-paid.json        ← Book metadata
-└── src/
-    └── services/
-        ├── lemonsqueezy.ts        ← Uses state loader
-        └── lemonsqueezy-state.ts  ← Loads state file
-```
-
-### How It Works
-1. `lemonsqueezy-state.ts` fetches `/.lemonsqueezy-products.json` at runtime
-2. Product URLs are cached in memory
-3. `LemonSqueezyService.getProductUrl()` retrieves URLs from cache
-4. If state file is missing, shows warning and checkout buttons are disabled
+- Connect to Stripe for checkout
+- Process webhooks for purchase verification
 
 ## Troubleshooting
 
@@ -244,44 +165,30 @@ ls -la public/data/books-paid.json
 npm run books:generate
 ```
 
-### Checkout buttons disabled
-**Problem**: "Purchase" buttons are grayed out
+### Stripe checkout not working
+**Problem**: "Purchase" buttons don't work
 **Solution**:
 ```bash
-# Check if state file exists
-ls -la .lemonsqueezy-products.json
+# Check environment variables
+cat .env | grep STRIPE
 
-# Check console for: "✅ Loaded X product URLs"
-# If missing, regenerate:
-LEMONSQUEEZY_API_KEY=xxx LEMONSQUEEZY_STORE_ID=123 npm run lemonsqueezy:create
+# Verify Stripe CLI webhook listener is running
+stripe listen --forward-to localhost:3002/api/webhook/stripe
+
+# Check server logs
+tail -f server/logs/*.log
 ```
-
-### State file not loading in browser
-**Problem**: Console shows "⚠️ Could not load .lemonsqueezy-products.json"
-**Solution**:
-1. Check file exists in project root (not in public/)
-2. File needs to be served by dev server - Vite should serve it at `/.lemonsqueezy-products.json`
-3. If using production build, ensure file is copied to dist folder
 
 ### API errors during product creation
 
 **Error: 401 Unauthorized**
-- Verify your API key is correct (starts with `lmsk_`)
-- Check the key hasn't expired
-- Ensure API access is enabled in settings
+- Verify your API key is correct (starts with `sk_test_` or `sk_live_`)
+- Check the key in `.env` matches your Stripe dashboard
+- Ensure you're using the secret key, not the publishable key
 
-**Error: 403 Forbidden**
-- Verify you have permission to create products
-- Check your account status is active
-- Try test mode first
-
-**Error: Invalid Store ID**
-- Verify the Store ID is a number (not a string)
-- Get it from **Settings** → **Stores** in dashboard
-
-**Rate Limiting (429 Too Many Requests)**
+**Error: Rate Limited**
 - Script already includes 100ms delays
-- If still hitting limits, increase delay in `create-lemonsqueezy-products.js`:
+- If still hitting limits, increase delay in `create-stripe-products.js`:
   ```javascript
   await new Promise(resolve => setTimeout(resolve, 200)); // Increase to 200ms
   ```
@@ -314,27 +221,16 @@ export const BOOKS = [
 Then regenerate:
 ```bash
 npm run books:generate
-npm run lemonsqueezy:create
+npm run stripe:create
 ```
 
 ### Change Pricing
 
-Edit the `PRICING` object in `create-lemonsqueezy-products.js`:
+Edit the pricing constants in `create-stripe-products.js`:
 
 ```javascript
-const PRICING = {
-  lifetime: {
-    price: 1200, // $12.00 in cents
-    interval: null,
-    description: 'One-time payment for lifetime access',
-  },
-  subscription: {
-    price: 400, // $4.00 in cents
-    interval: 'month',
-    intervalCount: 3, // Every 3 months
-    description: 'Quarterly subscription',
-  },
-};
+const LIFETIME_PRICE = 900; // $9.00 in cents
+const SUBSCRIPTION_PRICE = 300; // $3.00 in cents
 ```
 
 ### Customize Product Descriptions
@@ -350,15 +246,19 @@ export function getProductDescription(book, type) {
 
 ## API Reference
 
-Uses LemonSqueezy API v1:
-- **Docs**: https://docs.lemonsqueezy.com/api
-- **Products API**: https://docs.lemonsqueezy.com/api/products
-- **Variants API**: https://docs.lemonsqueezy.com/api/variants
+Uses Stripe API:
+- **Docs**: https://stripe.com/docs/api
+- **Products API**: https://stripe.com/docs/api/products
+- **Prices API**: https://stripe.com/docs/api/prices
+- **Checkout**: https://stripe.com/docs/api/checkout/sessions
 
-## Future Enhancements
+## Development Tools
 
-Coming soon:
-- `sync-lemonsqueezy-webhooks.js` - Sync webhook events to Firestore
-- `update-book-metadata.js` - Bulk update book authors/summaries
-- `export-purchases.js` - Export purchase data for analytics
-- `validate-products.js` - Verify all products are configured correctly
+### Makefile Commands
+```bash
+make dev              # Start all services (client + server + stripe webhook)
+make stripe-products  # Create Stripe products
+make check            # Check service status
+```
+
+See `Makefile` for complete list of available commands.

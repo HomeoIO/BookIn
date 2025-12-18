@@ -141,7 +141,7 @@ export const BOOKS = [
   { id: 'humor-habit', title: 'The Humor Habit', titleZh: '幽默的習慣', category: 'Lifestyle' },
 ];
 
-// Generate product description for LemonSqueezy
+// Generate product description for Stripe
 export function getProductDescription(book, type) {
   const isLifetime = type === 'lifetime';
   const typeLabel = isLifetime ? 'Lifetime Access' : 'Quarterly Subscription';

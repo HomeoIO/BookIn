@@ -15,16 +15,13 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "stripe:create": "node scripts/create-stripe-products.js",
-    "books:generate": "node scripts/generate-app-books.js",
-    "lemonsqueezy:create": "node scripts/create-lemonsqueezy-products.js",
-    "lemonsqueezy:fetch": "node scripts/fetch-lemonsqueezy-products.js"
+    "books:generate": "node scripts/generate-app-books.js"
   },
   "dependencies": {
     "@firebase/app": "^0.14.6",
     "@firebase/auth": "^1.12.0",
     "@firebase/firestore": "^4.9.3",
     "@firebase/storage": "^0.14.0",
-    "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "@stripe/stripe-js": "^8.6.0",
     "@tanstack/react-query": "^5.17.0",
     "cors": "^2.8.5",
