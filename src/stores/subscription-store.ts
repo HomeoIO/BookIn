@@ -1,56 +1,66 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-
-interface Subscription {
-  id: string;
-  bookId: string;
-  status: 'active' | 'canceled' | 'past_due' | 'trialing';
-  currentPeriodEnd: number;
-  cancelAtPeriodEnd: boolean;
-}
+import { purchaseService } from '@services/firestore/purchase-service';
+import type { Subscription } from '@services/firestore/purchase-service';
 
 interface SubscriptionState {
   subscriptions: Subscription[];
+  loading: boolean;
+  lastFetched: number | null;
   hasActiveSubscription: (bookId: string) => boolean;
-  addSubscription: (subscription: Subscription) => void;
-  removeSubscription: (bookId: string) => void;
+  fetchSubscriptions: (userId: string, forceRefresh?: boolean) => Promise<void>;
   getSubscription: (bookId: string) => Subscription | undefined;
+  clearSubscriptions: () => void;
 }
 
-export const useSubscriptionStore = create<SubscriptionState>()(
-  persist(
-    (set, get) => ({
-      subscriptions: [],
+// Cache duration: 5 minutes
+const CACHE_DURATION = 5 * 60 * 1000;
 
-      hasActiveSubscription: (bookId: string) => {
-        const sub = get().subscriptions.find((s) => s.bookId === bookId);
-        if (!sub) return false;
+export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
+  subscriptions: [],
+  loading: false,
+  lastFetched: null,
 
-        // Check if subscription is active and not expired
-        const isActive = sub.status === 'active' || sub.status === 'trialing';
-        const notExpired = sub.currentPeriodEnd > Date.now();
+  hasActiveSubscription: (bookId: string) => {
+    const sub = get().subscriptions.find((s) => s.bookId === bookId);
+    if (!sub) return false;
 
-        return isActive && notExpired;
-      },
+    // Check if subscription is active and not expired
+    const isActive = sub.status === 'active' || sub.status === 'trialing';
+    const notExpired = sub.currentPeriodEnd > Date.now();
 
-      getSubscription: (bookId: string) => {
-        return get().subscriptions.find((s) => s.bookId === bookId);
-      },
+    return isActive && notExpired;
+  },
 
-      addSubscription: (subscription: Subscription) => {
-        set((state) => ({
-          subscriptions: [...state.subscriptions.filter((s) => s.bookId !== subscription.bookId), subscription],
-        }));
-      },
+  getSubscription: (bookId: string) => {
+    return get().subscriptions.find((s) => s.bookId === bookId);
+  },
 
-      removeSubscription: (bookId: string) => {
-        set((state) => ({
-          subscriptions: state.subscriptions.filter((s) => s.bookId !== bookId),
-        }));
-      },
-    }),
-    {
-      name: 'bookin-subscription',
+  fetchSubscriptions: async (userId: string, forceRefresh: boolean = false) => {
+    const state = get();
+
+    // Use cache if available and not expired (unless force refresh)
+    if (!forceRefresh && state.lastFetched && Date.now() - state.lastFetched < CACHE_DURATION) {
+      console.log('📦 Using cached subscriptions');
+      return;
     }
-  )
-);
+
+    set({ loading: true });
+    try {
+      console.log('🔄 Fetching subscriptions from Firestore...');
+      const subscriptions = await purchaseService.getUserSubscriptions(userId);
+      set({
+        subscriptions,
+        loading: false,
+        lastFetched: Date.now()
+      });
+      console.log(`✅ Fetched ${subscriptions.length} subscriptions`);
+    } catch (error) {
+      console.error('❌ Failed to fetch subscriptions:', error);
+      set({ loading: false });
+    }
+  },
+
+  clearSubscriptions: () => {
+    set({ subscriptions: [], lastFetched: null });
+  },
+}));

@@ -1,4 +1,3 @@
-import { loadStripe } from '@stripe/stripe-js';
 import * as StripeState from './stripe-state';
 
 /**
@@ -19,23 +18,12 @@ export interface CheckoutOptions {
   bookId?: string;
   bookTitle?: string;
   userEmail?: string;
+  userId?: string;  // Required for authentication
   isSubscription?: boolean;
 }
 
-// Initialize Stripe.js
-let stripePromise: ReturnType<typeof loadStripe> | null = null;
-
-function getStripe() {
-  if (!stripePromise) {
-    const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
-    if (!publishableKey || publishableKey === 'your_publishable_key') {
-      console.error('Stripe publishable key not configured');
-      return null;
-    }
-    stripePromise = loadStripe(publishableKey);
-  }
-  return stripePromise;
-}
+// Stripe initialization (for future client-side use if needed)
+// Currently using server-side checkout flow
 
 export class StripeService {
   /**
@@ -43,7 +31,11 @@ export class StripeService {
    * Requires price ID from PRODUCT_PRICES config
    */
   static async openCheckout(options: CheckoutOptions): Promise<void> {
-    const { priceId, bookId, userEmail, isSubscription = false } = options;
+    const { priceId, bookId, userEmail, userId, isSubscription = false } = options;
+
+    if (!userId) {
+      throw new Error('User must be signed in to make a purchase');
+    }
 
     // Create checkout session via your backend
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/create-checkout-session`, {
@@ -55,6 +47,7 @@ export class StripeService {
         priceId,
         bookId,
         customerEmail: userEmail,
+        userId,  // Pass userId for Firestore
         isSubscription,
         successUrl: `${window.location.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/books/${bookId}`,
@@ -62,7 +55,8 @@ export class StripeService {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to create checkout session');
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to create checkout session');
     }
 
     const { url } = await response.json();

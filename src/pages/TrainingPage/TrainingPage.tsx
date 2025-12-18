@@ -29,7 +29,7 @@ function TrainingPage() {
   const [showFeedback, setShowFeedback] = useState(false);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [showStreakCelebration, setShowStreakCelebration] = useState(false);
-  const [streakBeforeSession, setStreakBeforeSession] = useState(0);
+  const [_streakBeforeSession, _setStreakBeforeSession] = useState(0); // TODO: Implement streak tracking
 
   const book = books.find((b) => b.id === bookId);
   const currentQuestion = questions[currentQuestionIndex];
@@ -47,7 +47,7 @@ function TrainingPage() {
   useEffect(() => {
     if (questions.length > 0 && currentQuestionIndex >= questions.length) {
       // Record streak before showing completion
-      setStreakBeforeSession(streakStatus.currentStreak);
+      // _setStreakBeforeSession(streakStatus.currentStreak); // TODO: Implement streak tracking
       recordPractice();
 
       // Check if this is a milestone

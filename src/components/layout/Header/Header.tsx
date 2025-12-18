@@ -1,13 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@components/ui/LanguageSwitcher';
+import { useAuth } from '@/features/auth/hooks/useAuth';
+import { Button } from '@components/ui';
 
 export interface HeaderProps {
   showDashboardLink?: boolean;
 }
 
-function Header({ showDashboardLink = true }: HeaderProps) {
+function Header(_props: HeaderProps) {
   const { t } = useTranslation('common');
+  const { user, signOut, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   return (
     <header className="bg-white border-b border-gray-200">
@@ -24,13 +37,33 @@ function Header({ showDashboardLink = true }: HeaderProps) {
           {/* Right side navigation */}
           <div className="flex items-center space-x-4">
             <LanguageSwitcher />
-            {showDashboardLink && (
-              <Link
-                to="/dashboard"
-                className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
-              >
-                My Dashboard
-              </Link>
+
+            {/* Auth section */}
+            {isAuthenticated ? (
+              <>
+                {/* User email */}
+                <span className="text-sm text-gray-600 hidden sm:inline">
+                  {user?.email}
+                </span>
+
+                {/* Sign Out Button */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                {/* Sign In Button */}
+                <Link to="/login">
+                  <Button variant="outline" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+              </>
             )}
           </div>
         </div>

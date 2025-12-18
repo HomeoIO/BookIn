@@ -1,0 +1,49 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function hasValidPurchase(userId, bookId) {
+      // Check if user has purchased the book in Firestore
+      // Note: This requires a Firestore read which counts towards quotas
+      return firestore.exists(/databases/(default)/documents/users/$(userId)/purchases/$(bookId));
+    }
+
+    function hasActiveSubscription(userId, bookId) {
+      // Check if user has active subscription for the book
+      // Note: This is a simplified check - full implementation would verify expiration dates
+      return firestore.exists(/databases/(default)/documents/users/$(userId)/subscriptions/$(bookId));
+    }
+
+    // Book cover images (public read)
+    match /content/covers/{bookId} {
+      allow read: if true;  // Anyone can view book covers
+      allow write: if false;  // Only admins via Admin SDK
+    }
+
+    // Free book content (public read)
+    match /content/free/{fileName} {
+      allow read: if true;  // Anyone can read free books
+      allow write: if false;  // Only admins via Admin SDK
+    }
+
+    // Paid book content (requires purchase or subscription)
+    // File structure: /content/paid/{bookId}/{fileName}
+    // Example: /content/paid/book-1/questions.json
+    match /content/paid/{bookId}/{fileName} {
+      allow read: if isSignedIn() &&
+                    (hasValidPurchase(request.auth.uid, bookId) ||
+                     hasActiveSubscription(request.auth.uid, bookId));
+      allow write: if false;  // Only admins via Admin SDK
+    }
+
+    // Default deny all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

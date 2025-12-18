@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Header, Container } from '@components/layout';
 import { BookCard } from '@features/books/components';
 import { useBooks } from '@features/books/hooks';
-import { Book } from '@core/domain';
+// import type { Book } from '@core/domain'; // TODO: Use for type annotations
 import { StreakCard } from '@components/ui/StreakCard';
 
 function HomePage() {

@@ -37,6 +37,7 @@ export class LemonSqueezyService {
     }
 
     // Use overlay checkout for better UX
+    // @ts-ignore - LemonSqueezy types are incorrect
     createCheckout(checkoutUrl.toString(), {
       embed: false,
     });

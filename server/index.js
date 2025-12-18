@@ -2,11 +2,23 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import Stripe from 'stripe';
+import admin from 'firebase-admin';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3002;
+
+// Initialize Firebase Admin
+// For local development, Firebase Admin will use application default credentials
+// For production, set GOOGLE_APPLICATION_CREDENTIALS environment variable
+if (!admin.apps.length) {
+  admin.initializeApp({
+    projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  });
+}
+
+const db = admin.firestore();
 
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -42,15 +54,62 @@ app.post('/api/webhook/stripe',
       case 'checkout.session.completed': {
         // One-time purchase or subscription started
         const session = event.data.object;
+        const bookId = session.metadata?.bookId;
+        const userId = session.metadata?.userId;
+
         console.log('✅ Checkout completed:', {
           sessionId: session.id,
           customerEmail: session.customer_email,
           amount: session.amount_total,
+          bookId,
+          userId,
+          mode: session.mode,
         });
 
-        // TODO: Save purchase/subscription to Firestore
-        // const bookId = session.metadata?.bookId;
-        // await savePurchase(bookId, session.customer_email);
+        if (!userId || !bookId) {
+          console.error('❌ Missing userId or bookId in session metadata');
+          break;
+        }
+
+        try {
+          if (session.mode === 'subscription') {
+            // Handle subscription creation
+            const subscription = await stripe.subscriptions.retrieve(session.subscription);
+
+            await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
+              id: subscription.id,
+              bookId,
+              userId,
+              status: subscription.status,
+              currentPeriodStart: subscription.current_period_start * 1000,
+              currentPeriodEnd: subscription.current_period_end * 1000,
+              cancelAtPeriodEnd: subscription.cancel_at_period_end,
+              stripeSubscriptionId: subscription.id,
+              stripeCustomerId: subscription.customer,
+              createdAt: Date.now(),
+            });
+
+            console.log(`✅ Subscription saved to Firestore: ${subscription.id}`);
+          } else {
+            // Handle one-time purchase
+            const purchaseRef = db.collection('users').doc(userId).collection('purchases').doc();
+
+            await purchaseRef.set({
+              bookId,
+              userId,
+              purchasedAt: Date.now(),
+              price: session.amount_total / 100,  // Convert cents to dollars
+              paymentMethod: 'stripe',
+              transactionId: session.id,
+              stripeCustomerId: session.customer,
+            });
+
+            console.log(`✅ Purchase saved to Firestore: ${purchaseRef.id}`);
+          }
+        } catch (error) {
+          console.error('❌ Error saving to Firestore:', error);
+        }
+
         break;
       }
 
@@ -85,7 +144,34 @@ app.post('/api/webhook/stripe',
           status: subscription.status,
         });
 
-        // TODO: Update subscription in Firestore
+        try {
+          // Find the subscription in Firestore and update it
+          const usersSnapshot = await db.collection('users').get();
+
+          for (const userDoc of usersSnapshot.docs) {
+            const subscriptionDoc = await db
+              .collection('users')
+              .doc(userDoc.id)
+              .collection('subscriptions')
+              .doc(subscription.id)
+              .get();
+
+            if (subscriptionDoc.exists()) {
+              await subscriptionDoc.ref.update({
+                status: subscription.status,
+                currentPeriodStart: subscription.current_period_start * 1000,
+                currentPeriodEnd: subscription.current_period_end * 1000,
+                cancelAtPeriodEnd: subscription.cancel_at_period_end,
+              });
+
+              console.log(`✅ Subscription updated in Firestore: ${subscription.id}`);
+              break;
+            }
+          }
+        } catch (error) {
+          console.error('❌ Error updating subscription in Firestore:', error);
+        }
+
         break;
       }
 
@@ -96,7 +182,32 @@ app.post('/api/webhook/stripe',
           subscriptionId: subscription.id,
         });
 
-        // TODO: Remove access in Firestore
+        try {
+          // Find the subscription and mark as canceled
+          const usersSnapshot = await db.collection('users').get();
+
+          for (const userDoc of usersSnapshot.docs) {
+            const subscriptionDoc = await db
+              .collection('users')
+              .doc(userDoc.id)
+              .collection('subscriptions')
+              .doc(subscription.id)
+              .get();
+
+            if (subscriptionDoc.exists()) {
+              await subscriptionDoc.ref.update({
+                status: 'canceled',
+                cancelAtPeriodEnd: true,
+              });
+
+              console.log(`✅ Subscription marked as canceled in Firestore: ${subscription.id}`);
+              break;
+            }
+          }
+        } catch (error) {
+          console.error('❌ Error deleting subscription in Firestore:', error);
+        }
+
         break;
       }
 
@@ -114,16 +225,20 @@ app.use(express.json());
 // Create Stripe Checkout Session
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
-    const { priceId, bookId, customerEmail, successUrl, cancelUrl, isSubscription } = req.body;
+    const { priceId, bookId, customerEmail, userId, successUrl, cancelUrl, isSubscription } = req.body;
 
     if (!priceId) {
       return res.status(400).json({ error: 'Price ID is required' });
     }
 
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required. Please sign in first.' });
+    }
+
     // Determine mode based on whether it's a subscription or one-time payment
     const mode = isSubscription ? 'subscription' : 'payment';
 
-    console.log(`Creating ${mode} checkout session for price: ${priceId}`);
+    console.log(`Creating ${mode} checkout session for price: ${priceId}, user: ${userId}`);
 
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
@@ -138,6 +253,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
       customer_email: customerEmail,
       metadata: {
         bookId: bookId || '',
+        userId: userId || '',  // Add userId to metadata for webhook
       },
       success_url: successUrl,
       cancel_url: cancelUrl,

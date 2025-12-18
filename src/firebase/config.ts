@@ -1,7 +1,7 @@
-import { initializeApp, FirebaseApp } from 'firebase/app';
-import { getAuth, Auth } from 'firebase/auth';
-import { getFirestore, Firestore } from 'firebase/firestore';
-import { getStorage, FirebaseStorage } from 'firebase/storage';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,27 +16,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app: FirebaseApp | null = null;
-let auth: Auth | null = null;
-let db: Firestore | null = null;
-let storage: FirebaseStorage | null = null;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-// Only initialize if API key is present
-if (import.meta.env.VITE_FIREBASE_API_KEY &&
-    import.meta.env.VITE_FIREBASE_API_KEY !== 'your_api_key_here') {
-  try {
-    app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
-    console.log('✅ Firebase initialized successfully');
-  } catch (error) {
-    console.warn('⚠️ Firebase initialization error:', error);
-    console.warn('The app will work without Firebase features (auth, storage, database)');
+console.log('✅ Firebase initialized successfully');
+
+// Helper functions to check if Firebase is initialized
+export function isFirebaseInitialized(): boolean {
+  return !!app && !!auth && !!db && !!storage;
+}
+
+export function assertFirebaseInitialized(): void {
+  if (!isFirebaseInitialized()) {
+    throw new Error('Firebase not initialized. Check your configuration.');
   }
-} else {
-  console.warn('⚠️ Firebase not configured. Update .env file with your Firebase credentials.');
-  console.warn('The app will work with local features only.');
 }
 
 export { app, auth, db, storage };

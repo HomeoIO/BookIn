@@ -7,11 +7,10 @@ import {
   updateDoc,
   deleteDoc,
   query,
-  where,
-  QueryConstraint,
-  DocumentData,
-  CollectionReference,
-  DocumentReference,
+  type QueryConstraint,
+  type DocumentData,
+  type CollectionReference,
+  type DocumentReference,
 } from 'firebase/firestore';
 import { db } from './config';
 
@@ -83,7 +82,7 @@ export const firestoreHelpers = {
   ): Promise<void> {
     try {
       const docRef = doc(db, collectionName, docId);
-      await setDoc(docRef, data);
+      await setDoc(docRef, data as DocumentData);
     } catch (error) {
       console.error('Error setting document:', error);
       throw error;

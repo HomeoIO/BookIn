@@ -7,12 +7,14 @@ import { SummaryView } from '@features/books/components/SummaryView';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { StripeService } from '@services/stripe';
+import { useAuth } from '@/features/auth/hooks/useAuth';
 
 type TabType = 'summary' | 'training';
 
 function BookDetailPage() {
   const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const { books, loading: booksLoading } = useBooks();
   const { questions, loading: questionsLoading } = useQuestions(bookId);
   const [activeTab, setActiveTab] = useState<TabType>('training');
@@ -36,6 +38,13 @@ function BookDetailPage() {
   const handlePurchaseBook = async () => {
     if (!book) return;
 
+    // Check if user is authenticated
+    if (!isAuthenticated || !user) {
+      alert('Please sign in to purchase this book.');
+      navigate('/login', { state: { from: { pathname: `/books/${book.id}` } } });
+      return;
+    }
+
     const priceId = StripeService.getPriceId(`${book.id}-lifetime`);
     if (!priceId || !StripeService.isConfigured()) {
       alert('Payment system not configured. Please contact support.');
@@ -48,17 +57,26 @@ function BookDetailPage() {
         priceId,
         bookId: book.id,
         bookTitle: `${book.title} - Lifetime Access`,
+        userEmail: user.email || undefined,
+        userId: user.uid,  // Pass user ID for Firestore
         isSubscription: false,
       });
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Failed to open checkout. Please try again.');
+      alert(error instanceof Error ? error.message : 'Failed to open checkout. Please try again.');
       setPurchasing(false);
     }
   };
 
   const handleSubscribeBook = async () => {
     if (!book) return;
+
+    // Check if user is authenticated
+    if (!isAuthenticated || !user) {
+      alert('Please sign in to subscribe to this book.');
+      navigate('/login', { state: { from: { pathname: `/books/${book.id}` } } });
+      return;
+    }
 
     const priceId = StripeService.getPriceId(`${book.id}-subscription`);
     if (!priceId || !StripeService.isConfigured()) {
@@ -72,11 +90,13 @@ function BookDetailPage() {
         priceId,
         bookId: book.id,
         bookTitle: `${book.title} - Subscription`,
+        userEmail: user.email || undefined,
+        userId: user.uid,  // Pass user ID for Firestore
         isSubscription: true,
       });
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Failed to open checkout. Please try again.');
+      alert(error instanceof Error ? error.message : 'Failed to open checkout. Please try again.');
       setPurchasing(false);
     }
   };

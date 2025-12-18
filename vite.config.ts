@@ -15,8 +15,8 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, './src/shared'),
       '@stores': path.resolve(__dirname, './src/stores'),
       '@services': path.resolve(__dirname, './src/services'),
-      '@firebase': path.resolve(__dirname, './src/firebase'),
       '@types': path.resolve(__dirname, './src/types'),
+      // Note: '@firebase' removed to avoid conflict with firebase npm package
     },
   },
   server: {

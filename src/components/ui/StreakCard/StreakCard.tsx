@@ -7,7 +7,7 @@ interface StreakCardProps {
 function StreakCard({ compact = false }: StreakCardProps) {
   const { currentStreak, longestStreak, totalDaysPracticed } = useStreakStore();
   const streakStatus = useStreakStore((state) => state.getStreakStatus());
-  const rescueStreak = useStreakStore((state) => state.rescueStreak);
+  // const rescueStreak = useStreakStore((state) => state.rescueStreak); // TODO: Implement rescue streak feature
 
   const { canRescue, daysUntilReset, isOnFire, nextMilestone } = streakStatus;
 

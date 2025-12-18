@@ -2,20 +2,25 @@
   {
     "id": "atomic-habits",
     "title": "Atomic Habits",
+    "titleZh": "原子習慣",
     "author": "James Clear",
     "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+    "descriptionZh": "建立好習慣、打破壞習慣的簡單有效方法",
     "coverImage": "https://placehold.co/300x400/e0f2fe/0369a1?text=Atomic+Habits",
     "category": ["Self-Help", "Psychology"],
     "difficulty": "beginner",
     "totalQuestions": 20,
     "isFree": true,
-    "summary": "Atomic Habits presents a proven framework for improving every day through tiny changes. James Clear argues that small habits don't add up—they compound. The effects of your habits multiply as you repeat them, creating remarkable results over time.\n\n**Core Philosophy:** You do not rise to the level of your goals. You fall to the level of your systems. Focus on systems, not goals.\n\n**The Four Laws of Behavior Change:**\n\n1. **Make it Obvious (Cue)** - Design your environment to make good habit cues visible. Use implementation intentions: 'I will [BEHAVIOR] at [TIME] in [LOCATION].' Stack habits: 'After [CURRENT HABIT], I will [NEW HABIT].'\n\n2. **Make it Attractive (Craving)** - Use temptation bundling: pair actions you want to do with actions you need to do. Join a culture where your desired behavior is normal.\n\n3. **Make it Easy (Response)** - Reduce friction for good habits. Use the Two-Minute Rule: scale habits down to a version that takes two minutes or less. Prepare your environment for future use.\n\n4. **Make it Satisfying (Reward)** - Create immediate rewards for habits with delayed gratification. Use habit tracking. Never miss twice.\n\n**Key Concepts:**\n- The 1% Rule: Getting 1% better each day leads to being 37 times better after a year\n- Plateau of Latent Potential: breakthrough comes after pushing through the 'valley of disappointment'\n- Identity-based habits: Focus on who you wish to become, not what you want to achieve\n- The Goldilocks Rule: Peak motivation occurs when facing challenges at the edge of your abilities\n\nClear emphasizes that habits are the compound interest of self-improvement. The same way money multiplies through compound interest, the effects of your habits multiply as you repeat them."
+    "summary": "Atomic Habits presents a proven framework for improving every day through tiny changes. James Clear argues that small habits don't add up—they compound. The effects of your habits multiply as you repeat them, creating remarkable results over time.\n\n**Core Philosophy:** You do not rise to the level of your goals. You fall to the level of your systems. Focus on systems, not goals.\n\n**The Four Laws of Behavior Change:**\n\n1. **Make it Obvious (Cue)** - Design your environment to make good habit cues visible. Use implementation intentions: 'I will [BEHAVIOR] at [TIME] in [LOCATION].' Stack habits: 'After [CURRENT HABIT], I will [NEW HABIT].'\n\n2. **Make it Attractive (Craving)** - Use temptation bundling: pair actions you want to do with actions you need to do. Join a culture where your desired behavior is normal.\n\n3. **Make it Easy (Response)** - Reduce friction for good habits. Use the Two-Minute Rule: scale habits down to a version that takes two minutes or less. Prepare your environment for future use.\n\n4. **Make it Satisfying (Reward)** - Create immediate rewards for habits with delayed gratification. Use habit tracking. Never miss twice.\n\n**Key Concepts:**\n- The 1% Rule: Getting 1% better each day leads to being 37 times better after a year\n- Plateau of Latent Potential: breakthrough comes after pushing through the 'valley of disappointment'\n- Identity-based habits: Focus on who you wish to become, not what you want to achieve\n- The Goldilocks Rule: Peak motivation occurs when facing challenges at the edge of your abilities\n\nClear emphasizes that habits are the compound interest of self-improvement. The same way money multiplies through compound interest, the effects of your habits multiply as you repeat them.",
+    "summaryZh": "《原子習慣》提供了一個經過驗證的框架，透過微小的改變來改善每一天。詹姆斯·克利爾認為，小習慣不會相加——它們會複利成長。當你重複這些習慣時，它們的效果會倍增，隨著時間創造出驚人的結果。\n\n**核心哲學：** 你不會上升到你的目標水平。你會下降到你的系統水平。專注於系統，而非目標。\n\n**行為改變的四個法則：**\n\n1. **讓提示顯而易見** - 設計你的環境，讓好習慣的提示變得明顯。使用執行意圖：「我將在[時間]在[地點]做[行為]」。堆疊習慣：「在[現有習慣]之後，我將[新習慣]」。\n\n2. **讓習慣有吸引力** - 使用誘惑綑綁：將你想做的事與你需要做的事配對。加入一個你想要的行為是正常的文化。\n\n3. **讓行動輕而易舉** - 減少好習慣的阻力。使用兩分鐘法則：將習慣縮減到只需兩分鐘或更少的版本。為未來的使用準備好你的環境。\n\n4. **讓獎賞令人滿足** - 為延遲滿足的習慣創造即時獎勵。使用習慣追蹤。永遠不要連續錯過兩次。\n\n**關鍵概念：**\n- 1%法則：每天進步1%，一年後會進步37倍\n- 潛在潛力高原：突破發生在推過「失望谷」之後\n- 以身份為基礎的習慣：專注於你想成為誰，而不是你想達成什麼\n- 金髮姑娘法則：當面對處於你能力邊緣的挑戰時，動機最高\n\n克利爾強調習慣是自我改善的複利。就像金錢透過複利倍增一樣，當你重複習慣時，習慣的效果也會倍增。"
   },
   {
     "id": "sapiens",
     "title": "Sapiens",
+    "titleZh": "人類大歷史",
     "author": "Yuval Noah Harari",
     "description": "A Brief History of Humankind",
+    "descriptionZh": "從動物到上帝",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Sapiens",
     "category": ["History", "Science"],
     "difficulty": "intermediate",
@@ -26,8 +31,10 @@
   {
     "id": "thinking-fast-slow",
     "title": "Thinking, Fast and Slow",
+    "titleZh": "快思慢想",
     "author": "Daniel Kahneman",
     "description": "A groundbreaking tour of the mind and explains the two systems that drive the way we think",
+    "descriptionZh": "探索大腦的突破性之旅，解釋驅動我們思考方式的兩個系統",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Thinking+Fast+and+Slow",
     "category": ["Psychology", "Science"],
     "difficulty": "advanced",

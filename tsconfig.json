@@ -17,7 +17,6 @@
       "@shared/*": ["src/shared/*"],
       "@stores/*": ["src/stores/*"],
       "@services/*": ["src/services/*"],
-      "@firebase/*": ["src/firebase/*"],
       "@types/*": ["src/types/*"]
     },
 

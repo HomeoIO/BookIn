@@ -4,6 +4,7 @@ import { Header, Container } from '@components/layout';
 import { Button } from '@components/ui';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useAuth } from '@/features/auth/hooks/useAuth';
 
 function PurchaseSuccessPage() {
   const navigate = useNavigate();
@@ -11,13 +12,14 @@ function PurchaseSuccessPage() {
   const sessionId = searchParams.get('session_id');
   const [processing, setProcessing] = useState(true);
   const [bookId, setBookId] = useState<string | null>(null);
+  const { user } = useAuth();
 
-  const addPurchase = usePurchaseStore((state) => state.addPurchase);
-  const addSubscription = useSubscriptionStore((state) => state.addSubscription);
+  const fetchPurchases = usePurchaseStore((state) => state.fetchPurchases);
+  const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
 
   useEffect(() => {
     async function verifyPurchase() {
-      if (!sessionId) {
+      if (!sessionId || !user) {
         setProcessing(false);
         return;
       }
@@ -33,23 +35,17 @@ function PurchaseSuccessPage() {
         const data = await response.json();
 
         if (data.success && data.bookId) {
-          // Grant access based on payment type
-          if (data.mode === 'subscription') {
-            // Add to subscriptions
-            addSubscription({
-              id: sessionId, // Use Stripe session ID as subscription ID
-              bookId: data.bookId,
-              status: 'active',
-              currentPeriodEnd: Date.now() + (90 * 24 * 60 * 60 * 1000), // 3 months from now
-              cancelAtPeriodEnd: false,
-            });
-          } else {
-            // Add to one-time purchases
-            addPurchase(data.bookId, data.amountTotal ? data.amountTotal / 100 : 9.0);
-          }
-
           setBookId(data.bookId);
-          console.log(`✅ Access granted for book: ${data.bookId} (mode: ${data.mode})`);
+          console.log(`✅ Payment verified for book: ${data.bookId} (mode: ${data.mode})`);
+
+          // Force refresh purchases and subscriptions from Firestore
+          // The webhook has already saved the purchase/subscription to Firestore
+          await Promise.all([
+            fetchPurchases(user.uid, true),  // forceRefresh = true
+            fetchSubscriptions(user.uid, true)
+          ]);
+
+          console.log(`✅ Purchases and subscriptions refreshed from Firestore`);
         }
 
         setProcessing(false);
@@ -60,7 +56,7 @@ function PurchaseSuccessPage() {
     }
 
     verifyPurchase();
-  }, [sessionId, addPurchase, addSubscription]);
+  }, [sessionId, user, fetchPurchases, fetchSubscriptions]);
 
   if (processing) {
     return (
