@@ -1,0 +1,20 @@
+{
+  "lifetime_access": "Lifetime Access",
+  "subscription": "Subscription",
+  "best_value": "BEST VALUE",
+  "one_time_payment": "One-time payment • Forever",
+  "billed_quarterly": "Billed quarterly • Cancel anytime",
+  "forever": "Forever",
+  "cancel_anytime": "Cancel anytime",
+  "price_lifetime": "$9",
+  "price_subscription": "$3/3mo",
+  "full_summary": "Full book summary",
+  "training_questions": "{{count}} training questions",
+  "lifetime_no_expiration": "Lifetime access - no expiration",
+  "no_recurring_charges": "No recurring charges",
+  "access_while_subscribed": "Access while subscribed",
+  "get_lifetime_access": "Get Lifetime Access",
+  "subscribe": "Subscribe",
+  "payment_not_configured": "Payment system not configured. Please contact support.",
+  "processing_payment": "Processing..."
+}

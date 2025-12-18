@@ -1,0 +1,20 @@
+{
+  "day_streak": "Day Streak",
+  "days_streak": "{{days}} Day Streak",
+  "longest_streak": "Longest Streak",
+  "total_days": "Total Days",
+  "on_fire": "ON FIRE!",
+  "streak_at_risk": "Streak at risk!",
+  "rescue_message": "Complete a training session within {{days}} days to save your streak.",
+  "rescue_message_singular": "Complete a training session within {{days}} day to save your streak.",
+  "start_streak": "Start your learning streak today!",
+  "days_to_milestone": "{{days}} more days to {{milestone}}-day milestone!",
+  "amazing_habit": "Amazing! You've built a strong habit!",
+  "keep_it_up": "Keep it up! You're on fire!",
+  "great_start": "Great start! Come back tomorrow to continue your streak.",
+  "two_days_row": "Two days in a row! Keep the momentum going!",
+  "youre_on_fire": "You're on fire! Keep practicing daily!",
+  "amazing_consistency": "Amazing consistency! You're building a strong habit!",
+  "mastered_habit": "Incredible! You've mastered the habit of daily learning!",
+  "dont_break_chain": "Don't break the chain! Practice now to rescue your {{days}}-day streak."
+}

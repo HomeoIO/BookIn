@@ -1,0 +1,20 @@
+{
+  "lifetime_access": "終身存取",
+  "subscription": "訂閱",
+  "best_value": "最佳價值",
+  "one_time_payment": "一次性付款 • 永久",
+  "billed_quarterly": "每季度收費 • 隨時取消",
+  "forever": "永久",
+  "cancel_anytime": "隨時取消",
+  "price_lifetime": "$9",
+  "price_subscription": "$3/3個月",
+  "full_summary": "完整書籍摘要",
+  "training_questions": "{{count}} 個訓練問題",
+  "lifetime_no_expiration": "終身存取 - 永不過期",
+  "no_recurring_charges": "無重複收費",
+  "access_while_subscribed": "訂閱期間存取",
+  "get_lifetime_access": "獲得終身存取",
+  "subscribe": "訂閱",
+  "payment_not_configured": "付款系統未配置。請聯絡客服。",
+  "processing_payment": "處理中..."
+}

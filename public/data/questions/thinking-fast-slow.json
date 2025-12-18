@@ -1,0 +1,144 @@
+[
+  {
+    "id": "tfs-001",
+    "bookId": "thinking-fast-slow",
+    "question": "What are the two systems of thinking that Kahneman describes?",
+    "type": "multiple-choice",
+    "options": [
+      "Emotional and Logical",
+      "Fast and Slow",
+      "Conscious and Subconscious",
+      "Creative and Analytical"
+    ],
+    "correctAnswer": "Fast and Slow",
+    "explanation": "System 1 is fast, automatic, and intuitive. System 2 is slower, more deliberate, and logical. These two systems work together but in different ways.",
+    "difficulty": "easy",
+    "concepts": ["System 1", "System 2", "Dual-Process Theory"]
+  },
+  {
+    "id": "tfs-002",
+    "bookId": "thinking-fast-slow",
+    "question": "Which system is responsible for intuitive, automatic thinking?",
+    "type": "multiple-choice",
+    "options": [
+      "System 1",
+      "System 2",
+      "Both equally",
+      "Neither"
+    ],
+    "correctAnswer": "System 1",
+    "explanation": "System 1 operates automatically and quickly, with little or no effort and no sense of voluntary control. It handles familiar tasks and generates impressions and feelings.",
+    "difficulty": "easy",
+    "concepts": ["System 1", "Automatic Thinking", "Intuition"]
+  },
+  {
+    "id": "tfs-003",
+    "bookId": "thinking-fast-slow",
+    "question": "System 2 is lazy and often relies on System 1's suggestions. True or False?",
+    "type": "true-false",
+    "correctAnswer": "true",
+    "explanation": "Kahneman argues that System 2 is 'lazy' and often accepts System 1's suggestions with minimal checking. This is why we fall prey to cognitive biases - System 2 doesn't always scrutinize System 1's quick judgments.",
+    "difficulty": "medium",
+    "concepts": ["System 2", "Cognitive Laziness", "Biases"]
+  },
+  {
+    "id": "tfs-004",
+    "bookId": "thinking-fast-slow",
+    "question": "What is the 'anchoring effect'?",
+    "type": "multiple-choice",
+    "options": [
+      "The tendency to stick with initial decisions",
+      "The tendency to rely too heavily on the first piece of information when making decisions",
+      "The preference for familiar options",
+      "The tendency to anchor emotions to specific events"
+    ],
+    "correctAnswer": "The tendency to rely too heavily on the first piece of information when making decisions",
+    "explanation": "The anchoring effect is a cognitive bias where people rely too heavily on the first piece of information offered (the 'anchor') when making decisions, even when that information is irrelevant.",
+    "difficulty": "medium",
+    "concepts": ["Anchoring Effect", "Cognitive Bias", "Decision Making"]
+  },
+  {
+    "id": "tfs-005",
+    "bookId": "thinking-fast-slow",
+    "question": "According to Kahneman, what is 'loss aversion'?",
+    "type": "multiple-choice",
+    "options": [
+      "The tendency to prefer avoiding losses to acquiring equivalent gains",
+      "The fear of taking any financial risks",
+      "The preference for guaranteed outcomes",
+      "The tendency to hold onto losing investments"
+    ],
+    "correctAnswer": "The tendency to prefer avoiding losses to acquiring equivalent gains",
+    "explanation": "Loss aversion means that losses loom larger than gains - the pain of losing $100 is more intense than the pleasure of gaining $100. This is a fundamental principle of prospect theory.",
+    "difficulty": "medium",
+    "concepts": ["Loss Aversion", "Prospect Theory", "Risk"]
+  },
+  {
+    "id": "tfs-006",
+    "bookId": "thinking-fast-slow",
+    "question": "The 'availability heuristic' leads us to judge probability based on how easily examples come to mind. True or False?",
+    "type": "true-false",
+    "correctAnswer": "true",
+    "explanation": "The availability heuristic is a mental shortcut where people estimate the likelihood of events based on how easily they can recall examples, rather than on actual statistical probability.",
+    "difficulty": "easy",
+    "concepts": ["Availability Heuristic", "Mental Shortcuts", "Probability Judgment"]
+  },
+  {
+    "id": "tfs-007",
+    "bookId": "thinking-fast-slow",
+    "question": "What is the 'planning fallacy'?",
+    "type": "multiple-choice",
+    "options": [
+      "The tendency to make overly detailed plans",
+      "The tendency to underestimate the time, costs, and risks of future actions",
+      "The habit of planning too far ahead",
+      "The preference for planning over executing"
+    ],
+    "correctAnswer": "The tendency to underestimate the time, costs, and risks of future actions",
+    "explanation": "The planning fallacy describes our tendency to be overly optimistic about how long tasks will take and how much they'll cost, even when we have past experience showing our estimates are usually wrong.",
+    "difficulty": "medium",
+    "concepts": ["Planning Fallacy", "Optimism Bias", "Time Estimation"]
+  },
+  {
+    "id": "tfs-008",
+    "bookId": "thinking-fast-slow",
+    "question": "What does Kahneman mean by WYSIATI?",
+    "type": "multiple-choice",
+    "options": [
+      "What You See Is All There Is",
+      "Why You See It As True Innovation",
+      "When You Succeed Is Always Intentional",
+      "Where You Start Is Always The Issue"
+    ],
+    "correctAnswer": "What You See Is All There Is",
+    "explanation": "WYSIATI (What You See Is All There Is) describes how System 1 creates coherent stories from available information without considering information it doesn't have, leading to overconfidence and biased judgments.",
+    "difficulty": "hard",
+    "concepts": ["WYSIATI", "Information Bias", "Overconfidence"]
+  },
+  {
+    "id": "tfs-009",
+    "bookId": "thinking-fast-slow",
+    "question": "The 'framing effect' demonstrates that people react differently to the same choice depending on how it is presented. True or False?",
+    "type": "true-false",
+    "correctAnswer": "true",
+    "explanation": "The framing effect shows that the way information is presented (framed) significantly affects decisions and judgments. For example, people react differently to '90% survival rate' vs '10% mortality rate' even though they're the same.",
+    "difficulty": "easy",
+    "concepts": ["Framing Effect", "Decision Making", "Presentation Bias"]
+  },
+  {
+    "id": "tfs-010",
+    "bookId": "thinking-fast-slow",
+    "question": "What is the 'remembering self' vs the 'experiencing self'?",
+    "type": "multiple-choice",
+    "options": [
+      "The self that remembers past events vs the self that lives through present moments",
+      "Long-term memory vs short-term memory",
+      "Conscious mind vs unconscious mind",
+      "System 1 vs System 2"
+    ],
+    "correctAnswer": "The self that remembers past events vs the self that lives through present moments",
+    "explanation": "Kahneman distinguishes between the experiencing self (who lives in the present) and the remembering self (who keeps score and makes choices). The remembering self's preferences often dominate, even when they conflict with the experiencing self's well-being.",
+    "difficulty": "hard",
+    "concepts": ["Remembering Self", "Experiencing Self", "Memory Bias"]
+  }
+]

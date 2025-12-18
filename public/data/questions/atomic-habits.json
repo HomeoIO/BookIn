@@ -1,0 +1,144 @@
+[
+  {
+    "id": "ah-001",
+    "bookId": "atomic-habits",
+    "question": "According to James Clear, if you get 1% better each day for a year, how much better will you be?",
+    "type": "multiple-choice",
+    "options": [
+      "365% better",
+      "37 times better",
+      "100% better",
+      "52% better"
+    ],
+    "correctAnswer": "37 times better",
+    "explanation": "Clear uses the compound interest formula to show that 1.01^365 = 37.78, meaning you'll be 37 times better after a year of 1% daily improvements.",
+    "difficulty": "easy",
+    "concepts": ["Compound Growth", "1% Improvement", "Long-term Change"]
+  },
+  {
+    "id": "ah-002",
+    "bookId": "atomic-habits",
+    "question": "What are the four laws of behavior change in the Atomic Habits framework?",
+    "type": "multiple-choice",
+    "options": [
+      "Make it obvious, attractive, easy, and satisfying",
+      "Plan it, do it, review it, and repeat it",
+      "Set goals, track progress, stay motivated, and celebrate",
+      "Start small, build consistency, add complexity, and maintain"
+    ],
+    "correctAnswer": "Make it obvious, attractive, easy, and satisfying",
+    "explanation": "Clear's framework for creating good habits consists of: Make it obvious (cue), Make it attractive (craving), Make it easy (response), and Make it satisfying (reward).",
+    "difficulty": "medium",
+    "concepts": ["Four Laws", "Behavior Change", "Habit Formation"]
+  },
+  {
+    "id": "ah-003",
+    "bookId": "atomic-habits",
+    "question": "Goals are more important than systems for achieving long-term success. True or False?",
+    "type": "true-false",
+    "correctAnswer": "false",
+    "explanation": "Clear argues that you should focus on systems rather than goals. Winners and losers often have the same goals, but winners have better systems. Systems are what lead to long-term progress.",
+    "difficulty": "easy",
+    "concepts": ["Systems vs Goals", "Long-term Success", "Process Focus"]
+  },
+  {
+    "id": "ah-004",
+    "bookId": "atomic-habits",
+    "question": "What is the 'Plateau of Latent Potential'?",
+    "type": "multiple-choice",
+    "options": [
+      "The maximum level of improvement you can achieve",
+      "The period where habits seem ineffective before breakthrough occurs",
+      "A plateau where your habits become automatic",
+      "The point where you should stop practicing a habit"
+    ],
+    "correctAnswer": "The period where habits seem ineffective before breakthrough occurs",
+    "explanation": "The Plateau of Latent Potential represents the frustrating period where you're working hard but not seeing results. Breakthrough comes only after pushing through this valley of disappointment.",
+    "difficulty": "hard",
+    "concepts": ["Plateau of Latent Potential", "Delayed Results", "Persistence"]
+  },
+  {
+    "id": "ah-005",
+    "bookId": "atomic-habits",
+    "question": "According to Clear, what should you focus on changing to build better habits?",
+    "type": "multiple-choice",
+    "options": [
+      "Your outcomes",
+      "Your processes",
+      "Your identity",
+      "Your environment"
+    ],
+    "correctAnswer": "Your identity",
+    "explanation": "Clear advocates for identity-based habits - focusing on who you wish to become rather than what you want to achieve. The goal is to become the type of person who does X, not just to achieve X.",
+    "difficulty": "medium",
+    "concepts": ["Identity-based Habits", "Behavior Change", "Self-image"]
+  },
+  {
+    "id": "ah-006",
+    "bookId": "atomic-habits",
+    "question": "Habit stacking involves linking a new habit to an existing one. True or False?",
+    "type": "true-false",
+    "correctAnswer": "true",
+    "explanation": "Habit stacking uses the formula: 'After [CURRENT HABIT], I will [NEW HABIT].' This leverages existing habits as cues for new behaviors.",
+    "difficulty": "easy",
+    "concepts": ["Habit Stacking", "Implementation Intentions", "Cues"]
+  },
+  {
+    "id": "ah-007",
+    "bookId": "atomic-habits",
+    "question": "What is the 'Two-Minute Rule' for building new habits?",
+    "type": "multiple-choice",
+    "options": [
+      "Habits should only take two minutes to complete",
+      "When starting a new habit, scale it down to something that takes two minutes or less",
+      "Take a two-minute break between habit attempts",
+      "Review your habits for two minutes daily"
+    ],
+    "correctAnswer": "When starting a new habit, scale it down to something that takes two minutes or less",
+    "explanation": "The Two-Minute Rule states that when you start a new habit, it should take less than two minutes to do. The point is to make it as easy as possible to start.",
+    "difficulty": "easy",
+    "concepts": ["Two-Minute Rule", "Starting Small", "Habit Formation"]
+  },
+  {
+    "id": "ah-008",
+    "bookId": "atomic-habits",
+    "question": "What does Clear mean by 'environment design'?",
+    "type": "multiple-choice",
+    "options": [
+      "Designing beautiful spaces to improve motivation",
+      "Structuring your surroundings to make good habits easier and bad habits harder",
+      "Creating a schedule for your daily habits",
+      "Organizing your workspace for productivity"
+    ],
+    "correctAnswer": "Structuring your surroundings to make good habits easier and bad habits harder",
+    "explanation": "Environment design means shaping your physical space to make cues for good habits obvious and cues for bad habits invisible. Your environment often has more impact on your behavior than willpower.",
+    "difficulty": "medium",
+    "concepts": ["Environment Design", "Context", "Habit Cues"]
+  },
+  {
+    "id": "ah-009",
+    "bookId": "atomic-habits",
+    "question": "The Goldilocks Rule states that humans experience peak motivation when working on tasks that are right on the edge of their current abilities. True or False?",
+    "type": "true-false",
+    "correctAnswer": "true",
+    "explanation": "The Goldilocks Rule suggests that motivation peaks when facing challenges that are neither too hard nor too easy - about 4% beyond your current ability.",
+    "difficulty": "medium",
+    "concepts": ["Goldilocks Rule", "Motivation", "Challenge"]
+  },
+  {
+    "id": "ah-010",
+    "bookId": "atomic-habits",
+    "question": "What does Clear recommend for breaking bad habits?",
+    "type": "multiple-choice",
+    "options": [
+      "Use the same four laws but in reverse: make it invisible, unattractive, difficult, and unsatisfying",
+      "Focus on willpower and self-discipline",
+      "Replace them with good habits immediately",
+      "Gradually reduce the frequency over months"
+    ],
+    "correctAnswer": "Use the same four laws but in reverse: make it invisible, unattractive, difficult, and unsatisfying",
+    "explanation": "Clear's framework works both ways. To break bad habits, invert the four laws: Make it invisible (cue), Make it unattractive (craving), Make it difficult (response), Make it unsatisfying (reward).",
+    "difficulty": "easy",
+    "concepts": ["Breaking Habits", "Four Laws Inverted", "Behavior Change"]
+  }
+]

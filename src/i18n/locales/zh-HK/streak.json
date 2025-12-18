@@ -1,0 +1,20 @@
+{
+  "day_streak": "天連續記錄",
+  "days_streak": "{{days}} 天連續記錄",
+  "longest_streak": "最長連續記錄",
+  "total_days": "總天數",
+  "on_fire": "火熱中！",
+  "streak_at_risk": "連續記錄有風險！",
+  "rescue_message": "在 {{days}} 天內完成訓練以保存您的連續記錄。",
+  "rescue_message_singular": "在 {{days}} 天內完成訓練以保存您的連續記錄。",
+  "start_streak": "今天開始您的學習連續記錄！",
+  "days_to_milestone": "還有 {{days}} 天達到 {{milestone}} 天里程碑！",
+  "amazing_habit": "太棒了！您已經建立了強大的習慣！",
+  "keep_it_up": "繼續保持！您正在火熱中！",
+  "great_start": "很好的開始！明天回來繼續您的連續記錄。",
+  "two_days_row": "連續兩天！保持勢頭！",
+  "youre_on_fire": "您正在火熱中！每天繼續練習！",
+  "amazing_consistency": "驚人的一致性！您正在建立強大的習慣！",
+  "mastered_habit": "難以置信！您已經掌握了每日學習的習慣！",
+  "dont_break_chain": "不要打破連續記錄！立即練習以拯救您的 {{days}} 天連續記錄。"
+}
