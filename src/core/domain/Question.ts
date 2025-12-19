@@ -6,10 +6,14 @@ export interface Question {
   id: string;
   bookId: string;
   question: string;
+  questionZh?: string;
   type: QuestionType;
   options?: string[];
+  optionsZh?: string[];
   correctAnswer: string | string[];
+  correctAnswerZh?: string | string[];
   explanation: string;
+  explanationZh?: string;
   difficulty: QuestionDifficulty;
   concepts: string[];
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Header, Container } from '@components/layout';
 import { Button } from '@components/ui';
 import { useBooks, useQuestions } from '@features/books/hooks';
@@ -17,12 +18,15 @@ interface Answer {
 function TrainingPage() {
   const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
   const { books } = useBooks();
   const { questions, loading } = useQuestions(bookId);
   const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
   const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
   const recordPractice = useStreakStore((state) => state.recordPractice);
   const streakStatus = useStreakStore((state) => state.getStreakStatus());
+
+  const isChinese = i18n.language === 'zh-HK';
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -85,7 +89,9 @@ function TrainingPage() {
         <Container className="py-12">
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading questions...</p>
+            <p className="mt-4 text-gray-600">
+              {isChinese ? '載入問題中...' : 'Loading questions...'}
+            </p>
           </div>
         </Container>
       </>
@@ -99,13 +105,13 @@ function TrainingPage() {
         <Container className="py-12">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              No Questions Available
+              {isChinese ? '沒有可用的問題' : 'No Questions Available'}
             </h2>
             <p className="text-gray-600 mb-4">
-              There are no questions for this book yet.
+              {isChinese ? '此書目前沒有問題。' : 'There are no questions for this book yet.'}
             </p>
             <Button onClick={() => navigate(`/books/${bookId}`)}>
-              Back to Book
+              {isChinese ? '返回書籍' : 'Back to Book'}
             </Button>
           </div>
         </Container>
@@ -131,18 +137,22 @@ function TrainingPage() {
               <div className="mb-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border-2 border-yellow-300">
                 <div className="text-6xl mb-3">🎉</div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {newStreak}-Day Milestone!
+                  {isChinese ? `${newStreak} 天里程碑！` : `${newStreak}-Day Milestone!`}
                 </h2>
                 <p className="text-gray-700">
-                  Amazing! You've practiced {newStreak} days in a row. You're building a powerful learning habit!
+                  {isChinese
+                    ? `太棒了！您已經連續練習了 ${newStreak} 天。您正在養成強大的學習習慣！`
+                    : `Amazing! You've practiced ${newStreak} days in a row. You're building a powerful learning habit!`}
                 </p>
               </div>
             )}
 
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Session Complete!
+              {isChinese ? '課程完成！' : 'Session Complete!'}
             </h1>
-            <p className="text-lg text-gray-600 mb-8">Great Job!</p>
+            <p className="text-lg text-gray-600 mb-8">
+              {isChinese ? '做得好！' : 'Great Job!'}
+            </p>
 
             {/* Results Box */}
             <div className="bg-gray-50 rounded-lg p-6 mb-6">
@@ -151,13 +161,17 @@ function TrainingPage() {
                   <div className="text-4xl font-bold text-gray-900 mb-1">
                     {correctAnswers}/{totalQuestions}
                   </div>
-                  <div className="text-sm text-gray-600">Correct</div>
+                  <div className="text-sm text-gray-600">
+                    {isChinese ? '正確' : 'Correct'}
+                  </div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary-600 mb-1">
                     +{masteryIncrease}%
                   </div>
-                  <div className="text-sm text-gray-600">Skill Mastery Increase</div>
+                  <div className="text-sm text-gray-600">
+                    {isChinese ? '技能掌握度提升' : 'Skill Mastery Increase'}
+                  </div>
                 </div>
               </div>
 
@@ -177,15 +191,27 @@ function TrainingPage() {
                 </span>
                 <div>
                   <div className="text-3xl font-bold text-gray-900">{newStreak}</div>
-                  <div className="text-sm text-gray-600">Day Streak</div>
+                  <div className="text-sm text-gray-600">
+                    {isChinese ? '天連續' : 'Day Streak'}
+                  </div>
                 </div>
               </div>
               <p className="text-sm text-gray-700">
-                {newStreak === 1 && "Great start! Come back tomorrow to continue your streak."}
-                {newStreak === 2 && "Two days in a row! Keep the momentum going!"}
-                {newStreak >= 3 && newStreak < 7 && "You're on fire! Keep practicing daily!"}
-                {newStreak >= 7 && newStreak < 20 && "Amazing consistency! You're building a strong habit!"}
-                {newStreak >= 20 && "Incredible! You've mastered the habit of daily learning!"}
+                {newStreak === 1 && (isChinese
+                  ? "很好的開始！明天再來繼續您的連續紀錄。"
+                  : "Great start! Come back tomorrow to continue your streak.")}
+                {newStreak === 2 && (isChinese
+                  ? "連續兩天！保持勢頭！"
+                  : "Two days in a row! Keep the momentum going!")}
+                {newStreak >= 3 && newStreak < 7 && (isChinese
+                  ? "您真棒！繼續每天練習！"
+                  : "You're on fire! Keep practicing daily!")}
+                {newStreak >= 7 && newStreak < 20 && (isChinese
+                  ? "驚人的一致性！您正在培養強大的習慣！"
+                  : "Amazing consistency! You're building a strong habit!")}
+                {newStreak >= 20 && (isChinese
+                  ? "難以置信！您已經掌握了每日學習的習慣！"
+                  : "Incredible! You've mastered the habit of daily learning!")}
               </p>
             </div>
 
@@ -202,7 +228,7 @@ function TrainingPage() {
                   setSessionComplete(false);
                 }}
               >
-                Start New Session
+                {isChinese ? '開始新課程' : 'Start New Session'}
               </Button>
               <Button
                 variant="outline"
@@ -210,7 +236,7 @@ function TrainingPage() {
                 fullWidth
                 onClick={() => navigate(`/books/${bookId}`)}
               >
-                Review Mistakes
+                {isChinese ? '查看錯誤' : 'Review Mistakes'}
               </Button>
             </div>
           </div>
@@ -234,7 +260,10 @@ function TrainingPage() {
         {/* Back Button */}
         <button
           onClick={() => {
-            if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+            const message = isChinese
+              ? '您確定要退出嗎？您的進度將會丟失。'
+              : 'Are you sure you want to exit? Your progress will be lost.';
+            if (confirm(message)) {
               navigate(`/books/${bookId}`);
             }
           }}
@@ -253,7 +282,7 @@ function TrainingPage() {
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
-          Exit
+          {isChinese ? '退出' : 'Exit'}
         </button>
 
         {/* Question Card */}
@@ -276,7 +305,11 @@ function TrainingPage() {
               onClick={handleNextQuestion}
             >
               {currentQuestionIndex < questions.length - 1
-                ? 'Next Question'
+                ? isChinese
+                  ? '下一題'
+                  : 'Next Question'
+                : isChinese
+                ? '完成課程'
                 : 'Complete Session'}
             </Button>
           </div>

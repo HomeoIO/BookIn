@@ -1,4 +1,4 @@
-.PHONY: help dev server client stripe-webhook setup install build test deploy clean
+.PHONY: help dev server client stripe-webhook setup install build test deploy clean questions-upload
 
 # Default target
 help:
@@ -19,6 +19,7 @@ help:
 	@echo "  make test             Run tests"
 	@echo "  make deploy-rules     Deploy Firebase rules"
 	@echo "  make stripe-products  Create all Stripe products"
+	@echo "  make questions-upload Upload questions to Firebase Storage"
 	@echo ""
 	@echo "Utilities:"
 	@echo "  make clean            Clean build artifacts"
@@ -103,6 +104,11 @@ deploy-rules:
 stripe-products:
 	@echo "💳 Creating Stripe products..."
 	npm run stripe:create
+
+# Upload questions to Firebase Storage
+questions-upload:
+	@echo "📤 Uploading questions to Firebase Storage..."
+	npm run questions:upload
 
 # Show server logs
 logs:

@@ -15,7 +15,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "stripe:create": "node scripts/create-stripe-products.js",
-    "books:generate": "node scripts/generate-app-books.js"
+    "books:generate": "node scripts/generate-app-books.js",
+    "questions:upload": "node scripts/upload-questions.js"
   },
   "dependencies": {
     "@firebase/app": "^0.14.6",

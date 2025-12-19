@@ -22,6 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+AGENTS.md
 
 # Environment variables
 .env
@@ -42,3 +43,6 @@ CLI_DOCS
 # Payment Provider State Files (contain product/price IDs)
 .stripe-products.json
 .lemonsqueezy-products.json
+
+# Question files (managed via Firebase Storage)
+public/data/questions/

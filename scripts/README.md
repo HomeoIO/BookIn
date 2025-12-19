@@ -121,6 +121,49 @@ Creating: $100M Leads (百萬潛在客戶) - Subscription...
 ✅ All products created successfully!
 ```
 
+### 4. upload-questions.js
+
+Uploads question JSON files to Firebase Storage for content delivery.
+
+**Prerequisites:**
+1. Firebase project created
+2. Firebase Storage initialized
+3. Environment variables set in `.env`
+
+**Usage:**
+```bash
+npm run questions:upload
+# or
+node scripts/upload-questions.js
+```
+
+**What it does:**
+- Uploads question files from `public/data/questions/` to Firebase Storage
+- Storage path: `content/books/{bookId}/questions.json`
+- Validates JSON before upload
+- Sets proper content type and metadata
+- Currently uploads 3 free book question files:
+  - `atomic-habits.json`
+  - `sapiens.json`
+  - `thinking-fast-slow.json`
+
+**Example Output:**
+```
+🔥 Firebase Storage Upload - Question Files
+
+Project: bookin-f00d8
+Bucket:  bookin-f00d8.firebasestorage.app
+
+Uploading 3 question files...
+
+📚 Atomic Habits
+   Local:   /path/to/public/data/questions/atomic-habits.json
+   Storage: content/books/atomic-habits/questions.json
+   ✅ Uploaded successfully
+
+✅ Upload complete: 3 succeeded, 0 failed
+```
+
 ## Complete Setup Workflow
 
 ### Step 1: Generate App Book Metadata
@@ -130,7 +173,17 @@ npm run books:generate
 
 This creates/updates `public/data/books-paid.json` with all 107 books.
 
-### Step 2: Create Stripe Products
+### Step 2: Upload Questions to Firebase Storage
+```bash
+npm run questions:upload
+```
+
+This uploads all question files to Firebase Storage.
+
+**⏱️ Time required**: ~5 seconds
+**💡 Note**: Requires Firebase Storage to be initialized
+
+### Step 3: Create Stripe Products
 ```bash
 npm run stripe:create
 ```
@@ -140,7 +193,7 @@ This creates all 214 products in Stripe.
 **⏱️ Time required**: ~10-15 minutes
 **☕ Tip**: Grab a coffee while it runs!
 
-### Step 3: Test the App
+### Step 4: Test the App
 ```bash
 make dev
 # or
