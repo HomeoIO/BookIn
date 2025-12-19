@@ -3,7 +3,7 @@
     "id": "100m-leads",
     "title": "$100M Leads",
     "titleZh": "百萬潛在客戶",
-    "author": "TBD",
+    "author": "Alex Hormozi",
     "description": "百萬潛在客戶",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=100m+Leads",
     "category": [
@@ -19,7 +19,7 @@
     "id": "all-marketers-are-liars",
     "title": "All Marketers Are Liars",
     "titleZh": "行銷人都是說故事高手",
-    "author": "TBD",
+    "author": "Seth Godin",
     "description": "行銷人都是說故事高手",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=All+Marketers+Are+Liars",
     "category": [
@@ -35,7 +35,7 @@
     "id": "this-is-marketing",
     "title": "This Is Marketing",
     "titleZh": "這才是行銷",
-    "author": "TBD",
+    "author": "Seth Godin",
     "description": "這才是行銷",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=This+Is+Marketing",
     "category": [
@@ -51,7 +51,7 @@
     "id": "unleash-power-storytelling",
     "title": "Unleash the Power of Storytelling",
     "titleZh": "故事力",
-    "author": "TBD",
+    "author": "Rob Biesenbach",
     "description": "故事力",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=Unleash+Power+Storytelling",
     "category": [
@@ -67,7 +67,7 @@
     "id": "chatgpt-millionaire",
     "title": "The ChatGPT Millionaire",
     "titleZh": "ChatGPT 百萬富翁",
-    "author": "TBD",
+    "author": "Neil Dagger",
     "description": "ChatGPT 百萬富翁",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=Chatgpt+Millionaire",
     "category": [
@@ -83,7 +83,7 @@
     "id": "smart-brevity",
     "title": "Smart Brevity",
     "titleZh": "聰明簡潔的溝通",
-    "author": "TBD",
+    "author": "Jim VandeHei, Mike Allen, and Roy Schwartz",
     "description": "聰明簡潔的溝通",
     "coverImage": "https://placehold.co/300x400/dbeafe/1e40af?text=Smart+Brevity",
     "category": [
@@ -99,7 +99,7 @@
     "id": "psychology-of-money",
     "title": "The Psychology of Money",
     "titleZh": "致富心態",
-    "author": "TBD",
+    "author": "Morgan Housel",
     "description": "致富心態",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Psychology+Of+Money",
     "category": [
@@ -115,7 +115,7 @@
     "id": "just-keep-buying",
     "title": "Just Keep Buying",
     "titleZh": "持續買進",
-    "author": "TBD",
+    "author": "Nick Maggiulli",
     "description": "持續買進",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Just+Keep+Buying",
     "category": [
@@ -131,7 +131,7 @@
     "id": "trading-in-zone",
     "title": "Trading in the Zone",
     "titleZh": "賺錢，再自然不過！",
-    "author": "TBD",
+    "author": "Mark Douglas",
     "description": "賺錢，再自然不過！",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Trading+In+Zone",
     "category": [
@@ -147,7 +147,7 @@
     "id": "wealth-ladder",
     "title": "The Wealth Ladder",
     "titleZh": "財富階梯",
-    "author": "TBD",
+    "author": "Alex S. Wong",
     "description": "財富階梯",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Wealth+Ladder",
     "category": [
@@ -163,7 +163,7 @@
     "id": "die-with-zero",
     "title": "Die with Zero",
     "titleZh": "別把你的錢留到死",
-    "author": "TBD",
+    "author": "Bill Perkins",
     "description": "別把你的錢留到死",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Die+With+Zero",
     "category": [
@@ -179,7 +179,7 @@
     "id": "intelligent-investor",
     "title": "The Intelligent Investor",
     "titleZh": "智慧型股票投資人",
-    "author": "TBD",
+    "author": "Benjamin Graham",
     "description": "智慧型股票投資人",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Intelligent+Investor",
     "category": [
@@ -195,7 +195,7 @@
     "id": "rich-dad-retire-young",
     "title": "Rich Dad's Retire Young Retire Rich",
     "titleZh": "富爸爸財富執行力",
-    "author": "TBD",
+    "author": "Robert T. Kiyosaki and Sharon L. Lechter",
     "description": "富爸爸財富執行力",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Rich+Dad+Retire+Young",
     "category": [
@@ -211,7 +211,7 @@
     "id": "your-money-or-life",
     "title": "Your Money or Your Life",
     "titleZh": "富足人生：要錢還是要命",
-    "author": "TBD",
+    "author": "Vicki Robin and Joe Dominguez",
     "description": "富足人生：要錢還是要命",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Your+Money+Or+Life",
     "category": [
@@ -227,7 +227,7 @@
     "id": "millionaire-fastlane",
     "title": "The Millionaire Fastlane",
     "titleZh": "百萬富翁快車道",
-    "author": "TBD",
+    "author": "MJ DeMarco",
     "description": "百萬富翁快車道",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=Millionaire+Fastlane",
     "category": [
@@ -243,7 +243,7 @@
     "id": "from-debt-to-cashflow",
     "title": "From 20 Million in Debt to Cash Flow Every Day",
     "titleZh": "從負債2000萬到錢錢滾進每一天",
-    "author": "TBD",
+    "author": "Alex S. Wong",
     "description": "從負債2000萬到錢錢滾進每一天",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=From+Debt+To+Cashflow",
     "category": [
@@ -259,7 +259,7 @@
     "id": "from-debt-to-miracles",
     "title": "From 20 Million in Debt to Miracles Every Day",
     "titleZh": "從負債2000萬到奇蹟罩我每一天",
-    "author": "TBD",
+    "author": "Alex S. Wong",
     "description": "從負債2000萬到奇蹟罩我每一天",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=From+Debt+To+Miracles",
     "category": [
@@ -275,7 +275,7 @@
     "id": "from-debt-to-manifesting",
     "title": "From 20 Million in Debt to Manifesting Daily",
     "titleZh": "從負債2000萬到心想事成每一天",
-    "author": "TBD",
+    "author": "Alex S. Wong",
     "description": "從負債2000萬到心想事成每一天",
     "coverImage": "https://placehold.co/300x400/fce7f3/9d174d?text=From+Debt+To+Manifesting",
     "category": [
@@ -291,7 +291,7 @@
     "id": "inner-excellence",
     "title": "Inner Excellence",
     "titleZh": "內在卓越",
-    "author": "TBD",
+    "author": "Jim Murphy",
     "description": "內在卓越",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Inner+Excellence",
     "category": [
@@ -307,7 +307,7 @@
     "id": "no-self-no-problem",
     "title": "No Self, No Problem",
     "titleZh": "無我，無煩惱",
-    "author": "TBD",
+    "author": "Chris Niebauer",
     "description": "無我，無煩惱",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=No+Self+No+Problem",
     "category": [
@@ -323,7 +323,7 @@
     "id": "do-hard-things",
     "title": "Do Hard Things",
     "titleZh": "真堅強",
-    "author": "TBD",
+    "author": "Alex Harris and Brett Harris",
     "description": "真堅強",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Do+Hard+Things",
     "category": [
@@ -339,7 +339,7 @@
     "id": "5-types-wealth",
     "title": "The 5 Types of Wealth",
     "titleZh": "人生的五種財富",
-    "author": "TBD",
+    "author": "Michael Yardney",
     "description": "人生的五種財富",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=5+Types+Wealth",
     "category": [
@@ -355,7 +355,7 @@
     "id": "set-boundaries",
     "title": "Set Boundaries, Find Peace",
     "titleZh": "設限，才有好關係",
-    "author": "TBD",
+    "author": "Nedra Glover Tawwab",
     "description": "設限，才有好關係",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Set+Boundaries",
     "category": [
@@ -371,7 +371,7 @@
     "id": "manifest",
     "title": "Manifest",
     "titleZh": "快速顯化你想要的人生",
-    "author": "TBD",
+    "author": "Roxie Nafousi",
     "description": "快速顯化你想要的人生",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Manifest",
     "category": [
@@ -387,7 +387,7 @@
     "id": "confidence-gap",
     "title": "The Confidence Gap",
     "titleZh": "自信的陷阱",
-    "author": "TBD",
+    "author": "Russ Harris",
     "description": "自信的陷阱",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Confidence+Gap",
     "category": [
@@ -403,7 +403,7 @@
     "id": "5-second-rule",
     "title": "The 5 Second Rule",
     "titleZh": "五秒法則",
-    "author": "TBD",
+    "author": "Mel Robbins",
     "description": "五秒法則",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=5+Second+Rule",
     "category": [
@@ -419,7 +419,7 @@
     "id": "let-them-theory",
     "title": "The Let Them Theory",
     "titleZh": "隨他們去理論",
-    "author": "TBD",
+    "author": "Cassie Mendoza-Jones",
     "description": "隨他們去理論",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Let+Them+Theory",
     "category": [
@@ -435,7 +435,7 @@
     "id": "stop-overthinking",
     "title": "Stop Overthinking",
     "titleZh": "八成是你想太多",
-    "author": "TBD",
+    "author": "Nick Trenton",
     "description": "八成是你想太多",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Stop+Overthinking",
     "category": [
@@ -451,7 +451,7 @@
     "id": "good-vibes-good-life",
     "title": "Good Vibes, Good Life",
     "titleZh": "沒有好條件，也能夢想成真",
-    "author": "TBD",
+    "author": "Vex King",
     "description": "沒有好條件，也能夢想成真",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Good+Vibes+Good+Life",
     "category": [
@@ -467,7 +467,7 @@
     "id": "mountain-is-you",
     "title": "The Mountain Is You",
     "titleZh": "你就是困住自己的那座山",
-    "author": "TBD",
+    "author": "Brianna Wiest",
     "description": "你就是困住自己的那座山",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Mountain+Is+You",
     "category": [
@@ -483,7 +483,7 @@
     "id": "comfort-zone",
     "title": "The Comfort Zone",
     "titleZh": "別再跳脫舒適圈",
-    "author": "TBD",
+    "author": "Kristen Butler",
     "description": "別再跳脫舒適圈",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Comfort+Zone",
     "category": [
@@ -499,7 +499,7 @@
     "id": "breaking-habit",
     "title": "Breaking the Habit of Being Yourself",
     "titleZh": "未來預演",
-    "author": "TBD",
+    "author": "Joe Dispenza",
     "description": "未來預演",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Breaking+Habit",
     "category": [
@@ -515,7 +515,7 @@
     "id": "dont-react",
     "title": "Don't React to Everything",
     "titleZh": "別對每件事都有反應",
-    "author": "TBD",
+    "author": "Nick Trenton",
     "description": "別對每件事都有反應",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Dont+React",
     "category": [
@@ -531,7 +531,7 @@
     "id": "get-it-done",
     "title": "Get It Done",
     "titleZh": "達標",
-    "author": "TBD",
+    "author": "Sam Bennett",
     "description": "達標",
     "coverImage": "https://placehold.co/300x400/fee2e2/b91c1c?text=Get+It+Done",
     "category": [
@@ -547,7 +547,7 @@
     "id": "one-thing",
     "title": "The ONE Thing",
     "titleZh": "成功，從聚焦一件事開始",
-    "author": "TBD",
+    "author": "Gary Keller and Jay Papasan",
     "description": "成功，從聚焦一件事開始",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=One+Thing",
     "category": [
@@ -563,7 +563,7 @@
     "id": "power-of-habit",
     "title": "The Power of Habit",
     "titleZh": "為什麼我們這樣生活，那樣工作？",
-    "author": "TBD",
+    "author": "Charles Duhigg",
     "description": "為什麼我們這樣生活，那樣工作？",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Power+Of+Habit",
     "category": [
@@ -579,7 +579,7 @@
     "id": "effortless",
     "title": "Effortless",
     "titleZh": "努力，但不費力",
-    "author": "TBD",
+    "author": "Greg McKeown",
     "description": "努力，但不費力",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Effortless",
     "category": [
@@ -595,7 +595,7 @@
     "id": "focus-project",
     "title": "The Focus Project",
     "titleZh": "最有專注力的一年",
-    "author": "TBD",
+    "author": "Erik Qualman",
     "description": "最有專注力的一年",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Focus+Project",
     "category": [
@@ -611,7 +611,7 @@
     "id": "peak",
     "title": "Peak",
     "titleZh": "刻意練習",
-    "author": "TBD",
+    "author": "Anders Ericsson and Robert Pool",
     "description": "刻意練習",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Peak",
     "category": [
@@ -627,7 +627,7 @@
     "id": "procrastination-cure",
     "title": "The Procrastination Cure",
     "titleZh": "一本書終結你的拖延症",
-    "author": "TBD",
+    "author": "Damon Zahariades",
     "description": "一本書終結你的拖延症",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Procrastination+Cure",
     "category": [
@@ -643,7 +643,7 @@
     "id": "input",
     "title": "INPUT",
     "titleZh": "最高學習法",
-    "author": "TBD",
+    "author": "Shion Kabasawa",
     "description": "最高學習法",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Input",
     "category": [
@@ -659,7 +659,7 @@
     "id": "output",
     "title": "OUTPUT",
     "titleZh": "最高學以致用法",
-    "author": "TBD",
+    "author": "Shion Kabasawa",
     "description": "最高學以致用法",
     "coverImage": "https://placehold.co/300x400/ecfccb/4d7c0f?text=Output",
     "category": [
@@ -675,7 +675,7 @@
     "id": "what-every-body-saying",
     "title": "What Every BODY Is Saying",
     "titleZh": "FBI 教你讀心術",
-    "author": "TBD",
+    "author": "Joe Navarro and Marvin Karlins",
     "description": "FBI 教你讀心術",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=What+Every+Body+Saying",
     "category": [
@@ -691,7 +691,7 @@
     "id": "how-to-win-friends",
     "title": "How to Win Friends and Influence People",
     "titleZh": "人性的弱點",
-    "author": "TBD",
+    "author": "Dale Carnegie",
     "description": "人性的弱點",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=How+To+Win+Friends",
     "category": [
@@ -707,7 +707,7 @@
     "id": "molecule-of-more",
     "title": "The Molecule of More",
     "titleZh": "欲望分子多巴胺",
-    "author": "TBD",
+    "author": "Daniel Z. Lieberman and Michael E. Long",
     "description": "欲望分子多巴胺",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Molecule+Of+More",
     "category": [
@@ -723,7 +723,7 @@
     "id": "body-keeps-score",
     "title": "The Body Keeps the Score",
     "titleZh": "心靈的傷，身體會記住",
-    "author": "TBD",
+    "author": "Bessel van der Kolk",
     "description": "心靈的傷，身體會記住",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Body+Keeps+Score",
     "category": [
@@ -739,7 +739,7 @@
     "id": "thinking-in-bets",
     "title": "Thinking in Bets",
     "titleZh": "高勝算決策",
-    "author": "TBD",
+    "author": "Annie Duke",
     "description": "高勝算決策",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Thinking+In+Bets",
     "category": [
@@ -755,7 +755,7 @@
     "id": "influence",
     "title": "Influence",
     "titleZh": "影響力",
-    "author": "TBD",
+    "author": "Robert B. Cialdini",
     "description": "影響力",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Influence",
     "category": [
@@ -771,7 +771,7 @@
     "id": "charisma-myth",
     "title": "The Charisma Myth",
     "titleZh": "魅力學",
-    "author": "TBD",
+    "author": "Olivia Fox Cabane",
     "description": "魅力學",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Charisma+Myth",
     "category": [
@@ -787,7 +787,7 @@
     "id": "dark-psychology",
     "title": "Dark Psychology",
     "titleZh": "隨心所欲操控人心的暗黑心理學",
-    "author": "TBD",
+    "author": "Michael Pace",
     "description": "隨心所欲操控人心的暗黑心理學",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Dark+Psychology",
     "category": [
@@ -803,7 +803,7 @@
     "id": "psychology-rich",
     "title": "Psychology of the Rich",
     "titleZh": "有錢人的書櫃總有一本心理學書",
-    "author": "TBD",
+    "author": "Kaoru Watanabe",
     "description": "有錢人的書櫃總有一本心理學書",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Psychology+Rich",
     "category": [
@@ -819,7 +819,7 @@
     "id": "murphys-law",
     "title": "Murphy's Law",
     "titleZh": "墨菲定律",
-    "author": "TBD",
+    "author": "Arthur Bloch",
     "description": "墨菲定律",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Murphys+Law",
     "category": [
@@ -835,7 +835,7 @@
     "id": "cruel-psychology",
     "title": "Cruel Psychology",
     "titleZh": "殘酷：不能說的人性真相",
-    "author": "TBD",
+    "author": "Yoshihito Naito",
     "description": "殘酷：不能說的人性真相",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Cruel+Psychology",
     "category": [
@@ -851,7 +851,7 @@
     "id": "stoic-challenge",
     "title": "The Stoic Challenge",
     "titleZh": "斯多噶挑戰",
-    "author": "TBD",
+    "author": "William B. Irvine",
     "description": "斯多噶挑戰",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Stoic+Challenge",
     "category": [
@@ -867,7 +867,7 @@
     "id": "no-death-no-fear",
     "title": "No Death, No Fear",
     "titleZh": "你可以不怕死",
-    "author": "TBD",
+    "author": "Thich Nhat Hanh",
     "description": "你可以不怕死",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=No+Death+No+Fear",
     "category": [
@@ -883,7 +883,7 @@
     "id": "wabi-sabi",
     "title": "Wabi-Sabi",
     "titleZh": "侘寂",
-    "author": "TBD",
+    "author": "Beth Kempton",
     "description": "侘寂",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Wabi+Sabi",
     "category": [
@@ -899,7 +899,7 @@
     "id": "slow-down",
     "title": "The Things You Can See Only When You Slow Down",
     "titleZh": "當你放慢腳步，才看得到的風景",
-    "author": "TBD",
+    "author": "Haemin Sunim",
     "description": "當你放慢腳步，才看得到的風景",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Slow+Down",
     "category": [
@@ -915,7 +915,7 @@
     "id": "power-of-now",
     "title": "The Power of Now",
     "titleZh": "當下的力量",
-    "author": "TBD",
+    "author": "Eckhart Tolle",
     "description": "當下的力量",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Power+Of+Now",
     "category": [
@@ -931,7 +931,7 @@
     "id": "daily-stoic",
     "title": "The Daily Stoic",
     "titleZh": "每日斯多葛",
-    "author": "TBD",
+    "author": "Ryan Holiday and Stephen Hanselman",
     "description": "每日斯多葛",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Daily+Stoic",
     "category": [
@@ -947,7 +947,7 @@
     "id": "four-agreements",
     "title": "The Four Agreements",
     "titleZh": "讓夢想覺醒的四項約定",
-    "author": "TBD",
+    "author": "Don Miguel Ruiz",
     "description": "讓夢想覺醒的四項約定",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Four+Agreements",
     "category": [
@@ -963,7 +963,7 @@
     "id": "surrender-experiment",
     "title": "The Surrender Experiment",
     "titleZh": "臣服實驗",
-    "author": "TBD",
+    "author": "Michael A. Singer",
     "description": "臣服實驗",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Surrender+Experiment",
     "category": [
@@ -979,7 +979,7 @@
     "id": "letting-go",
     "title": "Letting Go of What You Can't Control",
     "titleZh": "人生沒什麼不可放下",
-    "author": "TBD",
+    "author": "Janelle Lynnae",
     "description": "人生沒什麼不可放下",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Letting+Go",
     "category": [
@@ -995,7 +995,7 @@
     "id": "i-may-be-wrong",
     "title": "I May Be Wrong",
     "titleZh": "我可能錯了",
-    "author": "TBD",
+    "author": "Björn Natthiko Lindeblad, Caroline Bankler, and Navid Modiri",
     "description": "我可能錯了",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=I+May+Be+Wrong",
     "category": [
@@ -1011,7 +1011,7 @@
     "id": "pig-wants-eaten",
     "title": "The Pig That Wants to Be Eaten",
     "titleZh": "自願被吃的豬",
-    "author": "TBD",
+    "author": "Julian Baggini",
     "description": "自願被吃的豬",
     "coverImage": "https://placehold.co/300x400/e0e7ff/4338ca?text=Pig+Wants+Eaten",
     "category": [
@@ -1027,7 +1027,7 @@
     "id": "so-good-cant-ignore",
     "title": "So Good They Can't Ignore You",
     "titleZh": "深度職場力",
-    "author": "TBD",
+    "author": "Cal Newport",
     "description": "深度職場力",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=So+Good+Cant+Ignore",
     "category": [
@@ -1043,7 +1043,7 @@
     "id": "rules-of-work",
     "title": "The Rules of Work",
     "titleZh": "工作的法則",
-    "author": "TBD",
+    "author": "Richard Templar",
     "description": "工作的法則",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Rules+Of+Work",
     "category": [
@@ -1059,7 +1059,7 @@
     "id": "diary-of-ceo",
     "title": "The Diary of a CEO",
     "titleZh": "執行長日記",
-    "author": "TBD",
+    "author": "Steven Bartlett",
     "description": "執行長日記",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Diary+Of+Ceo",
     "category": [
@@ -1075,7 +1075,7 @@
     "id": "designing-your-life",
     "title": "Designing Your Life",
     "titleZh": "做自己的生命設計師",
-    "author": "TBD",
+    "author": "Bill Burnett and Dave Evans",
     "description": "做自己的生命設計師",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Designing+Your+Life",
     "category": [
@@ -1091,7 +1091,7 @@
     "id": "what-i-wish-knew",
     "title": "What I Wish I Knew When I Was 20",
     "titleZh": "真希望我20歲就懂的事",
-    "author": "TBD",
+    "author": "Tina Seelig",
     "description": "真希望我20歲就懂的事",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=What+I+Wish+Knew",
     "category": [
@@ -1107,7 +1107,7 @@
     "id": "hidden-potential",
     "title": "Hidden Potential",
     "titleZh": "隱性潛能",
-    "author": "TBD",
+    "author": "Adam Grant",
     "description": "隱性潛能",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Hidden+Potential",
     "category": [
@@ -1123,7 +1123,7 @@
     "id": "men-mars-women-venus",
     "title": "Men Are from Mars, Women Are from Venus",
     "titleZh": "男人來自火星，女人來自金星",
-    "author": "TBD",
+    "author": "John Gray",
     "description": "男人來自火星，女人來自金星",
     "coverImage": "https://placehold.co/300x400/ffe4e6/e11d48?text=Men+Mars+Women+Venus",
     "category": [
@@ -1139,7 +1139,7 @@
     "id": "love-prescription",
     "title": "The Love Prescription",
     "titleZh": "恆溫關係",
-    "author": "TBD",
+    "author": "John Gottman and Julie Schwartz Gottman",
     "description": "恆溫關係",
     "coverImage": "https://placehold.co/300x400/ffe4e6/e11d48?text=Love+Prescription",
     "category": [
@@ -1155,7 +1155,7 @@
     "id": "art-of-seduction",
     "title": "The Art of Seduction",
     "titleZh": "誘惑的藝術",
-    "author": "TBD",
+    "author": "Robert Greene",
     "description": "誘惑的藝術",
     "coverImage": "https://placehold.co/300x400/ffe4e6/e11d48?text=Art+Of+Seduction",
     "category": [
@@ -1171,7 +1171,7 @@
     "id": "intimacy-desire",
     "title": "Intimacy & Desire",
     "titleZh": "親密與渴望",
-    "author": "TBD",
+    "author": "David Schnarch",
     "description": "親密與渴望",
     "coverImage": "https://placehold.co/300x400/ffe4e6/e11d48?text=Intimacy+Desire",
     "category": [
@@ -1187,7 +1187,7 @@
     "id": "small-talk-mastery",
     "title": "Small Talk Mastery",
     "titleZh": "最高閒聊法",
-    "author": "TBD",
+    "author": "Patrick King",
     "description": "最高閒聊法",
     "coverImage": "https://placehold.co/300x400/ffe4e6/e11d48?text=Small+Talk+Mastery",
     "category": [
@@ -1203,7 +1203,7 @@
     "id": "outliers",
     "title": "Outliers",
     "titleZh": "異數",
-    "author": "TBD",
+    "author": "Malcolm Gladwell",
     "description": "異數",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Outliers",
     "category": [
@@ -1219,7 +1219,7 @@
     "id": "give-and-take",
     "title": "Give and Take",
     "titleZh": "給予",
-    "author": "TBD",
+    "author": "Adam Grant",
     "description": "給予",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Give+And+Take",
     "category": [
@@ -1235,7 +1235,7 @@
     "id": "mindset",
     "title": "Mindset",
     "titleZh": "心態致勝",
-    "author": "TBD",
+    "author": "Carol S. Dweck",
     "description": "心態致勝",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Mindset",
     "category": [
@@ -1251,7 +1251,7 @@
     "id": "infinite-game",
     "title": "The Infinite Game",
     "titleZh": "無限賽局",
-    "author": "TBD",
+    "author": "Simon Sinek",
     "description": "無限賽局",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Infinite+Game",
     "category": [
@@ -1267,7 +1267,7 @@
     "id": "think-again",
     "title": "Think Again",
     "titleZh": "逆思維",
-    "author": "TBD",
+    "author": "Adam Grant",
     "description": "逆思維",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Think+Again",
     "category": [
@@ -1283,7 +1283,7 @@
     "id": "same-as-ever",
     "title": "Same as Ever",
     "titleZh": "一如既往",
-    "author": "TBD",
+    "author": "Morgan Housel",
     "description": "一如既往",
     "coverImage": "https://placehold.co/300x400/fef9c3/ca8a04?text=Same+As+Ever",
     "category": [
@@ -1299,7 +1299,7 @@
     "id": "glucose-revolution",
     "title": "Glucose Revolution",
     "titleZh": "90%的病，控糖就會好",
-    "author": "TBD",
+    "author": "Jessie Inchauspé",
     "description": "90%的病，控糖就會好",
     "coverImage": "https://placehold.co/300x400/d1fae5/059669?text=Glucose+Revolution",
     "category": [
@@ -1315,7 +1315,7 @@
     "id": "outlive",
     "title": "Outlive",
     "titleZh": "超越百歲：長壽的科學與藝術",
-    "author": "TBD",
+    "author": "Peter Attia and Bill Gifford",
     "description": "超越百歲：長壽的科學與藝術",
     "coverImage": "https://placehold.co/300x400/d1fae5/059669?text=Outlive",
     "category": [
@@ -1331,7 +1331,7 @@
     "id": "ikigai",
     "title": "Ikigai",
     "titleZh": "日本生活美學的長壽祕訣",
-    "author": "TBD",
+    "author": "Héctor García and Francesc Miralles",
     "description": "日本生活美學的長壽祕訣",
     "coverImage": "https://placehold.co/300x400/d1fae5/059669?text=Ikigai",
     "category": [
@@ -1347,7 +1347,7 @@
     "id": "snowball",
     "title": "The Snowball",
     "titleZh": "雪球：巴菲特傳",
-    "author": "TBD",
+    "author": "Alice Schroeder",
     "description": "雪球：巴菲特傳",
     "coverImage": "https://placehold.co/300x400/fce7f3/be185d?text=Snowball",
     "category": [
@@ -1363,7 +1363,7 @@
     "id": "almanack-naval",
     "title": "The Almanack of Naval Ravikant",
     "titleZh": "納瓦爾寶典",
-    "author": "TBD",
+    "author": "Eric Jorgenson",
     "description": "納瓦爾寶典",
     "coverImage": "https://placehold.co/300x400/fce7f3/be185d?text=Almanack+Naval",
     "category": [
@@ -1379,7 +1379,7 @@
     "id": "be-water",
     "title": "Be Water, My Friend",
     "titleZh": "似水無形",
-    "author": "TBD",
+    "author": "Shannon Lee",
     "description": "似水無形",
     "coverImage": "https://placehold.co/300x400/fce7f3/be185d?text=Be+Water",
     "category": [
@@ -1395,7 +1395,7 @@
     "id": "letters-rockefeller",
     "title": "Letters from Rockefeller to His Son",
     "titleZh": "洛克菲勒寫給兒子的38封信",
-    "author": "TBD",
+    "author": "John D. Rockefeller",
     "description": "洛克菲勒寫給兒子的38封信",
     "coverImage": "https://placehold.co/300x400/fce7f3/be185d?text=Letters+Rockefeller",
     "category": [
@@ -1411,7 +1411,7 @@
     "id": "principles",
     "title": "Principles",
     "titleZh": "原則：生活和工作",
-    "author": "TBD",
+    "author": "Ray Dalio",
     "description": "原則：生活和工作",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=Principles",
     "category": [
@@ -1427,7 +1427,7 @@
     "id": "48-laws-power",
     "title": "The 48 Laws of Power",
     "titleZh": "權力的48條法則",
-    "author": "TBD",
+    "author": "Robert Greene",
     "description": "權力的48條法則",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=48+Laws+Power",
     "category": [
@@ -1443,7 +1443,7 @@
     "id": "daily-laws",
     "title": "The Daily Laws",
     "titleZh": "洞悉人性與現實的366權力法則",
-    "author": "TBD",
+    "author": "Robert Greene",
     "description": "洞悉人性與現實的366權力法則",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=Daily+Laws",
     "category": [
@@ -1459,7 +1459,7 @@
     "id": "12-rules-life",
     "title": "12 Rules for Life",
     "titleZh": "生存的12條法則",
-    "author": "TBD",
+    "author": "Jordan B. Peterson",
     "description": "生存的12條法則",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=12+Rules+Life",
     "category": [
@@ -1475,7 +1475,7 @@
     "id": "rules-of-life",
     "title": "The Rules of Life",
     "titleZh": "生活就是要快樂",
-    "author": "TBD",
+    "author": "Richard Templar",
     "description": "生活就是要快樂",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=Rules+Of+Life",
     "category": [
@@ -1491,7 +1491,7 @@
     "id": "rules-to-break",
     "title": "The Rules to Break",
     "titleZh": "打破規則",
-    "author": "TBD",
+    "author": "Richard Templar",
     "description": "打破規則",
     "coverImage": "https://placehold.co/300x400/dbeafe/2563eb?text=Rules+To+Break",
     "category": [
@@ -1507,7 +1507,7 @@
     "id": "think-like-freak",
     "title": "Think Like a Freak",
     "titleZh": "蘋果橘子思考術",
-    "author": "TBD",
+    "author": "Steven D. Levitt and Stephen J. Dubner",
     "description": "蘋果橘子思考術",
     "coverImage": "https://placehold.co/300x400/f3e8ff/9333ea?text=Think+Like+Freak",
     "category": [
@@ -1523,7 +1523,7 @@
     "id": "tipping-point",
     "title": "The Tipping Point",
     "titleZh": "引爆趨勢",
-    "author": "TBD",
+    "author": "Malcolm Gladwell",
     "description": "引爆趨勢",
     "coverImage": "https://placehold.co/300x400/f3e8ff/9333ea?text=Tipping+Point",
     "category": [
@@ -1539,7 +1539,7 @@
     "id": "80-20-principle",
     "title": "The 80/20 Principle",
     "titleZh": "80/20 法則",
-    "author": "TBD",
+    "author": "Richard Koch",
     "description": "80/20 法則",
     "coverImage": "https://placehold.co/300x400/f3e8ff/9333ea?text=80+20+Principle",
     "category": [
@@ -1555,7 +1555,7 @@
     "id": "first-principles",
     "title": "First Principles Thinking",
     "titleZh": "底層邏輯",
-    "author": "TBD",
+    "author": "Peter Hollins",
     "description": "底層邏輯",
     "coverImage": "https://placehold.co/300x400/f3e8ff/9333ea?text=First+Principles",
     "category": [
@@ -1571,7 +1571,7 @@
     "id": "quiet",
     "title": "Quiet",
     "titleZh": "安靜，就是力量",
-    "author": "TBD",
+    "author": "Susan Cain",
     "description": "安靜，就是力量",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Quiet",
     "category": [
@@ -1587,7 +1587,7 @@
     "id": "anxious-generation",
     "title": "The Anxious Generation",
     "titleZh": "失控的焦慮世代",
-    "author": "TBD",
+    "author": "Jonathan Haidt",
     "description": "失控的焦慮世代",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Anxious+Generation",
     "category": [
@@ -1603,7 +1603,7 @@
     "id": "strength-to-strength",
     "title": "From Strength to Strength",
     "titleZh": "重啟人生",
-    "author": "TBD",
+    "author": "Arthur C. Brooks",
     "description": "重啟人生",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Strength+To+Strength",
     "category": [
@@ -1619,7 +1619,7 @@
     "id": "morning-routine",
     "title": "My Morning Routine",
     "titleZh": "起床後的黃金一小時",
-    "author": "TBD",
+    "author": "Benjamin Spall and Michael Xander",
     "description": "起床後的黃金一小時",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Morning+Routine",
     "category": [
@@ -1635,7 +1635,7 @@
     "id": "ideal-life-handbook",
     "title": "The Ideal Life Handbook",
     "titleZh": "理想生活指南圖鑑",
-    "author": "TBD",
+    "author": "Jay Shetty",
     "description": "理想生活指南圖鑑",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Ideal+Life+Handbook",
     "category": [
@@ -1651,7 +1651,7 @@
     "id": "emotional-intelligence-3",
     "title": "Emotional Intelligence Course 3",
     "titleZh": "你願意，人生就會值得：蔡康永的情商課3",
-    "author": "TBD",
+    "author": "Kevin Tsai",
     "description": "你願意，人生就會值得：蔡康永的情商課3",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Emotional+Intelligence+3",
     "category": [
@@ -1667,7 +1667,7 @@
     "id": "humor-habit",
     "title": "The Humor Habit",
     "titleZh": "幽默的習慣",
-    "author": "TBD",
+    "author": "Loretta LaRoche",
     "description": "幽默的習慣",
     "coverImage": "https://placehold.co/300x400/ffedd5/ea580c?text=Humor+Habit",
     "category": [

@@ -22,9 +22,11 @@ function BookDetailPage() {
 
   const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
   const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
+  const purchasesLoading = usePurchaseStore((state) => state.loading);
+  const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
 
   const book = books.find((b) => b.id === bookId);
-  const loading = booksLoading || questionsLoading;
+  const loading = booksLoading || questionsLoading || purchasesLoading || subscriptionsLoading;
 
   // User has access if: free book, purchased this book, or has active subscription for this book
   const isPurchased = book ? (book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id)) : false;

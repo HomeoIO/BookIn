@@ -3,12 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { Header, Container } from '@components/layout';
 import { BookCard } from '@features/books/components';
 import { useBooks } from '@features/books/hooks';
+import { usePurchaseStore } from '@stores/purchase-store';
+import { useSubscriptionStore } from '@stores/subscription-store';
 // import type { Book } from '@core/domain'; // TODO: Use for type annotations
 import { StreakCard } from '@components/ui/StreakCard';
 
 function HomePage() {
   const { t } = useTranslation(['books', 'common']);
   const { books, loading, error } = useBooks();
+  const purchasesLoading = usePurchaseStore((state) => state.loading);
+  const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
@@ -156,7 +160,7 @@ function HomePage() {
         </div>
 
         {/* Loading State */}
-        {loading && (
+        {(loading || purchasesLoading || subscriptionsLoading) && (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
             <p className="mt-4 text-gray-600">{t('books:loading_books')}</p>
@@ -164,7 +168,7 @@ function HomePage() {
         )}
 
         {/* Books Grid */}
-        {!loading && filteredBooks.length > 0 && (
+        {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredBooks.map((book) => (
               <BookCard key={book.id} book={book} progress={0} />
@@ -173,7 +177,7 @@ function HomePage() {
         )}
 
         {/* Empty State */}
-        {!loading && filteredBooks.length === 0 && (
+        {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length === 0 && (
           <div className="text-center py-12">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               {t('books:no_books_found')}
