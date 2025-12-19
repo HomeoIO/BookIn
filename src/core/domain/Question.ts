@@ -37,18 +37,46 @@ export const QuestionHelpers = {
 
   validateAnswer(question: Question, userAnswer: string | string[]): boolean {
     const correctAnswer = question.correctAnswer;
+    const correctAnswerZh = question.correctAnswerZh;
 
     // Handle array answers (multiple correct answers)
-    if (Array.isArray(correctAnswer) && Array.isArray(userAnswer)) {
-      return (
-        correctAnswer.length === userAnswer.length &&
-        correctAnswer.every((ans) => userAnswer.includes(ans))
-      );
+    if (Array.isArray(userAnswer)) {
+      // Check against English correct answer
+      if (Array.isArray(correctAnswer)) {
+        const isCorrectEn =
+          correctAnswer.length === userAnswer.length &&
+          correctAnswer.every((ans) => userAnswer.includes(ans));
+        if (isCorrectEn) return true;
+      }
+
+      // Check against Chinese correct answer
+      if (Array.isArray(correctAnswerZh)) {
+        const isCorrectZh =
+          correctAnswerZh.length === userAnswer.length &&
+          correctAnswerZh.every((ans) => userAnswer.includes(ans));
+        if (isCorrectZh) return true;
+      }
+
+      return false;
     }
 
     // Handle string answers (case-insensitive comparison)
-    if (typeof correctAnswer === 'string' && typeof userAnswer === 'string') {
-      return correctAnswer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+    if (typeof userAnswer === 'string') {
+      const userAnswerNormalized = userAnswer.toLowerCase().trim();
+
+      // Check against English correct answer
+      if (typeof correctAnswer === 'string') {
+        if (correctAnswer.toLowerCase().trim() === userAnswerNormalized) {
+          return true;
+        }
+      }
+
+      // Check against Chinese correct answer
+      if (typeof correctAnswerZh === 'string') {
+        if (correctAnswerZh.toLowerCase().trim() === userAnswerNormalized) {
+          return true;
+        }
+      }
     }
 
     return false;

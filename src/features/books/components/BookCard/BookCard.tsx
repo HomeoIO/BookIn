@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Book } from '@core/domain';
 import { Card } from '@components/ui';
 import { usePurchaseStore } from '@stores/purchase-store';
+import { useSubscriptionStore } from '@stores/subscription-store';
 
 export interface BookCardProps {
   book: Book;
@@ -10,8 +11,11 @@ export interface BookCardProps {
 
 function BookCard({ book, progress = 0 }: BookCardProps) {
   const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
-  const isPurchased = book.isFree || hasPurchased(book.id);
-  const isLocked = !book.isFree && !isPurchased;
+  const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
+
+  // Check if user has access via free, purchase, or active subscription
+  const hasAccess = book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id);
+  const isLocked = !hasAccess;
 
   return (
     <Link to={`/books/${book.id}`}>

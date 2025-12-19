@@ -11,7 +11,7 @@
  */
 
 import admin from 'firebase-admin';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import dotenv from 'dotenv';
@@ -32,12 +32,39 @@ if (!admin.apps.length) {
 
 const bucket = admin.storage().bucket();
 
-// Books to upload
-const BOOKS = [
-  { id: 'atomic-habits', title: 'Atomic Habits' },
-  { id: 'sapiens', title: 'Sapiens' },
-  { id: 'thinking-fast-slow', title: 'Thinking, Fast and Slow' },
+const DATA_DIR = join(__dirname, '..', 'public', 'data');
+const QUESTIONS_DIR = join(DATA_DIR, 'questions');
+
+function loadBooksMetadata(fileName) {
+  const filePath = join(DATA_DIR, fileName);
+  const content = readFileSync(filePath, 'utf8');
+  return JSON.parse(content);
+}
+
+const booksMetadata = [
+  ...loadBooksMetadata('books-paid.json'),
+  ...loadBooksMetadata('books-free.json'),
 ];
+const bookTitleById = new Map(booksMetadata.map((book) => [book.id, book.title]));
+
+// Books to upload – derived from every JSON file in public/data/questions
+const BOOKS = readdirSync(QUESTIONS_DIR)
+  .filter((fileName) => fileName.endsWith('.json'))
+  .map((fileName) => {
+    const id = fileName.replace(/\.json$/, '');
+    return {
+      id,
+      title: bookTitleById.get(id) ?? id,
+    };
+  })
+  .sort((a, b) => a.id.localeCompare(b.id));
+
+const missingTitleIds = BOOKS.filter((book) => bookTitleById.get(book.id) == null);
+if (missingTitleIds.length > 0) {
+  console.warn(
+    `⚠️  Missing title metadata for: ${missingTitleIds.map((book) => book.id).join(', ')}`
+  );
+}
 
 async function uploadQuestionFile(bookId, bookTitle) {
   const localPath = join(__dirname, '..', 'public', 'data', 'questions', `${bookId}.json`);
