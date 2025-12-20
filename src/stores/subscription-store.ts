@@ -25,7 +25,7 @@ export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
     if (!sub) return false;
 
     // Check if subscription is active and not expired
-    const isActive = sub.status === 'active' || sub.status === 'trialing';
+    const isActive = sub.status === 'active';
     const notExpired = sub.currentPeriodEnd > Date.now();
 
     return isActive && notExpired;

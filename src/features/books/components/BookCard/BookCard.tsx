@@ -3,19 +3,25 @@ import { Book } from '@core/domain';
 import { Card } from '@components/ui';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useProgressStore } from '@stores/progress-store';
 
 export interface BookCardProps {
   book: Book;
-  progress?: number;
+  progress?: number; // Optional override, will use store data if not provided
 }
 
-function BookCard({ book, progress = 0 }: BookCardProps) {
+function BookCard({ book, progress: progressProp }: BookCardProps) {
   const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
   const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
+  const getProgress = useProgressStore((state) => state.getProgress);
 
   // Check if user has access via free, purchase, or active subscription
   const hasAccess = book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id);
   const isLocked = !hasAccess;
+
+  // Use real progress from store, or fallback to prop
+  const progressData = getProgress(book.id);
+  const progress = progressProp !== undefined ? progressProp : (progressData?.masteryLevel || 0);
 
   return (
     <Link to={`/books/${book.id}`}>

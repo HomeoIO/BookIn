@@ -41,8 +41,18 @@ coverage
 CLI_DOCS
 
 # Payment Provider State Files (contain product/price IDs)
-.stripe-products.json
-.lemonsqueezy-products.json
+stripe-products.json
+public/stripe-products.json
 
 # Question files (managed via Firebase Storage)
 public/data/questions/
+
+# Production environment variables
+.env.production
+
+# Firebase
+.firebase/
+.runtimeconfig.json
+firebase-debug.log
+firestore-debug.log
+ui-debug.log

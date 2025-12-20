@@ -4,6 +4,7 @@ import { auth } from '@/firebase/config';
 import { authHelpers } from '@/firebase/auth';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useProgressStore } from '@stores/progress-store';
 
 interface AuthContextType {
   user: User | null;
@@ -24,6 +25,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const clearPurchases = usePurchaseStore((state) => state.clearPurchases);
   const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
   const clearSubscriptions = useSubscriptionStore((state) => state.clearSubscriptions);
+  const fetchAllProgress = useProgressStore((state) => state.fetchAllProgress);
+  const clearProgress = useProgressStore((state) => state.clearProgress);
 
   useEffect(() => {
     // Listen for auth state changes
@@ -33,21 +36,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (user) {
         console.log('✅ User signed in:', user.email);
-        // Automatically fetch purchases and subscriptions from Firestore
+        // Automatically fetch purchases, subscriptions, and progress from Firestore
         await Promise.all([
           fetchPurchases(user.uid),
-          fetchSubscriptions(user.uid)
+          fetchSubscriptions(user.uid),
+          fetchAllProgress(user.uid)
         ]);
       } else {
         console.log('👤 User signed out');
-        // Clear purchases and subscriptions from store
+        // Clear purchases, subscriptions, and progress from store
         clearPurchases();
         clearSubscriptions();
+        clearProgress();
       }
     });
 
     return () => unsubscribe();
-  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions]);
+  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress]);
 
   const signUp = async (email: string, password: string) => {
     try {
@@ -72,9 +77,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       await authHelpers.signOut();
-      // Clear purchases and subscriptions (also done in onAuthStateChanged, but belt-and-suspenders)
+      // Clear purchases, subscriptions, and progress (also done in onAuthStateChanged, but belt-and-suspenders)
       clearPurchases();
       clearSubscriptions();
+      clearProgress();
       console.log('✅ User signed out');
     } catch (error: any) {
       console.error('Sign out error:', error);

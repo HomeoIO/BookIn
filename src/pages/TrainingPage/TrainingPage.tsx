@@ -8,6 +8,8 @@ import { QuestionCard } from '@features/training/components';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useStreakStore } from '@stores/streak-store';
+import { useProgressStore } from '@stores/progress-store';
+import { useAuth } from '@features/auth/hooks/useAuth';
 
 interface Answer {
   questionId: string;
@@ -21,10 +23,12 @@ function TrainingPage() {
   const { i18n } = useTranslation();
   const { books } = useBooks();
   const { questions, loading } = useQuestions(bookId);
+  const { user } = useAuth();
   const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
   const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
   const recordPractice = useStreakStore((state) => state.recordPractice);
   const streakStatus = useStreakStore((state) => state.getStreakStatus());
+  const { recordAnswer, getProgress, fetchProgress } = useProgressStore();
 
   const isChinese = i18n.language === 'zh-HK';
 
@@ -48,6 +52,13 @@ function TrainingPage() {
     }
   }, [book, hasAccess, bookId, navigate]);
 
+  // Fetch progress when component mounts
+  useEffect(() => {
+    if (user && bookId) {
+      fetchProgress(user.uid, bookId);
+    }
+  }, [user, bookId, fetchProgress]);
+
   useEffect(() => {
     if (questions.length > 0 && currentQuestionIndex >= questions.length) {
       // Record streak before showing completion
@@ -65,16 +76,31 @@ function TrainingPage() {
     }
   }, [currentQuestionIndex, questions.length, recordPractice, streakStatus.currentStreak]);
 
-  const handleAnswer = (answer: string, isCorrect: boolean) => {
-    setAnswers([
-      ...answers,
-      {
-        questionId: currentQuestion.id,
-        userAnswer: answer,
-        isCorrect,
-      },
-    ]);
+  const handleAnswer = async (answer: string, isCorrect: boolean) => {
+    // Save answer to local state
+    const newAnswer = {
+      questionId: currentQuestion.id,
+      userAnswer: answer,
+      isCorrect,
+    };
+    setAnswers([...answers, newAnswer]);
     setShowFeedback(true);
+
+    // Record progress to Firestore (if user is authenticated)
+    if (user && bookId && book) {
+      try {
+        await recordAnswer(
+          user.uid,
+          bookId,
+          currentQuestion.id,
+          isCorrect,
+          book.totalQuestions
+        );
+      } catch (error) {
+        console.error('Failed to save progress:', error);
+        // Continue anyway - don't block user experience
+      }
+    }
   };
 
   const handleNextQuestion = () => {
@@ -124,7 +150,14 @@ function TrainingPage() {
     const correctAnswers = answers.filter((a) => a.isCorrect).length;
     const totalQuestions = answers.length;
     const score = Math.round((correctAnswers / totalQuestions) * 100);
-    const masteryIncrease = Math.round(score / 20); // Simplified calculation
+
+    // Get real progress data if available
+    const currentProgress = bookId ? getProgress(bookId) : null;
+    const masteryLevel = currentProgress?.masteryLevel || 0;
+    const masteryIncrease = currentProgress?.masteryLevel
+      ? Math.max(0, currentProgress.masteryLevel - masteryLevel)
+      : Math.round(score / 20); // Fallback to simplified calculation
+
     const newStreak = useStreakStore.getState().currentStreak;
 
     return (

@@ -6,6 +6,7 @@ import { useBooks, useQuestions } from '@features/books/hooks';
 import { SummaryView } from '@features/books/components/SummaryView';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useProgressStore } from '@stores/progress-store';
 import { StripeService } from '@services/stripe';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 
@@ -32,10 +33,11 @@ function BookDetailPage() {
   const isPurchased = book ? (book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id)) : false;
   const needsPurchase = book && !book.isFree && !isPurchased;
 
-  // Mock progress data (will be replaced with real data from localStorage/Firestore later)
-  const questionsAnswered = 0;
-  const questionsCorrect = 0;
-  const masteryLevel = 50;
+  // Get real progress data from store
+  const progress = bookId ? useProgressStore((state) => state.getProgress(bookId)) : null;
+  const questionsAnswered = progress?.questionsCompleted.length || 0;
+  const questionsCorrect = progress?.questionsCorrect.length || 0;
+  const masteryLevel = progress?.masteryLevel || 0;
 
   const handlePurchaseBook = async () => {
     if (!book) return;

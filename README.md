@@ -6,34 +6,83 @@ BookIn is a client-side focused React web application that helps users learn and
 
 ## Project Status
 
-**Current Phase**: Week 2 - Complete MVP ✅
+**Current Phase**: Production-Ready MVP 🚀
 
-### Completed
+### Completed Features
 
-**Week 1 - Foundation:**
+**Foundation:**
 - ✅ Vite + React 18 + TypeScript 5 project initialization
 - ✅ Complete folder structure following feature-driven architecture
-- ✅ Core dependencies installed (React Router, Zustand, React Query, Firebase, Tailwind CSS)
-- ✅ Tailwind CSS configuration with green primary theme
+- ✅ Core dependencies installed (React Router, Zustand, React Query, Firebase, Tailwind CSS, Stripe)
+- ✅ Tailwind CSS configuration with primary theme
 - ✅ TypeScript configuration with path aliases
-- ✅ Core domain models (Book, Question, UserProgress, Purchase)
-- ✅ Firebase integration setup (Auth, Firestore, Storage)
-- ✅ Design system components (Button, Card, Input, CircularProgress)
-- ✅ Build system configured and working
+- ✅ Core domain models (Book, Question, UserProgress, Purchase, Subscription)
+- ✅ Firebase integration (Auth, Firestore, Storage)
+- ✅ Design system components (Button, Card, Input, CircularProgress, StreakCard, LanguageSwitcher)
+- ✅ Build system configured and optimized
 
-**Week 2 - Core Features:**
-- ✅ Sample book data with questions (3 books, 30 questions total)
-  - Atomic Habits by James Clear
-  - Sapiens by Yuval Noah Harari
-  - Thinking, Fast and Slow by Daniel Kahneman
-- ✅ HomePage with search, filters, and book grid
-- ✅ BookCard component with progress tracking
-- ✅ BookDetailPage with circular progress and stats
+**Content & Data:**
+- ✅ 107 books in catalog (3 with full content, 104 with metadata)
+- ✅ Full bilingual support (English + Cantonese zh-HK)
+  - Book titles, descriptions, summaries
+  - Question text, options, answers, explanations
+- ✅ 30 questions across 3 free books:
+  - Atomic Habits by James Clear (10 questions)
+  - Sapiens by Yuval Noah Harari (10 questions)
+  - Thinking, Fast and Slow by Daniel Kahneman (10 questions)
+- ✅ Questions uploaded to Firebase Storage
+- ✅ Random question selection (10 per session from full pool)
+- ✅ Question files excluded from Git repository
+
+**UI/UX Features:**
+- ✅ HomePage with search, filters (category, difficulty), and sorting
+- ✅ BookCard component with lock/unlock states
+- ✅ BookDetailPage with purchase options and book previews
 - ✅ TrainingPage with interactive Q&A interface
-- ✅ QuestionCard supporting multiple question types
-- ✅ Real-time answer feedback with explanations
-- ✅ Session complete page with score and mastery tracking
+- ✅ QuestionCard supporting multiple question types (multiple-choice, true-false)
+- ✅ Real-time answer feedback with bilingual explanations
+- ✅ Session complete page with score, mastery tracking, and streak celebration
+- ✅ Language switcher (English ⇄ 繁體中文)
+- ✅ Loading states during data fetching
 - ✅ Full routing setup with React Router
+
+**Authentication & Security:**
+- ✅ Firebase Authentication (Email/Password)
+- ✅ Login/Signup pages with validation
+- ✅ Authentication guards for protected routes
+- ✅ Server-side purchase verification (Firestore)
+- ✅ Firestore security rules deployed
+- ✅ Firebase Storage security rules ready
+- ✅ Purchase/subscription state persisted across page reloads
+
+**Payment Integration:**
+- ✅ Stripe integration (test mode)
+- ✅ Two payment options per book:
+  - Lifetime access: $9 one-time payment
+  - Subscription: $3 every 3 months
+- ✅ Stripe webhook handler for payment events
+- ✅ Purchase tracking in Firestore
+- ✅ Subscription management
+- ✅ Lock/unlock state based on purchases and subscriptions
+- ✅ Express API server for webhooks (port 3002)
+- ✅ Makefile for easy development workflow
+
+**Progress Tracking:**
+- ✅ Per-book progress tracking (questions completed, correct answers)
+- ✅ Mastery level calculation (0-100 scale)
+- ✅ Progress persistence to Firestore with auto-sync
+- ✅ Progress repository and service layer
+- ✅ Progress store with 5-minute caching
+- ✅ Real-time progress updates during training
+- ✅ "My Library" filter (books with progress)
+- ✅ "Purchased" filter (books user owns)
+
+**Developer Experience:**
+- ✅ Upload script for questions (`npm run questions:upload`)
+- ✅ Stripe product creation script (`npm run stripe:create`)
+- ✅ Makefile commands (`make dev`, `make questions-upload`, etc.)
+- ✅ Comprehensive documentation (TODO.md, scripts/README.md, CONTENT_FORMAT.md)
+- ✅ Development server with hot reload
 
 ## Tech Stack
 
@@ -181,7 +230,9 @@ interface Purchase {
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 20+ and npm
+- Firebase account (for backend)
+- Stripe account (for payments)
 
 ### Installation
 
@@ -198,8 +249,11 @@ cp .env.example .env.local
 ### Development
 
 ```bash
-# Start dev server (http://localhost:3000)
-npm run dev
+# Start all services (client + server + Stripe webhook)
+make dev
+# or individually:
+npm run dev              # Client only (port 3001)
+cd server && npm run dev # Server only (port 3002)
 
 # Build for production
 npm run build
@@ -217,17 +271,83 @@ npm run lint
 npm test
 ```
 
-## Environment Variables
-
-Create a `.env.local` file with your Firebase configuration:
+### Scripts
 
 ```bash
+# Upload questions to Firebase Storage
+npm run questions:upload
+# or
+make questions-upload
+
+# Create Stripe products (107 books × 2 payment options = 214 products)
+npm run stripe:create
+# or
+make stripe-products
+
+# Generate book metadata
+npm run books:generate
+
+# Check service status
+make check
+```
+
+## Environment Variables
+
+### Development (.env.local)
+
+```bash
+# Firebase Configuration
 VITE_FIREBASE_API_KEY=your_api_key_here
 VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 VITE_FIREBASE_PROJECT_ID=your_project_id
 VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+
+# Stripe Configuration
+STRIPE_SECRET_KEY=sk_test_your_secret_key_here
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
+
+# Webhook signing secret (get from Stripe CLI or Dashboard)
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# API Server
+VITE_API_URL=http://localhost:3002
+```
+
+### Production (.env.production)
+
+See `.env.production.example` for production configuration template.
+
+## Production Deployment
+
+### Quick Start
+
+See [QUICKSTART_DEPLOYMENT.md](./QUICKSTART_DEPLOYMENT.md) for a step-by-step deployment guide (~30 minutes).
+
+### Full Guide
+
+See [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
+- Firebase Cloud Functions setup
+- Environment configuration
+- Security best practices
+- Stripe webhook configuration
+- Custom domain setup
+- Monitoring and maintenance
+
+### Deployment Scripts
+
+```bash
+# Deploy everything to Firebase
+./scripts/deploy-production.sh
+
+# Set up Firebase Functions config (Stripe keys)
+./scripts/setup-firebase-config.sh
+
+# Or deploy manually
+npm run build
+firebase deploy
 ```
 
 ## User Flow (Fully Working!)
@@ -241,22 +361,26 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 ## Next Steps
 
-### Week 3: Progress Persistence & Authentication
+### Remaining Core Features
 
-- [ ] Implement local storage for progress tracking
-- [ ] Create progress dashboard page
-- [ ] Implement AuthContext and useAuth hook
-- [ ] Build Login/Signup pages with Firebase Auth
-- [ ] Create authentication guards
-- [ ] Save user progress to Firestore
-
-### Week 4: Payment & Content Delivery
-
-- [ ] Implement mock payment flow
-- [ ] Build LibraryPage for purchased books
-- [ ] Implement content download from Firebase Storage
-- [ ] Add paid book content
+- [ ] Create progress dashboard page (ProgressPage with detailed analytics)
+- [ ] Add remaining paid book content (104 books need questions)
 - [ ] Create admin interface for content management
+- [ ] Email notifications (purchase confirmations, progress reports)
+
+### Completed ✅
+
+- ✅ **Comprehensive progress tracking** (questions completed, mastery levels per book)
+- ✅ **User progress persisted to Firestore** (UserProgress model with auto-sync)
+- ✅ **"My Library" filter** on HomePage (shows books with progress)
+- ✅ **Real-time progress display** (BookCard, BookDetailPage, TrainingPage)
+- ✅ Local storage for streak tracking (implemented via streak-store.ts)
+- ✅ AuthContext and useAuth hook
+- ✅ Login/Signup pages with Firebase Auth
+- ✅ Authentication guards
+- ✅ Payment flow with Stripe integration (test mode)
+- ✅ Content download infrastructure (Firebase Storage)
+- ✅ Server-side purchase verification (Firestore)
 
 ### Future Enhancements
 
@@ -265,6 +389,7 @@ VITE_FIREBASE_APP_ID=your_app_id
 - [ ] Social features (sharing, leaderboards)
 - [ ] AI-generated questions
 - [ ] Analytics dashboard
+- [ ] Email notifications (purchase confirmations, progress reports)
 
 ## Design System
 

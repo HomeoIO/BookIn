@@ -1,0 +1,1719 @@
+{
+  "generatedAt": "2025-12-19T16:59:05.833Z",
+  "products": [
+    {
+      "bookId": "100m-leads",
+      "type": "lifetime",
+      "productId": "prod_TdNkmq3VtKNqWI",
+      "priceId": "price_1Sg6yrLbWfRpgEfoh6gwnHAh",
+      "productName": "$100M Leads (百萬潛在客戶) - Lifetime"
+    },
+    {
+      "bookId": "100m-leads",
+      "type": "subscription",
+      "productId": "prod_TdNkFCqlhxxsqZ",
+      "priceId": "price_1Sg6ysLbWfRpgEfobXG3EPE4",
+      "productName": "$100M Leads (百萬潛在客戶) - Subscription"
+    },
+    {
+      "bookId": "all-marketers-are-liars",
+      "type": "lifetime",
+      "productId": "prod_TdNkS02kimRAAT",
+      "priceId": "price_1Sg6ytLbWfRpgEfoPFtJi8zA",
+      "productName": "All Marketers Are Liars (行銷人都是說故事高手) - Lifetime"
+    },
+    {
+      "bookId": "all-marketers-are-liars",
+      "type": "subscription",
+      "productId": "prod_TdNkboYQwNrJ0G",
+      "priceId": "price_1Sg6ytLbWfRpgEfo3ahtdonO",
+      "productName": "All Marketers Are Liars (行銷人都是說故事高手) - Subscription"
+    },
+    {
+      "bookId": "this-is-marketing",
+      "type": "lifetime",
+      "productId": "prod_TdNk2HVtHB117A",
+      "priceId": "price_1Sg6yuLbWfRpgEfobutJb6U9",
+      "productName": "This Is Marketing (這才是行銷) - Lifetime"
+    },
+    {
+      "bookId": "this-is-marketing",
+      "type": "subscription",
+      "productId": "prod_TdNkywt6cbSNuP",
+      "priceId": "price_1Sg6yvLbWfRpgEfoPu9757FU",
+      "productName": "This Is Marketing (這才是行銷) - Subscription"
+    },
+    {
+      "bookId": "unleash-power-storytelling",
+      "type": "lifetime",
+      "productId": "prod_TdNkJ7XamF9rAu",
+      "priceId": "price_1Sg6ywLbWfRpgEfoisT1dUVQ",
+      "productName": "Unleash the Power of Storytelling (故事力) - Lifetime"
+    },
+    {
+      "bookId": "unleash-power-storytelling",
+      "type": "subscription",
+      "productId": "prod_TdNkw6Zhccbfdy",
+      "priceId": "price_1Sg6ywLbWfRpgEfoS9XPDUVj",
+      "productName": "Unleash the Power of Storytelling (故事力) - Subscription"
+    },
+    {
+      "bookId": "chatgpt-millionaire",
+      "type": "lifetime",
+      "productId": "prod_TdNkwKLvVjuLrz",
+      "priceId": "price_1Sg6yxLbWfRpgEfo7BfylJ98",
+      "productName": "The ChatGPT Millionaire (ChatGPT 百萬富翁) - Lifetime"
+    },
+    {
+      "bookId": "chatgpt-millionaire",
+      "type": "subscription",
+      "productId": "prod_TdNktD0BJzlA1B",
+      "priceId": "price_1Sg6yyLbWfRpgEfoPi4uRoFk",
+      "productName": "The ChatGPT Millionaire (ChatGPT 百萬富翁) - Subscription"
+    },
+    {
+      "bookId": "smart-brevity",
+      "type": "lifetime",
+      "productId": "prod_TdNk87dwvhw2Qr",
+      "priceId": "price_1Sg6yyLbWfRpgEfoaOlsY6UK",
+      "productName": "Smart Brevity (聰明簡潔的溝通) - Lifetime"
+    },
+    {
+      "bookId": "smart-brevity",
+      "type": "subscription",
+      "productId": "prod_TdNkOVxz1kvjb3",
+      "priceId": "price_1Sg6yzLbWfRpgEfoYK65x6yv",
+      "productName": "Smart Brevity (聰明簡潔的溝通) - Subscription"
+    },
+    {
+      "bookId": "psychology-of-money",
+      "type": "lifetime",
+      "productId": "prod_TdNkNS8yUPwwa1",
+      "priceId": "price_1Sg6z0LbWfRpgEfoNiSNnsQv",
+      "productName": "The Psychology of Money (致富心態) - Lifetime"
+    },
+    {
+      "bookId": "psychology-of-money",
+      "type": "subscription",
+      "productId": "prod_TdNk79WAsYOP5d",
+      "priceId": "price_1Sg6z0LbWfRpgEfoG9aE6RQe",
+      "productName": "The Psychology of Money (致富心態) - Subscription"
+    },
+    {
+      "bookId": "just-keep-buying",
+      "type": "lifetime",
+      "productId": "prod_TdNkk8Qs1Ha20v",
+      "priceId": "price_1Sg6z1LbWfRpgEfoBe3vlCpJ",
+      "productName": "Just Keep Buying (持續買進) - Lifetime"
+    },
+    {
+      "bookId": "just-keep-buying",
+      "type": "subscription",
+      "productId": "prod_TdNkKci309RSMc",
+      "priceId": "price_1Sg6z2LbWfRpgEfoxrMyIKrt",
+      "productName": "Just Keep Buying (持續買進) - Subscription"
+    },
+    {
+      "bookId": "trading-in-zone",
+      "type": "lifetime",
+      "productId": "prod_TdNkBKXsLDAX89",
+      "priceId": "price_1Sg6z2LbWfRpgEfoDIaz4w73",
+      "productName": "Trading in the Zone (賺錢，再自然不過！) - Lifetime"
+    },
+    {
+      "bookId": "trading-in-zone",
+      "type": "subscription",
+      "productId": "prod_TdNkmy8JTRDFTq",
+      "priceId": "price_1Sg6z3LbWfRpgEfoUoH5S9qx",
+      "productName": "Trading in the Zone (賺錢，再自然不過！) - Subscription"
+    },
+    {
+      "bookId": "wealth-ladder",
+      "type": "lifetime",
+      "productId": "prod_TdNkkTHqzRsqLE",
+      "priceId": "price_1Sg6z4LbWfRpgEfoZOk5NFyR",
+      "productName": "The Wealth Ladder (財富階梯) - Lifetime"
+    },
+    {
+      "bookId": "wealth-ladder",
+      "type": "subscription",
+      "productId": "prod_TdNk3GVLwSh44F",
+      "priceId": "price_1Sg6z4LbWfRpgEfo59YJJ5Rx",
+      "productName": "The Wealth Ladder (財富階梯) - Subscription"
+    },
+    {
+      "bookId": "die-with-zero",
+      "type": "lifetime",
+      "productId": "prod_TdNkQ2xHqen4wb",
+      "priceId": "price_1Sg6z5LbWfRpgEfoSSFLYTaR",
+      "productName": "Die with Zero (別把你的錢留到死) - Lifetime"
+    },
+    {
+      "bookId": "die-with-zero",
+      "type": "subscription",
+      "productId": "prod_TdNkE5lEpkOc2r",
+      "priceId": "price_1Sg6z6LbWfRpgEfoLiU7DjZx",
+      "productName": "Die with Zero (別把你的錢留到死) - Subscription"
+    },
+    {
+      "bookId": "intelligent-investor",
+      "type": "lifetime",
+      "productId": "prod_TdNkXcc1JxAMaB",
+      "priceId": "price_1Sg6z6LbWfRpgEfoXoF5jCMl",
+      "productName": "The Intelligent Investor (智慧型股票投資人) - Lifetime"
+    },
+    {
+      "bookId": "intelligent-investor",
+      "type": "subscription",
+      "productId": "prod_TdNkCBhCpw1wQ5",
+      "priceId": "price_1Sg6z7LbWfRpgEfoQtKI23Ck",
+      "productName": "The Intelligent Investor (智慧型股票投資人) - Subscription"
+    },
+    {
+      "bookId": "rich-dad-retire-young",
+      "type": "lifetime",
+      "productId": "prod_TdNkpYVRCheIVQ",
+      "priceId": "price_1Sg6z8LbWfRpgEfoYINwR6EV",
+      "productName": "Rich Dad's Retire Young Retire Rich (富爸爸財富執行力) - Lifetime"
+    },
+    {
+      "bookId": "rich-dad-retire-young",
+      "type": "subscription",
+      "productId": "prod_TdNk96jokUTqtj",
+      "priceId": "price_1Sg6z8LbWfRpgEfodltCpJ2h",
+      "productName": "Rich Dad's Retire Young Retire Rich (富爸爸財富執行力) - Subscription"
+    },
+    {
+      "bookId": "your-money-or-life",
+      "type": "lifetime",
+      "productId": "prod_TdNk8rVNBFTJXT",
+      "priceId": "price_1Sg6z9LbWfRpgEfoyNTfP7h1",
+      "productName": "Your Money or Your Life (富足人生：要錢還是要命) - Lifetime"
+    },
+    {
+      "bookId": "your-money-or-life",
+      "type": "subscription",
+      "productId": "prod_TdNkLkF00Z5p9Y",
+      "priceId": "price_1Sg6zALbWfRpgEfoS1kuwU0p",
+      "productName": "Your Money or Your Life (富足人生：要錢還是要命) - Subscription"
+    },
+    {
+      "bookId": "millionaire-fastlane",
+      "type": "lifetime",
+      "productId": "prod_TdNkLpIBmOQSog",
+      "priceId": "price_1Sg6zALbWfRpgEfoSSgXKoMH",
+      "productName": "The Millionaire Fastlane (百萬富翁快車道) - Lifetime"
+    },
+    {
+      "bookId": "millionaire-fastlane",
+      "type": "subscription",
+      "productId": "prod_TdNkBD2RbdT6Yu",
+      "priceId": "price_1Sg6zBLbWfRpgEfoTQzgzazC",
+      "productName": "The Millionaire Fastlane (百萬富翁快車道) - Subscription"
+    },
+    {
+      "bookId": "from-debt-to-cashflow",
+      "type": "lifetime",
+      "productId": "prod_TdNksgVE8wmPqA",
+      "priceId": "price_1Sg6zCLbWfRpgEfoI50gyW1C",
+      "productName": "From 20 Million in Debt to Cash Flow Every Day (從負債2000萬到錢錢滾進每一天) - Lifetime"
+    },
+    {
+      "bookId": "from-debt-to-cashflow",
+      "type": "subscription",
+      "productId": "prod_TdNkeUoZHgJYtz",
+      "priceId": "price_1Sg6zCLbWfRpgEfojNFJGbxs",
+      "productName": "From 20 Million in Debt to Cash Flow Every Day (從負債2000萬到錢錢滾進每一天) - Subscription"
+    },
+    {
+      "bookId": "from-debt-to-miracles",
+      "type": "lifetime",
+      "productId": "prod_TdNktc2HhTCbY2",
+      "priceId": "price_1Sg6zDLbWfRpgEfoiSznmiim",
+      "productName": "From 20 Million in Debt to Miracles Every Day (從負債2000萬到奇蹟罩我每一天) - Lifetime"
+    },
+    {
+      "bookId": "from-debt-to-miracles",
+      "type": "subscription",
+      "productId": "prod_TdNknHzBGgDajc",
+      "priceId": "price_1Sg6zELbWfRpgEfoBVrjy3C2",
+      "productName": "From 20 Million in Debt to Miracles Every Day (從負債2000萬到奇蹟罩我每一天) - Subscription"
+    },
+    {
+      "bookId": "from-debt-to-manifesting",
+      "type": "lifetime",
+      "productId": "prod_TdNkA5BGxPGaSG",
+      "priceId": "price_1Sg6zELbWfRpgEfoWl19L4PW",
+      "productName": "From 20 Million in Debt to Manifesting Daily (從負債2000萬到心想事成每一天) - Lifetime"
+    },
+    {
+      "bookId": "from-debt-to-manifesting",
+      "type": "subscription",
+      "productId": "prod_TdNkSdp4ftWShH",
+      "priceId": "price_1Sg6zFLbWfRpgEfogY2bwVMa",
+      "productName": "From 20 Million in Debt to Manifesting Daily (從負債2000萬到心想事成每一天) - Subscription"
+    },
+    {
+      "bookId": "inner-excellence",
+      "type": "lifetime",
+      "productId": "prod_TdNktxkJRL9Ibk",
+      "priceId": "price_1Sg6zGLbWfRpgEfoqeOVpfxS",
+      "productName": "Inner Excellence (內在卓越) - Lifetime"
+    },
+    {
+      "bookId": "inner-excellence",
+      "type": "subscription",
+      "productId": "prod_TdNk5gIHQ8rIFj",
+      "priceId": "price_1Sg6zGLbWfRpgEfo8ywyje8T",
+      "productName": "Inner Excellence (內在卓越) - Subscription"
+    },
+    {
+      "bookId": "no-self-no-problem",
+      "type": "lifetime",
+      "productId": "prod_TdNk05yeQKdlMf",
+      "priceId": "price_1Sg6zHLbWfRpgEfoUpDG1443",
+      "productName": "No Self, No Problem (無我，無煩惱) - Lifetime"
+    },
+    {
+      "bookId": "no-self-no-problem",
+      "type": "subscription",
+      "productId": "prod_TdNkD99oB6Ec8p",
+      "priceId": "price_1Sg6zILbWfRpgEfo1TiIDuB8",
+      "productName": "No Self, No Problem (無我，無煩惱) - Subscription"
+    },
+    {
+      "bookId": "do-hard-things",
+      "type": "lifetime",
+      "productId": "prod_TdNki11T1ghnUZ",
+      "priceId": "price_1Sg6zJLbWfRpgEfoFV08awIR",
+      "productName": "Do Hard Things (真堅強) - Lifetime"
+    },
+    {
+      "bookId": "do-hard-things",
+      "type": "subscription",
+      "productId": "prod_TdNk1fZFFFxsxn",
+      "priceId": "price_1Sg6zJLbWfRpgEfoYVT6NWKN",
+      "productName": "Do Hard Things (真堅強) - Subscription"
+    },
+    {
+      "bookId": "5-types-wealth",
+      "type": "lifetime",
+      "productId": "prod_TdNkMgYK0TQYEk",
+      "priceId": "price_1Sg6zKLbWfRpgEfoWglMTWGc",
+      "productName": "The 5 Types of Wealth (人生的五種財富) - Lifetime"
+    },
+    {
+      "bookId": "5-types-wealth",
+      "type": "subscription",
+      "productId": "prod_TdNkFt4lA3G8p6",
+      "priceId": "price_1Sg6zKLbWfRpgEfoYhmR2KQS",
+      "productName": "The 5 Types of Wealth (人生的五種財富) - Subscription"
+    },
+    {
+      "bookId": "set-boundaries",
+      "type": "lifetime",
+      "productId": "prod_TdNkL1LEexL1aU",
+      "priceId": "price_1Sg6zLLbWfRpgEfo1CTLisLJ",
+      "productName": "Set Boundaries, Find Peace (設限，才有好關係) - Lifetime"
+    },
+    {
+      "bookId": "set-boundaries",
+      "type": "subscription",
+      "productId": "prod_TdNkKqKBnaVbuF",
+      "priceId": "price_1Sg6zMLbWfRpgEfokykhQQ2c",
+      "productName": "Set Boundaries, Find Peace (設限，才有好關係) - Subscription"
+    },
+    {
+      "bookId": "manifest",
+      "type": "lifetime",
+      "productId": "prod_TdNkq22arESBfR",
+      "priceId": "price_1Sg6zNLbWfRpgEfoo3NAay0n",
+      "productName": "Manifest (快速顯化你想要的人生) - Lifetime"
+    },
+    {
+      "bookId": "manifest",
+      "type": "subscription",
+      "productId": "prod_TdNk7cN85vtgve",
+      "priceId": "price_1Sg6zNLbWfRpgEfongKaADM9",
+      "productName": "Manifest (快速顯化你想要的人生) - Subscription"
+    },
+    {
+      "bookId": "confidence-gap",
+      "type": "lifetime",
+      "productId": "prod_TdNkPx8ZJOfoh2",
+      "priceId": "price_1Sg6zOLbWfRpgEfo35PrbV4C",
+      "productName": "The Confidence Gap (自信的陷阱) - Lifetime"
+    },
+    {
+      "bookId": "confidence-gap",
+      "type": "subscription",
+      "productId": "prod_TdNkAojxMJbSkk",
+      "priceId": "price_1Sg6zPLbWfRpgEfokmw6lSM5",
+      "productName": "The Confidence Gap (自信的陷阱) - Subscription"
+    },
+    {
+      "bookId": "5-second-rule",
+      "type": "lifetime",
+      "productId": "prod_TdNkfnBtYY6cdZ",
+      "priceId": "price_1Sg6zPLbWfRpgEfoU83naUe8",
+      "productName": "The 5 Second Rule (五秒法則) - Lifetime"
+    },
+    {
+      "bookId": "5-second-rule",
+      "type": "subscription",
+      "productId": "prod_TdNkJvM1okPsk9",
+      "priceId": "price_1Sg6zQLbWfRpgEfoi2wKR3Mb",
+      "productName": "The 5 Second Rule (五秒法則) - Subscription"
+    },
+    {
+      "bookId": "let-them-theory",
+      "type": "lifetime",
+      "productId": "prod_TdNkEX1Q6PnJKa",
+      "priceId": "price_1Sg6zRLbWfRpgEfofoUH8uCC",
+      "productName": "The Let Them Theory (隨他們去理論) - Lifetime"
+    },
+    {
+      "bookId": "let-them-theory",
+      "type": "subscription",
+      "productId": "prod_TdNk2SAKDMfUJd",
+      "priceId": "price_1Sg6zRLbWfRpgEfoU07RPq16",
+      "productName": "The Let Them Theory (隨他們去理論) - Subscription"
+    },
+    {
+      "bookId": "stop-overthinking",
+      "type": "lifetime",
+      "productId": "prod_TdNk6DrUbgrsbw",
+      "priceId": "price_1Sg6zSLbWfRpgEfosApcMmKi",
+      "productName": "Stop Overthinking (八成是你想太多) - Lifetime"
+    },
+    {
+      "bookId": "stop-overthinking",
+      "type": "subscription",
+      "productId": "prod_TdNkoEPCXDtyIO",
+      "priceId": "price_1Sg6zTLbWfRpgEfor7SUN9Ny",
+      "productName": "Stop Overthinking (八成是你想太多) - Subscription"
+    },
+    {
+      "bookId": "good-vibes-good-life",
+      "type": "lifetime",
+      "productId": "prod_TdNkWSNVf8ZLHG",
+      "priceId": "price_1Sg6zTLbWfRpgEfozex9uPWa",
+      "productName": "Good Vibes, Good Life (沒有好條件，也能夢想成真) - Lifetime"
+    },
+    {
+      "bookId": "good-vibes-good-life",
+      "type": "subscription",
+      "productId": "prod_TdNlCQwwhGBkNV",
+      "priceId": "price_1Sg6zULbWfRpgEfoQzgbvexL",
+      "productName": "Good Vibes, Good Life (沒有好條件，也能夢想成真) - Subscription"
+    },
+    {
+      "bookId": "mountain-is-you",
+      "type": "lifetime",
+      "productId": "prod_TdNlthqJhFj7QB",
+      "priceId": "price_1Sg6zVLbWfRpgEfovvduZwlZ",
+      "productName": "The Mountain Is You (你就是困住自己的那座山) - Lifetime"
+    },
+    {
+      "bookId": "mountain-is-you",
+      "type": "subscription",
+      "productId": "prod_TdNlU7qVpnvUsb",
+      "priceId": "price_1Sg6zVLbWfRpgEfoHyXUK0b4",
+      "productName": "The Mountain Is You (你就是困住自己的那座山) - Subscription"
+    },
+    {
+      "bookId": "comfort-zone",
+      "type": "lifetime",
+      "productId": "prod_TdNl5cKSSesh1L",
+      "priceId": "price_1Sg6zWLbWfRpgEfoZCbolOnn",
+      "productName": "The Comfort Zone (別再跳脫舒適圈) - Lifetime"
+    },
+    {
+      "bookId": "comfort-zone",
+      "type": "subscription",
+      "productId": "prod_TdNldldHmo0tPc",
+      "priceId": "price_1Sg6zXLbWfRpgEfowUyeUjGs",
+      "productName": "The Comfort Zone (別再跳脫舒適圈) - Subscription"
+    },
+    {
+      "bookId": "breaking-habit",
+      "type": "lifetime",
+      "productId": "prod_TdNlL8FvwWFLKK",
+      "priceId": "price_1Sg6zXLbWfRpgEfokcBctzs6",
+      "productName": "Breaking the Habit of Being Yourself (未來預演) - Lifetime"
+    },
+    {
+      "bookId": "breaking-habit",
+      "type": "subscription",
+      "productId": "prod_TdNly0XTiCViMN",
+      "priceId": "price_1Sg6zYLbWfRpgEfowmmQaeV6",
+      "productName": "Breaking the Habit of Being Yourself (未來預演) - Subscription"
+    },
+    {
+      "bookId": "dont-react",
+      "type": "lifetime",
+      "productId": "prod_TdNlCyhR2xfl7n",
+      "priceId": "price_1Sg6zZLbWfRpgEfo44sM9FUP",
+      "productName": "Don't React to Everything (別對每件事都有反應) - Lifetime"
+    },
+    {
+      "bookId": "dont-react",
+      "type": "subscription",
+      "productId": "prod_TdNlK2xf38bz09",
+      "priceId": "price_1Sg6zZLbWfRpgEfoIVNmWzES",
+      "productName": "Don't React to Everything (別對每件事都有反應) - Subscription"
+    },
+    {
+      "bookId": "get-it-done",
+      "type": "lifetime",
+      "productId": "prod_TdNlqT1SR0FVo2",
+      "priceId": "price_1Sg6zaLbWfRpgEfoPPsWrN7s",
+      "productName": "Get It Done (達標) - Lifetime"
+    },
+    {
+      "bookId": "get-it-done",
+      "type": "subscription",
+      "productId": "prod_TdNl9hGYXdaMQB",
+      "priceId": "price_1Sg6zbLbWfRpgEfo1rZIs9Bk",
+      "productName": "Get It Done (達標) - Subscription"
+    },
+    {
+      "bookId": "atomic-habits",
+      "type": "lifetime",
+      "productId": "prod_TdNlsdS2qjS4kd",
+      "priceId": "price_1Sg6zbLbWfRpgEfoHa53jgqM",
+      "productName": "Atomic Habits (原子習慣) - Lifetime"
+    },
+    {
+      "bookId": "atomic-habits",
+      "type": "subscription",
+      "productId": "prod_TdNl635lsCpazy",
+      "priceId": "price_1Sg6zcLbWfRpgEfo0YOv9L4E",
+      "productName": "Atomic Habits (原子習慣) - Subscription"
+    },
+    {
+      "bookId": "one-thing",
+      "type": "lifetime",
+      "productId": "prod_TdNlvVVqJrQ6kn",
+      "priceId": "price_1Sg6zdLbWfRpgEfoSB6Bk8uj",
+      "productName": "The ONE Thing (成功，從聚焦一件事開始) - Lifetime"
+    },
+    {
+      "bookId": "one-thing",
+      "type": "subscription",
+      "productId": "prod_TdNl1bKVdXcySC",
+      "priceId": "price_1Sg6zdLbWfRpgEfoQOrDERNS",
+      "productName": "The ONE Thing (成功，從聚焦一件事開始) - Subscription"
+    },
+    {
+      "bookId": "power-of-habit",
+      "type": "lifetime",
+      "productId": "prod_TdNliSNO8MkiqQ",
+      "priceId": "price_1Sg6zeLbWfRpgEfonKq0tboj",
+      "productName": "The Power of Habit (為什麼我們這樣生活，那樣工作？) - Lifetime"
+    },
+    {
+      "bookId": "power-of-habit",
+      "type": "subscription",
+      "productId": "prod_TdNlko8Zm1gRAh",
+      "priceId": "price_1Sg6zfLbWfRpgEfol63uf9cl",
+      "productName": "The Power of Habit (為什麼我們這樣生活，那樣工作？) - Subscription"
+    },
+    {
+      "bookId": "effortless",
+      "type": "lifetime",
+      "productId": "prod_TdNlnAMNkPhC2w",
+      "priceId": "price_1Sg6zgLbWfRpgEfo4Ddclk92",
+      "productName": "Effortless (努力，但不費力) - Lifetime"
+    },
+    {
+      "bookId": "effortless",
+      "type": "subscription",
+      "productId": "prod_TdNlujdZ9daPG3",
+      "priceId": "price_1Sg6zgLbWfRpgEfoUN8MYG59",
+      "productName": "Effortless (努力，但不費力) - Subscription"
+    },
+    {
+      "bookId": "focus-project",
+      "type": "lifetime",
+      "productId": "prod_TdNleP31STSZOa",
+      "priceId": "price_1Sg6zhLbWfRpgEfoMrFxPqAg",
+      "productName": "The Focus Project (最有專注力的一年) - Lifetime"
+    },
+    {
+      "bookId": "focus-project",
+      "type": "subscription",
+      "productId": "prod_TdNlYko0s1tC7y",
+      "priceId": "price_1Sg6zhLbWfRpgEfohHw4VVYs",
+      "productName": "The Focus Project (最有專注力的一年) - Subscription"
+    },
+    {
+      "bookId": "peak",
+      "type": "lifetime",
+      "productId": "prod_TdNltgUeOUjWnH",
+      "priceId": "price_1Sg6ziLbWfRpgEfoTyBIJton",
+      "productName": "Peak (刻意練習) - Lifetime"
+    },
+    {
+      "bookId": "peak",
+      "type": "subscription",
+      "productId": "prod_TdNlF8rMvv0LVr",
+      "priceId": "price_1Sg6zjLbWfRpgEfoDlE9wSUx",
+      "productName": "Peak (刻意練習) - Subscription"
+    },
+    {
+      "bookId": "procrastination-cure",
+      "type": "lifetime",
+      "productId": "prod_TdNlcdrQNUEp6Z",
+      "priceId": "price_1Sg6zkLbWfRpgEfowGKgJaqO",
+      "productName": "The Procrastination Cure (一本書終結你的拖延症) - Lifetime"
+    },
+    {
+      "bookId": "procrastination-cure",
+      "type": "subscription",
+      "productId": "prod_TdNlWFQByhOUc3",
+      "priceId": "price_1Sg6zkLbWfRpgEfocyozhdlY",
+      "productName": "The Procrastination Cure (一本書終結你的拖延症) - Subscription"
+    },
+    {
+      "bookId": "input",
+      "type": "lifetime",
+      "productId": "prod_TdNluScTxz8iZg",
+      "priceId": "price_1Sg6zlLbWfRpgEfoOcloUn37",
+      "productName": "INPUT (最高學習法) - Lifetime"
+    },
+    {
+      "bookId": "input",
+      "type": "subscription",
+      "productId": "prod_TdNlr6oHTrly71",
+      "priceId": "price_1Sg6zmLbWfRpgEfohsgsJ4gC",
+      "productName": "INPUT (最高學習法) - Subscription"
+    },
+    {
+      "bookId": "output",
+      "type": "lifetime",
+      "productId": "prod_TdNlSvUNwACxKl",
+      "priceId": "price_1Sg6zmLbWfRpgEfowjBu10OS",
+      "productName": "OUTPUT (最高學以致用法) - Lifetime"
+    },
+    {
+      "bookId": "output",
+      "type": "subscription",
+      "productId": "prod_TdNlJt2TqGyEWz",
+      "priceId": "price_1Sg6znLbWfRpgEfoYM1zpVUb",
+      "productName": "OUTPUT (最高學以致用法) - Subscription"
+    },
+    {
+      "bookId": "what-every-body-saying",
+      "type": "lifetime",
+      "productId": "prod_TdNlSSoSzabISQ",
+      "priceId": "price_1Sg6zoLbWfRpgEfohZsgfIHc",
+      "productName": "What Every BODY Is Saying (FBI 教你讀心術) - Lifetime"
+    },
+    {
+      "bookId": "what-every-body-saying",
+      "type": "subscription",
+      "productId": "prod_TdNlv0Cm6VVr6y",
+      "priceId": "price_1Sg6zoLbWfRpgEfoBdsrMUKX",
+      "productName": "What Every BODY Is Saying (FBI 教你讀心術) - Subscription"
+    },
+    {
+      "bookId": "how-to-win-friends",
+      "type": "lifetime",
+      "productId": "prod_TdNlW5401V25Mi",
+      "priceId": "price_1Sg6zpLbWfRpgEfoI1En8K2H",
+      "productName": "How to Win Friends and Influence People (人性的弱點) - Lifetime"
+    },
+    {
+      "bookId": "how-to-win-friends",
+      "type": "subscription",
+      "productId": "prod_TdNlDXogNK8AZn",
+      "priceId": "price_1Sg6zqLbWfRpgEfoDeVHMcSX",
+      "productName": "How to Win Friends and Influence People (人性的弱點) - Subscription"
+    },
+    {
+      "bookId": "molecule-of-more",
+      "type": "lifetime",
+      "productId": "prod_TdNlqRDjqOoLFI",
+      "priceId": "price_1Sg6zqLbWfRpgEfoxDlo3hu0",
+      "productName": "The Molecule of More (欲望分子多巴胺) - Lifetime"
+    },
+    {
+      "bookId": "molecule-of-more",
+      "type": "subscription",
+      "productId": "prod_TdNlXYvmN5ExLJ",
+      "priceId": "price_1Sg6zrLbWfRpgEfoAiR4ICZB",
+      "productName": "The Molecule of More (欲望分子多巴胺) - Subscription"
+    },
+    {
+      "bookId": "body-keeps-score",
+      "type": "lifetime",
+      "productId": "prod_TdNlTA4yN8UdoZ",
+      "priceId": "price_1Sg6zsLbWfRpgEfoAKkw79rx",
+      "productName": "The Body Keeps the Score (心靈的傷，身體會記住) - Lifetime"
+    },
+    {
+      "bookId": "body-keeps-score",
+      "type": "subscription",
+      "productId": "prod_TdNl5DiBzB67a9",
+      "priceId": "price_1Sg6zsLbWfRpgEfo2wvTUH8y",
+      "productName": "The Body Keeps the Score (心靈的傷，身體會記住) - Subscription"
+    },
+    {
+      "bookId": "thinking-in-bets",
+      "type": "lifetime",
+      "productId": "prod_TdNlpDr2EszbZn",
+      "priceId": "price_1Sg6ztLbWfRpgEfofwlYCaZc",
+      "productName": "Thinking in Bets (高勝算決策) - Lifetime"
+    },
+    {
+      "bookId": "thinking-in-bets",
+      "type": "subscription",
+      "productId": "prod_TdNlFBkV2KpY2X",
+      "priceId": "price_1Sg6zuLbWfRpgEfoXc39d3a5",
+      "productName": "Thinking in Bets (高勝算決策) - Subscription"
+    },
+    {
+      "bookId": "thinking-fast-slow",
+      "type": "lifetime",
+      "productId": "prod_TdNlKzpVsKI1eX",
+      "priceId": "price_1Sg6zuLbWfRpgEfoEalEf7PR",
+      "productName": "Thinking, Fast and Slow (快思慢想) - Lifetime"
+    },
+    {
+      "bookId": "thinking-fast-slow",
+      "type": "subscription",
+      "productId": "prod_TdNlZhDAhqLp1S",
+      "priceId": "price_1Sg6zvLbWfRpgEfoallwOY1W",
+      "productName": "Thinking, Fast and Slow (快思慢想) - Subscription"
+    },
+    {
+      "bookId": "influence",
+      "type": "lifetime",
+      "productId": "prod_TdNloIyaqD8pdI",
+      "priceId": "price_1Sg6zwLbWfRpgEfo5xzhTAcH",
+      "productName": "Influence (影響力) - Lifetime"
+    },
+    {
+      "bookId": "influence",
+      "type": "subscription",
+      "productId": "prod_TdNlGXgg1dBgJC",
+      "priceId": "price_1Sg6zwLbWfRpgEforK3FXwRS",
+      "productName": "Influence (影響力) - Subscription"
+    },
+    {
+      "bookId": "charisma-myth",
+      "type": "lifetime",
+      "productId": "prod_TdNlOZCXE4XRI7",
+      "priceId": "price_1Sg6zxLbWfRpgEfomS9vsv7U",
+      "productName": "The Charisma Myth (魅力學) - Lifetime"
+    },
+    {
+      "bookId": "charisma-myth",
+      "type": "subscription",
+      "productId": "prod_TdNlZM2Eh1gVNe",
+      "priceId": "price_1Sg6zyLbWfRpgEfoUo2E6qUG",
+      "productName": "The Charisma Myth (魅力學) - Subscription"
+    },
+    {
+      "bookId": "dark-psychology",
+      "type": "lifetime",
+      "productId": "prod_TdNl3otwRd5n25",
+      "priceId": "price_1Sg6zyLbWfRpgEfogAy4GDsn",
+      "productName": "Dark Psychology (隨心所欲操控人心的暗黑心理學) - Lifetime"
+    },
+    {
+      "bookId": "dark-psychology",
+      "type": "subscription",
+      "productId": "prod_TdNltRW3Y07C5o",
+      "priceId": "price_1Sg6zzLbWfRpgEfo7CVWQSlS",
+      "productName": "Dark Psychology (隨心所欲操控人心的暗黑心理學) - Subscription"
+    },
+    {
+      "bookId": "psychology-rich",
+      "type": "lifetime",
+      "productId": "prod_TdNl05mIOKoaCq",
+      "priceId": "price_1Sg700LbWfRpgEfomwMrIwDW",
+      "productName": "Psychology of the Rich (有錢人的書櫃總有一本心理學書) - Lifetime"
+    },
+    {
+      "bookId": "psychology-rich",
+      "type": "subscription",
+      "productId": "prod_TdNlT3kD9U8a77",
+      "priceId": "price_1Sg700LbWfRpgEfo9ju8OzHp",
+      "productName": "Psychology of the Rich (有錢人的書櫃總有一本心理學書) - Subscription"
+    },
+    {
+      "bookId": "murphys-law",
+      "type": "lifetime",
+      "productId": "prod_TdNl0aorkMBOzn",
+      "priceId": "price_1Sg701LbWfRpgEfoZRP4gWRj",
+      "productName": "Murphy's Law (墨菲定律) - Lifetime"
+    },
+    {
+      "bookId": "murphys-law",
+      "type": "subscription",
+      "productId": "prod_TdNlO1iQ99UYhh",
+      "priceId": "price_1Sg702LbWfRpgEfofqjudeVc",
+      "productName": "Murphy's Law (墨菲定律) - Subscription"
+    },
+    {
+      "bookId": "cruel-psychology",
+      "type": "lifetime",
+      "productId": "prod_TdNljZH0nQQP2s",
+      "priceId": "price_1Sg702LbWfRpgEfoXXdIzpEn",
+      "productName": "Cruel Psychology (殘酷：不能說的人性真相) - Lifetime"
+    },
+    {
+      "bookId": "cruel-psychology",
+      "type": "subscription",
+      "productId": "prod_TdNlnU2xmIlh7p",
+      "priceId": "price_1Sg703LbWfRpgEfo4C4evT54",
+      "productName": "Cruel Psychology (殘酷：不能說的人性真相) - Subscription"
+    },
+    {
+      "bookId": "stoic-challenge",
+      "type": "lifetime",
+      "productId": "prod_TdNl0HRP5KyJwL",
+      "priceId": "price_1Sg704LbWfRpgEfoYTeAQL0B",
+      "productName": "The Stoic Challenge (斯多噶挑戰) - Lifetime"
+    },
+    {
+      "bookId": "stoic-challenge",
+      "type": "subscription",
+      "productId": "prod_TdNliLvhVrUefD",
+      "priceId": "price_1Sg704LbWfRpgEfouOxizW7F",
+      "productName": "The Stoic Challenge (斯多噶挑戰) - Subscription"
+    },
+    {
+      "bookId": "no-death-no-fear",
+      "type": "lifetime",
+      "productId": "prod_TdNlcQXryeZ0RV",
+      "priceId": "price_1Sg705LbWfRpgEfofdbkadPg",
+      "productName": "No Death, No Fear (你可以不怕死) - Lifetime"
+    },
+    {
+      "bookId": "no-death-no-fear",
+      "type": "subscription",
+      "productId": "prod_TdNlXumej0kiV3",
+      "priceId": "price_1Sg706LbWfRpgEfoPuX4EgCT",
+      "productName": "No Death, No Fear (你可以不怕死) - Subscription"
+    },
+    {
+      "bookId": "wabi-sabi",
+      "type": "lifetime",
+      "productId": "prod_TdNlHuysiEhPL7",
+      "priceId": "price_1Sg706LbWfRpgEfo8mN9uS3o",
+      "productName": "Wabi-Sabi (侘寂) - Lifetime"
+    },
+    {
+      "bookId": "wabi-sabi",
+      "type": "subscription",
+      "productId": "prod_TdNl3nGqQJdWko",
+      "priceId": "price_1Sg707LbWfRpgEfoHvp6RcFG",
+      "productName": "Wabi-Sabi (侘寂) - Subscription"
+    },
+    {
+      "bookId": "slow-down",
+      "type": "lifetime",
+      "productId": "prod_TdNlVEgy6QXaVk",
+      "priceId": "price_1Sg708LbWfRpgEfotcdnnk3D",
+      "productName": "The Things You Can See Only When You Slow Down (當你放慢腳步，才看得到的風景) - Lifetime"
+    },
+    {
+      "bookId": "slow-down",
+      "type": "subscription",
+      "productId": "prod_TdNlyWYIeWNWok",
+      "priceId": "price_1Sg708LbWfRpgEfow8EQVF0t",
+      "productName": "The Things You Can See Only When You Slow Down (當你放慢腳步，才看得到的風景) - Subscription"
+    },
+    {
+      "bookId": "power-of-now",
+      "type": "lifetime",
+      "productId": "prod_TdNl46FS21dcpn",
+      "priceId": "price_1Sg709LbWfRpgEfo9Q7SXK8X",
+      "productName": "The Power of Now (當下的力量) - Lifetime"
+    },
+    {
+      "bookId": "power-of-now",
+      "type": "subscription",
+      "productId": "prod_TdNlUkfvuY35jV",
+      "priceId": "price_1Sg70ALbWfRpgEfordzHLs2l",
+      "productName": "The Power of Now (當下的力量) - Subscription"
+    },
+    {
+      "bookId": "daily-stoic",
+      "type": "lifetime",
+      "productId": "prod_TdNlMpwUQ4qZGg",
+      "priceId": "price_1Sg70ALbWfRpgEfoDo50SdXm",
+      "productName": "The Daily Stoic (每日斯多葛) - Lifetime"
+    },
+    {
+      "bookId": "daily-stoic",
+      "type": "subscription",
+      "productId": "prod_TdNlPeCo5pSCsn",
+      "priceId": "price_1Sg70BLbWfRpgEfoHBQns6x0",
+      "productName": "The Daily Stoic (每日斯多葛) - Subscription"
+    },
+    {
+      "bookId": "four-agreements",
+      "type": "lifetime",
+      "productId": "prod_TdNlZeopmFSUvT",
+      "priceId": "price_1Sg70CLbWfRpgEfoqlsamADv",
+      "productName": "The Four Agreements (讓夢想覺醒的四項約定) - Lifetime"
+    },
+    {
+      "bookId": "four-agreements",
+      "type": "subscription",
+      "productId": "prod_TdNleEgN7xEzhg",
+      "priceId": "price_1Sg70CLbWfRpgEfoxLyq1ouF",
+      "productName": "The Four Agreements (讓夢想覺醒的四項約定) - Subscription"
+    },
+    {
+      "bookId": "surrender-experiment",
+      "type": "lifetime",
+      "productId": "prod_TdNl7u8den9a0q",
+      "priceId": "price_1Sg70DLbWfRpgEfojSSqhT5B",
+      "productName": "The Surrender Experiment (臣服實驗) - Lifetime"
+    },
+    {
+      "bookId": "surrender-experiment",
+      "type": "subscription",
+      "productId": "prod_TdNlLoCSQdHJxO",
+      "priceId": "price_1Sg70ELbWfRpgEfo2ywW1VNy",
+      "productName": "The Surrender Experiment (臣服實驗) - Subscription"
+    },
+    {
+      "bookId": "letting-go",
+      "type": "lifetime",
+      "productId": "prod_TdNlRUU5cjxAIL",
+      "priceId": "price_1Sg70ELbWfRpgEfo6lMlsmUL",
+      "productName": "Letting Go of What You Can't Control (人生沒什麼不可放下) - Lifetime"
+    },
+    {
+      "bookId": "letting-go",
+      "type": "subscription",
+      "productId": "prod_TdNlPyEMgHP9ft",
+      "priceId": "price_1Sg70FLbWfRpgEfo5PybqEJD",
+      "productName": "Letting Go of What You Can't Control (人生沒什麼不可放下) - Subscription"
+    },
+    {
+      "bookId": "i-may-be-wrong",
+      "type": "lifetime",
+      "productId": "prod_TdNlk16z6FedCN",
+      "priceId": "price_1Sg70GLbWfRpgEfoXJSEjLfH",
+      "productName": "I May Be Wrong (我可能錯了) - Lifetime"
+    },
+    {
+      "bookId": "i-may-be-wrong",
+      "type": "subscription",
+      "productId": "prod_TdNlqzsT0wJjXM",
+      "priceId": "price_1Sg70GLbWfRpgEfoJDHXjcz5",
+      "productName": "I May Be Wrong (我可能錯了) - Subscription"
+    },
+    {
+      "bookId": "pig-wants-eaten",
+      "type": "lifetime",
+      "productId": "prod_TdNlerLInzXdhv",
+      "priceId": "price_1Sg70HLbWfRpgEfoiGcy7yRk",
+      "productName": "The Pig That Wants to Be Eaten (自願被吃的豬) - Lifetime"
+    },
+    {
+      "bookId": "pig-wants-eaten",
+      "type": "subscription",
+      "productId": "prod_TdNlIs3AvQ5DB9",
+      "priceId": "price_1Sg70ILbWfRpgEfoQo6Cz4Ix",
+      "productName": "The Pig That Wants to Be Eaten (自願被吃的豬) - Subscription"
+    },
+    {
+      "bookId": "so-good-cant-ignore",
+      "type": "lifetime",
+      "productId": "prod_TdNlJUD8MXPRtx",
+      "priceId": "price_1Sg70ILbWfRpgEfoe58YRw7B",
+      "productName": "So Good They Can't Ignore You (深度職場力) - Lifetime"
+    },
+    {
+      "bookId": "so-good-cant-ignore",
+      "type": "subscription",
+      "productId": "prod_TdNl105GIRTXNn",
+      "priceId": "price_1Sg70JLbWfRpgEfoax4LYwwO",
+      "productName": "So Good They Can't Ignore You (深度職場力) - Subscription"
+    },
+    {
+      "bookId": "rules-of-work",
+      "type": "lifetime",
+      "productId": "prod_TdNlqSHAvLMbsW",
+      "priceId": "price_1Sg70KLbWfRpgEforbY2ZedA",
+      "productName": "The Rules of Work (工作的法則) - Lifetime"
+    },
+    {
+      "bookId": "rules-of-work",
+      "type": "subscription",
+      "productId": "prod_TdNlDa9ssQeCQP",
+      "priceId": "price_1Sg70KLbWfRpgEfoJ7DgNIA0",
+      "productName": "The Rules of Work (工作的法則) - Subscription"
+    },
+    {
+      "bookId": "diary-of-ceo",
+      "type": "lifetime",
+      "productId": "prod_TdNlX4YLW7QAk9",
+      "priceId": "price_1Sg70LLbWfRpgEfo0SiGxHH1",
+      "productName": "The Diary of a CEO (執行長日記) - Lifetime"
+    },
+    {
+      "bookId": "diary-of-ceo",
+      "type": "subscription",
+      "productId": "prod_TdNl3K8CwAXZuS",
+      "priceId": "price_1Sg70MLbWfRpgEfou8qnfuzT",
+      "productName": "The Diary of a CEO (執行長日記) - Subscription"
+    },
+    {
+      "bookId": "designing-your-life",
+      "type": "lifetime",
+      "productId": "prod_TdNlkp63DwJwh4",
+      "priceId": "price_1Sg70MLbWfRpgEfoXLpJDhVK",
+      "productName": "Designing Your Life (做自己的生命設計師) - Lifetime"
+    },
+    {
+      "bookId": "designing-your-life",
+      "type": "subscription",
+      "productId": "prod_TdNl2rbPYzzFwm",
+      "priceId": "price_1Sg70NLbWfRpgEfoc2wzzpXI",
+      "productName": "Designing Your Life (做自己的生命設計師) - Subscription"
+    },
+    {
+      "bookId": "what-i-wish-knew",
+      "type": "lifetime",
+      "productId": "prod_TdNl9bB3GbW99g",
+      "priceId": "price_1Sg70OLbWfRpgEfogAv0Wv7l",
+      "productName": "What I Wish I Knew When I Was 20 (真希望我20歲就懂的事) - Lifetime"
+    },
+    {
+      "bookId": "what-i-wish-knew",
+      "type": "subscription",
+      "productId": "prod_TdNlA7tcJPw8Lh",
+      "priceId": "price_1Sg70OLbWfRpgEfoNhN3TKSp",
+      "productName": "What I Wish I Knew When I Was 20 (真希望我20歲就懂的事) - Subscription"
+    },
+    {
+      "bookId": "hidden-potential",
+      "type": "lifetime",
+      "productId": "prod_TdNlV3s3OJo6qV",
+      "priceId": "price_1Sg70PLbWfRpgEfoHovEmtaZ",
+      "productName": "Hidden Potential (隱性潛能) - Lifetime"
+    },
+    {
+      "bookId": "hidden-potential",
+      "type": "subscription",
+      "productId": "prod_TdNlC82EKmY6vZ",
+      "priceId": "price_1Sg70QLbWfRpgEfo0rFtmBWt",
+      "productName": "Hidden Potential (隱性潛能) - Subscription"
+    },
+    {
+      "bookId": "men-mars-women-venus",
+      "type": "lifetime",
+      "productId": "prod_TdNlaonJrFet6a",
+      "priceId": "price_1Sg70RLbWfRpgEfopmxFDrd2",
+      "productName": "Men Are from Mars, Women Are from Venus (男人來自火星，女人來自金星) - Lifetime"
+    },
+    {
+      "bookId": "men-mars-women-venus",
+      "type": "subscription",
+      "productId": "prod_TdNl2wxnF0LaE5",
+      "priceId": "price_1Sg70RLbWfRpgEfozkGErc1l",
+      "productName": "Men Are from Mars, Women Are from Venus (男人來自火星，女人來自金星) - Subscription"
+    },
+    {
+      "bookId": "love-prescription",
+      "type": "lifetime",
+      "productId": "prod_TdNmasTpKxyKW1",
+      "priceId": "price_1Sg70SLbWfRpgEfoIMiaeweG",
+      "productName": "The Love Prescription (恆溫關係) - Lifetime"
+    },
+    {
+      "bookId": "love-prescription",
+      "type": "subscription",
+      "productId": "prod_TdNmlrHa5ROTN2",
+      "priceId": "price_1Sg70TLbWfRpgEfojZWHbdFr",
+      "productName": "The Love Prescription (恆溫關係) - Subscription"
+    },
+    {
+      "bookId": "art-of-seduction",
+      "type": "lifetime",
+      "productId": "prod_TdNmDnv8WQpcab",
+      "priceId": "price_1Sg70TLbWfRpgEfoVnb3qqL8",
+      "productName": "The Art of Seduction (誘惑的藝術) - Lifetime"
+    },
+    {
+      "bookId": "art-of-seduction",
+      "type": "subscription",
+      "productId": "prod_TdNmxb0N2fFWRp",
+      "priceId": "price_1Sg70ULbWfRpgEfoQuoZG596",
+      "productName": "The Art of Seduction (誘惑的藝術) - Subscription"
+    },
+    {
+      "bookId": "intimacy-desire",
+      "type": "lifetime",
+      "productId": "prod_TdNmJwM5eMm85b",
+      "priceId": "price_1Sg70VLbWfRpgEfoqPgc5ea0",
+      "productName": "Intimacy & Desire (親密與渴望) - Lifetime"
+    },
+    {
+      "bookId": "intimacy-desire",
+      "type": "subscription",
+      "productId": "prod_TdNmZPbAUnE2bD",
+      "priceId": "price_1Sg70VLbWfRpgEfo3leSO3zg",
+      "productName": "Intimacy & Desire (親密與渴望) - Subscription"
+    },
+    {
+      "bookId": "small-talk-mastery",
+      "type": "lifetime",
+      "productId": "prod_TdNmnUGMvaMxMP",
+      "priceId": "price_1Sg70WLbWfRpgEfovz0XlzNw",
+      "productName": "Small Talk Mastery (最高閒聊法) - Lifetime"
+    },
+    {
+      "bookId": "small-talk-mastery",
+      "type": "subscription",
+      "productId": "prod_TdNmg8zSwMSpYh",
+      "priceId": "price_1Sg70XLbWfRpgEfo81ZMxLCC",
+      "productName": "Small Talk Mastery (最高閒聊法) - Subscription"
+    },
+    {
+      "bookId": "outliers",
+      "type": "lifetime",
+      "productId": "prod_TdNmt5yBTAVgJz",
+      "priceId": "price_1Sg70XLbWfRpgEfoivgTgn0b",
+      "productName": "Outliers (異數) - Lifetime"
+    },
+    {
+      "bookId": "outliers",
+      "type": "subscription",
+      "productId": "prod_TdNmJ6000bqlG9",
+      "priceId": "price_1Sg70YLbWfRpgEfoY98yf9S9",
+      "productName": "Outliers (異數) - Subscription"
+    },
+    {
+      "bookId": "give-and-take",
+      "type": "lifetime",
+      "productId": "prod_TdNm1oG3KKtql7",
+      "priceId": "price_1Sg70ZLbWfRpgEfo4chmlmAS",
+      "productName": "Give and Take (給予) - Lifetime"
+    },
+    {
+      "bookId": "give-and-take",
+      "type": "subscription",
+      "productId": "prod_TdNmElNhoJFSXE",
+      "priceId": "price_1Sg70ZLbWfRpgEfo6bAFSrnl",
+      "productName": "Give and Take (給予) - Subscription"
+    },
+    {
+      "bookId": "mindset",
+      "type": "lifetime",
+      "productId": "prod_TdNm3POxMBy4zc",
+      "priceId": "price_1Sg70aLbWfRpgEfodPyiqrAb",
+      "productName": "Mindset (心態致勝) - Lifetime"
+    },
+    {
+      "bookId": "mindset",
+      "type": "subscription",
+      "productId": "prod_TdNmN9hHa1M0nH",
+      "priceId": "price_1Sg70bLbWfRpgEfonoHq2Xoc",
+      "productName": "Mindset (心態致勝) - Subscription"
+    },
+    {
+      "bookId": "infinite-game",
+      "type": "lifetime",
+      "productId": "prod_TdNm8mcC4mvcuH",
+      "priceId": "price_1Sg70bLbWfRpgEfooqFDjgT7",
+      "productName": "The Infinite Game (無限賽局) - Lifetime"
+    },
+    {
+      "bookId": "infinite-game",
+      "type": "subscription",
+      "productId": "prod_TdNm4Vkbd1QLbQ",
+      "priceId": "price_1Sg70cLbWfRpgEfoxXokO1TJ",
+      "productName": "The Infinite Game (無限賽局) - Subscription"
+    },
+    {
+      "bookId": "think-again",
+      "type": "lifetime",
+      "productId": "prod_TdNmUnYqF7hYQk",
+      "priceId": "price_1Sg70dLbWfRpgEfoK9wTV9Ka",
+      "productName": "Think Again (逆思維) - Lifetime"
+    },
+    {
+      "bookId": "think-again",
+      "type": "subscription",
+      "productId": "prod_TdNmWS0pGNwUps",
+      "priceId": "price_1Sg70dLbWfRpgEfotpiBvFrU",
+      "productName": "Think Again (逆思維) - Subscription"
+    },
+    {
+      "bookId": "same-as-ever",
+      "type": "lifetime",
+      "productId": "prod_TdNmbXv2QmZtUl",
+      "priceId": "price_1Sg70eLbWfRpgEfoGzpwTfdN",
+      "productName": "Same as Ever (一如既往) - Lifetime"
+    },
+    {
+      "bookId": "same-as-ever",
+      "type": "subscription",
+      "productId": "prod_TdNmr6tU0Wjea4",
+      "priceId": "price_1Sg70fLbWfRpgEfooR9Opeez",
+      "productName": "Same as Ever (一如既往) - Subscription"
+    },
+    {
+      "bookId": "glucose-revolution",
+      "type": "lifetime",
+      "productId": "prod_TdNmzMj54g6IGr",
+      "priceId": "price_1Sg70fLbWfRpgEfoOMWgUV0E",
+      "productName": "Glucose Revolution (90%的病，控糖就會好) - Lifetime"
+    },
+    {
+      "bookId": "glucose-revolution",
+      "type": "subscription",
+      "productId": "prod_TdNmmxq9hgclS4",
+      "priceId": "price_1Sg70gLbWfRpgEfo14TDIEdQ",
+      "productName": "Glucose Revolution (90%的病，控糖就會好) - Subscription"
+    },
+    {
+      "bookId": "outlive",
+      "type": "lifetime",
+      "productId": "prod_TdNmtJIYkjNebR",
+      "priceId": "price_1Sg70hLbWfRpgEfoz6Kxhz7K",
+      "productName": "Outlive (超越百歲：長壽的科學與藝術) - Lifetime"
+    },
+    {
+      "bookId": "outlive",
+      "type": "subscription",
+      "productId": "prod_TdNm0mMFE6Keha",
+      "priceId": "price_1Sg70hLbWfRpgEforHFLqIuI",
+      "productName": "Outlive (超越百歲：長壽的科學與藝術) - Subscription"
+    },
+    {
+      "bookId": "ikigai",
+      "type": "lifetime",
+      "productId": "prod_TdNmARnEgggrod",
+      "priceId": "price_1Sg70iLbWfRpgEfo71JI18uD",
+      "productName": "Ikigai (日本生活美學的長壽祕訣) - Lifetime"
+    },
+    {
+      "bookId": "ikigai",
+      "type": "subscription",
+      "productId": "prod_TdNmkzVbMSSoMS",
+      "priceId": "price_1Sg70jLbWfRpgEfolqNFnSTa",
+      "productName": "Ikigai (日本生活美學的長壽祕訣) - Subscription"
+    },
+    {
+      "bookId": "snowball",
+      "type": "lifetime",
+      "productId": "prod_TdNmbKdwYEU35a",
+      "priceId": "price_1Sg70jLbWfRpgEfoDp92dsiE",
+      "productName": "The Snowball (雪球：巴菲特傳) - Lifetime"
+    },
+    {
+      "bookId": "snowball",
+      "type": "subscription",
+      "productId": "prod_TdNmWisu5PQ6Ey",
+      "priceId": "price_1Sg70kLbWfRpgEfoymE8LTK7",
+      "productName": "The Snowball (雪球：巴菲特傳) - Subscription"
+    },
+    {
+      "bookId": "almanack-naval",
+      "type": "lifetime",
+      "productId": "prod_TdNm0eCdtomLdB",
+      "priceId": "price_1Sg70lLbWfRpgEfoGxhPOtqX",
+      "productName": "The Almanack of Naval Ravikant (納瓦爾寶典) - Lifetime"
+    },
+    {
+      "bookId": "almanack-naval",
+      "type": "subscription",
+      "productId": "prod_TdNmeghIR7tB96",
+      "priceId": "price_1Sg70lLbWfRpgEfo4GAIF3nh",
+      "productName": "The Almanack of Naval Ravikant (納瓦爾寶典) - Subscription"
+    },
+    {
+      "bookId": "be-water",
+      "type": "lifetime",
+      "productId": "prod_TdNmS2ZFlJ7i11",
+      "priceId": "price_1Sg70mLbWfRpgEfo3wk469oV",
+      "productName": "Be Water, My Friend (似水無形) - Lifetime"
+    },
+    {
+      "bookId": "be-water",
+      "type": "subscription",
+      "productId": "prod_TdNmX7GaQrIUmQ",
+      "priceId": "price_1Sg70nLbWfRpgEfo6cTsh3pH",
+      "productName": "Be Water, My Friend (似水無形) - Subscription"
+    },
+    {
+      "bookId": "letters-rockefeller",
+      "type": "lifetime",
+      "productId": "prod_TdNm1i7nGCtV3h",
+      "priceId": "price_1Sg70oLbWfRpgEfo9q3bFjuA",
+      "productName": "Letters from Rockefeller to His Son (洛克菲勒寫給兒子的38封信) - Lifetime"
+    },
+    {
+      "bookId": "letters-rockefeller",
+      "type": "subscription",
+      "productId": "prod_TdNmEUrUa9mRfN",
+      "priceId": "price_1Sg70oLbWfRpgEfoVxByoB8d",
+      "productName": "Letters from Rockefeller to His Son (洛克菲勒寫給兒子的38封信) - Subscription"
+    },
+    {
+      "bookId": "principles",
+      "type": "lifetime",
+      "productId": "prod_TdNmS82qYBP2HY",
+      "priceId": "price_1Sg70pLbWfRpgEfohU0BHlpR",
+      "productName": "Principles (原則：生活和工作) - Lifetime"
+    },
+    {
+      "bookId": "principles",
+      "type": "subscription",
+      "productId": "prod_TdNmUwkyB9bQZj",
+      "priceId": "price_1Sg70qLbWfRpgEfo8le0xg2y",
+      "productName": "Principles (原則：生活和工作) - Subscription"
+    },
+    {
+      "bookId": "48-laws-power",
+      "type": "lifetime",
+      "productId": "prod_TdNmfx8KtPk5H3",
+      "priceId": "price_1Sg70qLbWfRpgEfoSekzi3kU",
+      "productName": "The 48 Laws of Power (權力的48條法則) - Lifetime"
+    },
+    {
+      "bookId": "48-laws-power",
+      "type": "subscription",
+      "productId": "prod_TdNm5mr7fejENa",
+      "priceId": "price_1Sg70rLbWfRpgEfoMsqMxPAL",
+      "productName": "The 48 Laws of Power (權力的48條法則) - Subscription"
+    },
+    {
+      "bookId": "daily-laws",
+      "type": "lifetime",
+      "productId": "prod_TdNmTxxZmtvoiU",
+      "priceId": "price_1Sg70sLbWfRpgEfoeHBlMjm3",
+      "productName": "The Daily Laws (洞悉人性與現實的366權力法則) - Lifetime"
+    },
+    {
+      "bookId": "daily-laws",
+      "type": "subscription",
+      "productId": "prod_TdNmGf5RvZAcOM",
+      "priceId": "price_1Sg70sLbWfRpgEfo3NQxqWrX",
+      "productName": "The Daily Laws (洞悉人性與現實的366權力法則) - Subscription"
+    },
+    {
+      "bookId": "12-rules-life",
+      "type": "lifetime",
+      "productId": "prod_TdNmGjE3XnwDv0",
+      "priceId": "price_1Sg70tLbWfRpgEfocW3QDcKZ",
+      "productName": "12 Rules for Life (生存的12條法則) - Lifetime"
+    },
+    {
+      "bookId": "12-rules-life",
+      "type": "subscription",
+      "productId": "prod_TdNmx53SCsam3s",
+      "priceId": "price_1Sg70uLbWfRpgEfomO4h9wX9",
+      "productName": "12 Rules for Life (生存的12條法則) - Subscription"
+    },
+    {
+      "bookId": "rules-of-life",
+      "type": "lifetime",
+      "productId": "prod_TdNmyARwaTaeCe",
+      "priceId": "price_1Sg70uLbWfRpgEfoDa9Z2v30",
+      "productName": "The Rules of Life (生活就是要快樂) - Lifetime"
+    },
+    {
+      "bookId": "rules-of-life",
+      "type": "subscription",
+      "productId": "prod_TdNmKcYBmxGdPp",
+      "priceId": "price_1Sg70vLbWfRpgEfoUByAYOwE",
+      "productName": "The Rules of Life (生活就是要快樂) - Subscription"
+    },
+    {
+      "bookId": "rules-to-break",
+      "type": "lifetime",
+      "productId": "prod_TdNmWd8bJw4zS6",
+      "priceId": "price_1Sg70wLbWfRpgEfo76ou2hmS",
+      "productName": "The Rules to Break (打破規則) - Lifetime"
+    },
+    {
+      "bookId": "rules-to-break",
+      "type": "subscription",
+      "productId": "prod_TdNmoclcdcPRJ6",
+      "priceId": "price_1Sg70wLbWfRpgEfoqGK1AVpH",
+      "productName": "The Rules to Break (打破規則) - Subscription"
+    },
+    {
+      "bookId": "think-like-freak",
+      "type": "lifetime",
+      "productId": "prod_TdNmvVWs5H4DTw",
+      "priceId": "price_1Sg70xLbWfRpgEfoT0hFgNwB",
+      "productName": "Think Like a Freak (蘋果橘子思考術) - Lifetime"
+    },
+    {
+      "bookId": "think-like-freak",
+      "type": "subscription",
+      "productId": "prod_TdNmLnurOQ4laV",
+      "priceId": "price_1Sg70yLbWfRpgEfo6AelbCqz",
+      "productName": "Think Like a Freak (蘋果橘子思考術) - Subscription"
+    },
+    {
+      "bookId": "tipping-point",
+      "type": "lifetime",
+      "productId": "prod_TdNms156bhGTe9",
+      "priceId": "price_1Sg70yLbWfRpgEfo58Sw64N8",
+      "productName": "The Tipping Point (引爆趨勢) - Lifetime"
+    },
+    {
+      "bookId": "tipping-point",
+      "type": "subscription",
+      "productId": "prod_TdNmfcGNn6cp3C",
+      "priceId": "price_1Sg70zLbWfRpgEfoLIQGabCE",
+      "productName": "The Tipping Point (引爆趨勢) - Subscription"
+    },
+    {
+      "bookId": "80-20-principle",
+      "type": "lifetime",
+      "productId": "prod_TdNmTMtq58ZFtS",
+      "priceId": "price_1Sg710LbWfRpgEfoRacZwOv6",
+      "productName": "The 80/20 Principle (80/20 法則) - Lifetime"
+    },
+    {
+      "bookId": "80-20-principle",
+      "type": "subscription",
+      "productId": "prod_TdNm0qYXojrHm4",
+      "priceId": "price_1Sg710LbWfRpgEfoVbe8qEN0",
+      "productName": "The 80/20 Principle (80/20 法則) - Subscription"
+    },
+    {
+      "bookId": "first-principles",
+      "type": "lifetime",
+      "productId": "prod_TdNmmCY72HrR8l",
+      "priceId": "price_1Sg711LbWfRpgEfoYmqrFTCk",
+      "productName": "First Principles Thinking (底層邏輯) - Lifetime"
+    },
+    {
+      "bookId": "first-principles",
+      "type": "subscription",
+      "productId": "prod_TdNm9RhGoMHClf",
+      "priceId": "price_1Sg712LbWfRpgEfo2iRw4Yk8",
+      "productName": "First Principles Thinking (底層邏輯) - Subscription"
+    },
+    {
+      "bookId": "quiet",
+      "type": "lifetime",
+      "productId": "prod_TdNmKLRLuOZ8wV",
+      "priceId": "price_1Sg712LbWfRpgEfocEvFVa9O",
+      "productName": "Quiet (安靜，就是力量) - Lifetime"
+    },
+    {
+      "bookId": "quiet",
+      "type": "subscription",
+      "productId": "prod_TdNmD3le6EPA08",
+      "priceId": "price_1Sg713LbWfRpgEfoMNwlQnZC",
+      "productName": "Quiet (安靜，就是力量) - Subscription"
+    },
+    {
+      "bookId": "anxious-generation",
+      "type": "lifetime",
+      "productId": "prod_TdNmwA9WQSCucU",
+      "priceId": "price_1Sg714LbWfRpgEfo2jD82FC2",
+      "productName": "The Anxious Generation (失控的焦慮世代) - Lifetime"
+    },
+    {
+      "bookId": "anxious-generation",
+      "type": "subscription",
+      "productId": "prod_TdNmXTaP1w8pMR",
+      "priceId": "price_1Sg714LbWfRpgEfo6n1GqALx",
+      "productName": "The Anxious Generation (失控的焦慮世代) - Subscription"
+    },
+    {
+      "bookId": "strength-to-strength",
+      "type": "lifetime",
+      "productId": "prod_TdNmYwk6HFuW6y",
+      "priceId": "price_1Sg715LbWfRpgEfo6vhGBd0P",
+      "productName": "From Strength to Strength (重啟人生) - Lifetime"
+    },
+    {
+      "bookId": "strength-to-strength",
+      "type": "subscription",
+      "productId": "prod_TdNmZMLrzV34Yx",
+      "priceId": "price_1Sg716LbWfRpgEfosVuF2cii",
+      "productName": "From Strength to Strength (重啟人生) - Subscription"
+    },
+    {
+      "bookId": "morning-routine",
+      "type": "lifetime",
+      "productId": "prod_TdNmja3I9N43tW",
+      "priceId": "price_1Sg716LbWfRpgEfoPj54O3U3",
+      "productName": "My Morning Routine (起床後的黃金一小時) - Lifetime"
+    },
+    {
+      "bookId": "morning-routine",
+      "type": "subscription",
+      "productId": "prod_TdNm1QtgAH0BYj",
+      "priceId": "price_1Sg717LbWfRpgEfo4RdsuXmB",
+      "productName": "My Morning Routine (起床後的黃金一小時) - Subscription"
+    },
+    {
+      "bookId": "ideal-life-handbook",
+      "type": "lifetime",
+      "productId": "prod_TdNmgsiYbyAtND",
+      "priceId": "price_1Sg718LbWfRpgEfopXKx2Nqb",
+      "productName": "The Ideal Life Handbook (理想生活指南圖鑑) - Lifetime"
+    },
+    {
+      "bookId": "ideal-life-handbook",
+      "type": "subscription",
+      "productId": "prod_TdNmbCL0QFu6bl",
+      "priceId": "price_1Sg719LbWfRpgEforchlrHor",
+      "productName": "The Ideal Life Handbook (理想生活指南圖鑑) - Subscription"
+    },
+    {
+      "bookId": "emotional-intelligence-3",
+      "type": "lifetime",
+      "productId": "prod_TdNmg5B9nn9b7d",
+      "priceId": "price_1Sg719LbWfRpgEfoLtSRt53B",
+      "productName": "Emotional Intelligence Course 3 (你願意，人生就會值得：蔡康永的情商課3) - Lifetime"
+    },
+    {
+      "bookId": "emotional-intelligence-3",
+      "type": "subscription",
+      "productId": "prod_TdNmDXD5vKpiAP",
+      "priceId": "price_1Sg71ALbWfRpgEfovxIWcM3h",
+      "productName": "Emotional Intelligence Course 3 (你願意，人生就會值得：蔡康永的情商課3) - Subscription"
+    },
+    {
+      "bookId": "humor-habit",
+      "type": "lifetime",
+      "productId": "prod_TdNm6hDq8OlySu",
+      "priceId": "price_1Sg71BLbWfRpgEfoo2cj5CPV",
+      "productName": "The Humor Habit (幽默的習慣) - Lifetime"
+    },
+    {
+      "bookId": "humor-habit",
+      "type": "subscription",
+      "productId": "prod_TdNmsImQ0O6rrB",
+      "priceId": "price_1Sg71BLbWfRpgEfoVbWiZ2TB",
+      "productName": "The Humor Habit (幽默的習慣) - Subscription"
+    }
+  ],
+  "priceIds": {
+    "100m-leads-lifetime": "price_1Sg6yrLbWfRpgEfoh6gwnHAh",
+    "100m-leads-subscription": "price_1Sg6ysLbWfRpgEfobXG3EPE4",
+    "all-marketers-are-liars-lifetime": "price_1Sg6ytLbWfRpgEfoPFtJi8zA",
+    "all-marketers-are-liars-subscription": "price_1Sg6ytLbWfRpgEfo3ahtdonO",
+    "this-is-marketing-lifetime": "price_1Sg6yuLbWfRpgEfobutJb6U9",
+    "this-is-marketing-subscription": "price_1Sg6yvLbWfRpgEfoPu9757FU",
+    "unleash-power-storytelling-lifetime": "price_1Sg6ywLbWfRpgEfoisT1dUVQ",
+    "unleash-power-storytelling-subscription": "price_1Sg6ywLbWfRpgEfoS9XPDUVj",
+    "chatgpt-millionaire-lifetime": "price_1Sg6yxLbWfRpgEfo7BfylJ98",
+    "chatgpt-millionaire-subscription": "price_1Sg6yyLbWfRpgEfoPi4uRoFk",
+    "smart-brevity-lifetime": "price_1Sg6yyLbWfRpgEfoaOlsY6UK",
+    "smart-brevity-subscription": "price_1Sg6yzLbWfRpgEfoYK65x6yv",
+    "psychology-of-money-lifetime": "price_1Sg6z0LbWfRpgEfoNiSNnsQv",
+    "psychology-of-money-subscription": "price_1Sg6z0LbWfRpgEfoG9aE6RQe",
+    "just-keep-buying-lifetime": "price_1Sg6z1LbWfRpgEfoBe3vlCpJ",
+    "just-keep-buying-subscription": "price_1Sg6z2LbWfRpgEfoxrMyIKrt",
+    "trading-in-zone-lifetime": "price_1Sg6z2LbWfRpgEfoDIaz4w73",
+    "trading-in-zone-subscription": "price_1Sg6z3LbWfRpgEfoUoH5S9qx",
+    "wealth-ladder-lifetime": "price_1Sg6z4LbWfRpgEfoZOk5NFyR",
+    "wealth-ladder-subscription": "price_1Sg6z4LbWfRpgEfo59YJJ5Rx",
+    "die-with-zero-lifetime": "price_1Sg6z5LbWfRpgEfoSSFLYTaR",
+    "die-with-zero-subscription": "price_1Sg6z6LbWfRpgEfoLiU7DjZx",
+    "intelligent-investor-lifetime": "price_1Sg6z6LbWfRpgEfoXoF5jCMl",
+    "intelligent-investor-subscription": "price_1Sg6z7LbWfRpgEfoQtKI23Ck",
+    "rich-dad-retire-young-lifetime": "price_1Sg6z8LbWfRpgEfoYINwR6EV",
+    "rich-dad-retire-young-subscription": "price_1Sg6z8LbWfRpgEfodltCpJ2h",
+    "your-money-or-life-lifetime": "price_1Sg6z9LbWfRpgEfoyNTfP7h1",
+    "your-money-or-life-subscription": "price_1Sg6zALbWfRpgEfoS1kuwU0p",
+    "millionaire-fastlane-lifetime": "price_1Sg6zALbWfRpgEfoSSgXKoMH",
+    "millionaire-fastlane-subscription": "price_1Sg6zBLbWfRpgEfoTQzgzazC",
+    "from-debt-to-cashflow-lifetime": "price_1Sg6zCLbWfRpgEfoI50gyW1C",
+    "from-debt-to-cashflow-subscription": "price_1Sg6zCLbWfRpgEfojNFJGbxs",
+    "from-debt-to-miracles-lifetime": "price_1Sg6zDLbWfRpgEfoiSznmiim",
+    "from-debt-to-miracles-subscription": "price_1Sg6zELbWfRpgEfoBVrjy3C2",
+    "from-debt-to-manifesting-lifetime": "price_1Sg6zELbWfRpgEfoWl19L4PW",
+    "from-debt-to-manifesting-subscription": "price_1Sg6zFLbWfRpgEfogY2bwVMa",
+    "inner-excellence-lifetime": "price_1Sg6zGLbWfRpgEfoqeOVpfxS",
+    "inner-excellence-subscription": "price_1Sg6zGLbWfRpgEfo8ywyje8T",
+    "no-self-no-problem-lifetime": "price_1Sg6zHLbWfRpgEfoUpDG1443",
+    "no-self-no-problem-subscription": "price_1Sg6zILbWfRpgEfo1TiIDuB8",
+    "do-hard-things-lifetime": "price_1Sg6zJLbWfRpgEfoFV08awIR",
+    "do-hard-things-subscription": "price_1Sg6zJLbWfRpgEfoYVT6NWKN",
+    "5-types-wealth-lifetime": "price_1Sg6zKLbWfRpgEfoWglMTWGc",
+    "5-types-wealth-subscription": "price_1Sg6zKLbWfRpgEfoYhmR2KQS",
+    "set-boundaries-lifetime": "price_1Sg6zLLbWfRpgEfo1CTLisLJ",
+    "set-boundaries-subscription": "price_1Sg6zMLbWfRpgEfokykhQQ2c",
+    "manifest-lifetime": "price_1Sg6zNLbWfRpgEfoo3NAay0n",
+    "manifest-subscription": "price_1Sg6zNLbWfRpgEfongKaADM9",
+    "confidence-gap-lifetime": "price_1Sg6zOLbWfRpgEfo35PrbV4C",
+    "confidence-gap-subscription": "price_1Sg6zPLbWfRpgEfokmw6lSM5",
+    "5-second-rule-lifetime": "price_1Sg6zPLbWfRpgEfoU83naUe8",
+    "5-second-rule-subscription": "price_1Sg6zQLbWfRpgEfoi2wKR3Mb",
+    "let-them-theory-lifetime": "price_1Sg6zRLbWfRpgEfofoUH8uCC",
+    "let-them-theory-subscription": "price_1Sg6zRLbWfRpgEfoU07RPq16",
+    "stop-overthinking-lifetime": "price_1Sg6zSLbWfRpgEfosApcMmKi",
+    "stop-overthinking-subscription": "price_1Sg6zTLbWfRpgEfor7SUN9Ny",
+    "good-vibes-good-life-lifetime": "price_1Sg6zTLbWfRpgEfozex9uPWa",
+    "good-vibes-good-life-subscription": "price_1Sg6zULbWfRpgEfoQzgbvexL",
+    "mountain-is-you-lifetime": "price_1Sg6zVLbWfRpgEfovvduZwlZ",
+    "mountain-is-you-subscription": "price_1Sg6zVLbWfRpgEfoHyXUK0b4",
+    "comfort-zone-lifetime": "price_1Sg6zWLbWfRpgEfoZCbolOnn",
+    "comfort-zone-subscription": "price_1Sg6zXLbWfRpgEfowUyeUjGs",
+    "breaking-habit-lifetime": "price_1Sg6zXLbWfRpgEfokcBctzs6",
+    "breaking-habit-subscription": "price_1Sg6zYLbWfRpgEfowmmQaeV6",
+    "dont-react-lifetime": "price_1Sg6zZLbWfRpgEfo44sM9FUP",
+    "dont-react-subscription": "price_1Sg6zZLbWfRpgEfoIVNmWzES",
+    "get-it-done-lifetime": "price_1Sg6zaLbWfRpgEfoPPsWrN7s",
+    "get-it-done-subscription": "price_1Sg6zbLbWfRpgEfo1rZIs9Bk",
+    "atomic-habits-lifetime": "price_1Sg6zbLbWfRpgEfoHa53jgqM",
+    "atomic-habits-subscription": "price_1Sg6zcLbWfRpgEfo0YOv9L4E",
+    "one-thing-lifetime": "price_1Sg6zdLbWfRpgEfoSB6Bk8uj",
+    "one-thing-subscription": "price_1Sg6zdLbWfRpgEfoQOrDERNS",
+    "power-of-habit-lifetime": "price_1Sg6zeLbWfRpgEfonKq0tboj",
+    "power-of-habit-subscription": "price_1Sg6zfLbWfRpgEfol63uf9cl",
+    "effortless-lifetime": "price_1Sg6zgLbWfRpgEfo4Ddclk92",
+    "effortless-subscription": "price_1Sg6zgLbWfRpgEfoUN8MYG59",
+    "focus-project-lifetime": "price_1Sg6zhLbWfRpgEfoMrFxPqAg",
+    "focus-project-subscription": "price_1Sg6zhLbWfRpgEfohHw4VVYs",
+    "peak-lifetime": "price_1Sg6ziLbWfRpgEfoTyBIJton",
+    "peak-subscription": "price_1Sg6zjLbWfRpgEfoDlE9wSUx",
+    "procrastination-cure-lifetime": "price_1Sg6zkLbWfRpgEfowGKgJaqO",
+    "procrastination-cure-subscription": "price_1Sg6zkLbWfRpgEfocyozhdlY",
+    "input-lifetime": "price_1Sg6zlLbWfRpgEfoOcloUn37",
+    "input-subscription": "price_1Sg6zmLbWfRpgEfohsgsJ4gC",
+    "output-lifetime": "price_1Sg6zmLbWfRpgEfowjBu10OS",
+    "output-subscription": "price_1Sg6znLbWfRpgEfoYM1zpVUb",
+    "what-every-body-saying-lifetime": "price_1Sg6zoLbWfRpgEfohZsgfIHc",
+    "what-every-body-saying-subscription": "price_1Sg6zoLbWfRpgEfoBdsrMUKX",
+    "how-to-win-friends-lifetime": "price_1Sg6zpLbWfRpgEfoI1En8K2H",
+    "how-to-win-friends-subscription": "price_1Sg6zqLbWfRpgEfoDeVHMcSX",
+    "molecule-of-more-lifetime": "price_1Sg6zqLbWfRpgEfoxDlo3hu0",
+    "molecule-of-more-subscription": "price_1Sg6zrLbWfRpgEfoAiR4ICZB",
+    "body-keeps-score-lifetime": "price_1Sg6zsLbWfRpgEfoAKkw79rx",
+    "body-keeps-score-subscription": "price_1Sg6zsLbWfRpgEfo2wvTUH8y",
+    "thinking-in-bets-lifetime": "price_1Sg6ztLbWfRpgEfofwlYCaZc",
+    "thinking-in-bets-subscription": "price_1Sg6zuLbWfRpgEfoXc39d3a5",
+    "thinking-fast-slow-lifetime": "price_1Sg6zuLbWfRpgEfoEalEf7PR",
+    "thinking-fast-slow-subscription": "price_1Sg6zvLbWfRpgEfoallwOY1W",
+    "influence-lifetime": "price_1Sg6zwLbWfRpgEfo5xzhTAcH",
+    "influence-subscription": "price_1Sg6zwLbWfRpgEforK3FXwRS",
+    "charisma-myth-lifetime": "price_1Sg6zxLbWfRpgEfomS9vsv7U",
+    "charisma-myth-subscription": "price_1Sg6zyLbWfRpgEfoUo2E6qUG",
+    "dark-psychology-lifetime": "price_1Sg6zyLbWfRpgEfogAy4GDsn",
+    "dark-psychology-subscription": "price_1Sg6zzLbWfRpgEfo7CVWQSlS",
+    "psychology-rich-lifetime": "price_1Sg700LbWfRpgEfomwMrIwDW",
+    "psychology-rich-subscription": "price_1Sg700LbWfRpgEfo9ju8OzHp",
+    "murphys-law-lifetime": "price_1Sg701LbWfRpgEfoZRP4gWRj",
+    "murphys-law-subscription": "price_1Sg702LbWfRpgEfofqjudeVc",
+    "cruel-psychology-lifetime": "price_1Sg702LbWfRpgEfoXXdIzpEn",
+    "cruel-psychology-subscription": "price_1Sg703LbWfRpgEfo4C4evT54",
+    "stoic-challenge-lifetime": "price_1Sg704LbWfRpgEfoYTeAQL0B",
+    "stoic-challenge-subscription": "price_1Sg704LbWfRpgEfouOxizW7F",
+    "no-death-no-fear-lifetime": "price_1Sg705LbWfRpgEfofdbkadPg",
+    "no-death-no-fear-subscription": "price_1Sg706LbWfRpgEfoPuX4EgCT",
+    "wabi-sabi-lifetime": "price_1Sg706LbWfRpgEfo8mN9uS3o",
+    "wabi-sabi-subscription": "price_1Sg707LbWfRpgEfoHvp6RcFG",
+    "slow-down-lifetime": "price_1Sg708LbWfRpgEfotcdnnk3D",
+    "slow-down-subscription": "price_1Sg708LbWfRpgEfow8EQVF0t",
+    "power-of-now-lifetime": "price_1Sg709LbWfRpgEfo9Q7SXK8X",
+    "power-of-now-subscription": "price_1Sg70ALbWfRpgEfordzHLs2l",
+    "daily-stoic-lifetime": "price_1Sg70ALbWfRpgEfoDo50SdXm",
+    "daily-stoic-subscription": "price_1Sg70BLbWfRpgEfoHBQns6x0",
+    "four-agreements-lifetime": "price_1Sg70CLbWfRpgEfoqlsamADv",
+    "four-agreements-subscription": "price_1Sg70CLbWfRpgEfoxLyq1ouF",
+    "surrender-experiment-lifetime": "price_1Sg70DLbWfRpgEfojSSqhT5B",
+    "surrender-experiment-subscription": "price_1Sg70ELbWfRpgEfo2ywW1VNy",
+    "letting-go-lifetime": "price_1Sg70ELbWfRpgEfo6lMlsmUL",
+    "letting-go-subscription": "price_1Sg70FLbWfRpgEfo5PybqEJD",
+    "i-may-be-wrong-lifetime": "price_1Sg70GLbWfRpgEfoXJSEjLfH",
+    "i-may-be-wrong-subscription": "price_1Sg70GLbWfRpgEfoJDHXjcz5",
+    "pig-wants-eaten-lifetime": "price_1Sg70HLbWfRpgEfoiGcy7yRk",
+    "pig-wants-eaten-subscription": "price_1Sg70ILbWfRpgEfoQo6Cz4Ix",
+    "so-good-cant-ignore-lifetime": "price_1Sg70ILbWfRpgEfoe58YRw7B",
+    "so-good-cant-ignore-subscription": "price_1Sg70JLbWfRpgEfoax4LYwwO",
+    "rules-of-work-lifetime": "price_1Sg70KLbWfRpgEforbY2ZedA",
+    "rules-of-work-subscription": "price_1Sg70KLbWfRpgEfoJ7DgNIA0",
+    "diary-of-ceo-lifetime": "price_1Sg70LLbWfRpgEfo0SiGxHH1",
+    "diary-of-ceo-subscription": "price_1Sg70MLbWfRpgEfou8qnfuzT",
+    "designing-your-life-lifetime": "price_1Sg70MLbWfRpgEfoXLpJDhVK",
+    "designing-your-life-subscription": "price_1Sg70NLbWfRpgEfoc2wzzpXI",
+    "what-i-wish-knew-lifetime": "price_1Sg70OLbWfRpgEfogAv0Wv7l",
+    "what-i-wish-knew-subscription": "price_1Sg70OLbWfRpgEfoNhN3TKSp",
+    "hidden-potential-lifetime": "price_1Sg70PLbWfRpgEfoHovEmtaZ",
+    "hidden-potential-subscription": "price_1Sg70QLbWfRpgEfo0rFtmBWt",
+    "men-mars-women-venus-lifetime": "price_1Sg70RLbWfRpgEfopmxFDrd2",
+    "men-mars-women-venus-subscription": "price_1Sg70RLbWfRpgEfozkGErc1l",
+    "love-prescription-lifetime": "price_1Sg70SLbWfRpgEfoIMiaeweG",
+    "love-prescription-subscription": "price_1Sg70TLbWfRpgEfojZWHbdFr",
+    "art-of-seduction-lifetime": "price_1Sg70TLbWfRpgEfoVnb3qqL8",
+    "art-of-seduction-subscription": "price_1Sg70ULbWfRpgEfoQuoZG596",
+    "intimacy-desire-lifetime": "price_1Sg70VLbWfRpgEfoqPgc5ea0",
+    "intimacy-desire-subscription": "price_1Sg70VLbWfRpgEfo3leSO3zg",
+    "small-talk-mastery-lifetime": "price_1Sg70WLbWfRpgEfovz0XlzNw",
+    "small-talk-mastery-subscription": "price_1Sg70XLbWfRpgEfo81ZMxLCC",
+    "outliers-lifetime": "price_1Sg70XLbWfRpgEfoivgTgn0b",
+    "outliers-subscription": "price_1Sg70YLbWfRpgEfoY98yf9S9",
+    "give-and-take-lifetime": "price_1Sg70ZLbWfRpgEfo4chmlmAS",
+    "give-and-take-subscription": "price_1Sg70ZLbWfRpgEfo6bAFSrnl",
+    "mindset-lifetime": "price_1Sg70aLbWfRpgEfodPyiqrAb",
+    "mindset-subscription": "price_1Sg70bLbWfRpgEfonoHq2Xoc",
+    "infinite-game-lifetime": "price_1Sg70bLbWfRpgEfooqFDjgT7",
+    "infinite-game-subscription": "price_1Sg70cLbWfRpgEfoxXokO1TJ",
+    "think-again-lifetime": "price_1Sg70dLbWfRpgEfoK9wTV9Ka",
+    "think-again-subscription": "price_1Sg70dLbWfRpgEfotpiBvFrU",
+    "same-as-ever-lifetime": "price_1Sg70eLbWfRpgEfoGzpwTfdN",
+    "same-as-ever-subscription": "price_1Sg70fLbWfRpgEfooR9Opeez",
+    "glucose-revolution-lifetime": "price_1Sg70fLbWfRpgEfoOMWgUV0E",
+    "glucose-revolution-subscription": "price_1Sg70gLbWfRpgEfo14TDIEdQ",
+    "outlive-lifetime": "price_1Sg70hLbWfRpgEfoz6Kxhz7K",
+    "outlive-subscription": "price_1Sg70hLbWfRpgEforHFLqIuI",
+    "ikigai-lifetime": "price_1Sg70iLbWfRpgEfo71JI18uD",
+    "ikigai-subscription": "price_1Sg70jLbWfRpgEfolqNFnSTa",
+    "snowball-lifetime": "price_1Sg70jLbWfRpgEfoDp92dsiE",
+    "snowball-subscription": "price_1Sg70kLbWfRpgEfoymE8LTK7",
+    "almanack-naval-lifetime": "price_1Sg70lLbWfRpgEfoGxhPOtqX",
+    "almanack-naval-subscription": "price_1Sg70lLbWfRpgEfo4GAIF3nh",
+    "be-water-lifetime": "price_1Sg70mLbWfRpgEfo3wk469oV",
+    "be-water-subscription": "price_1Sg70nLbWfRpgEfo6cTsh3pH",
+    "letters-rockefeller-lifetime": "price_1Sg70oLbWfRpgEfo9q3bFjuA",
+    "letters-rockefeller-subscription": "price_1Sg70oLbWfRpgEfoVxByoB8d",
+    "principles-lifetime": "price_1Sg70pLbWfRpgEfohU0BHlpR",
+    "principles-subscription": "price_1Sg70qLbWfRpgEfo8le0xg2y",
+    "48-laws-power-lifetime": "price_1Sg70qLbWfRpgEfoSekzi3kU",
+    "48-laws-power-subscription": "price_1Sg70rLbWfRpgEfoMsqMxPAL",
+    "daily-laws-lifetime": "price_1Sg70sLbWfRpgEfoeHBlMjm3",
+    "daily-laws-subscription": "price_1Sg70sLbWfRpgEfo3NQxqWrX",
+    "12-rules-life-lifetime": "price_1Sg70tLbWfRpgEfocW3QDcKZ",
+    "12-rules-life-subscription": "price_1Sg70uLbWfRpgEfomO4h9wX9",
+    "rules-of-life-lifetime": "price_1Sg70uLbWfRpgEfoDa9Z2v30",
+    "rules-of-life-subscription": "price_1Sg70vLbWfRpgEfoUByAYOwE",
+    "rules-to-break-lifetime": "price_1Sg70wLbWfRpgEfo76ou2hmS",
+    "rules-to-break-subscription": "price_1Sg70wLbWfRpgEfoqGK1AVpH",
+    "think-like-freak-lifetime": "price_1Sg70xLbWfRpgEfoT0hFgNwB",
+    "think-like-freak-subscription": "price_1Sg70yLbWfRpgEfo6AelbCqz",
+    "tipping-point-lifetime": "price_1Sg70yLbWfRpgEfo58Sw64N8",
+    "tipping-point-subscription": "price_1Sg70zLbWfRpgEfoLIQGabCE",
+    "80-20-principle-lifetime": "price_1Sg710LbWfRpgEfoRacZwOv6",
+    "80-20-principle-subscription": "price_1Sg710LbWfRpgEfoVbe8qEN0",
+    "first-principles-lifetime": "price_1Sg711LbWfRpgEfoYmqrFTCk",
+    "first-principles-subscription": "price_1Sg712LbWfRpgEfo2iRw4Yk8",
+    "quiet-lifetime": "price_1Sg712LbWfRpgEfocEvFVa9O",
+    "quiet-subscription": "price_1Sg713LbWfRpgEfoMNwlQnZC",
+    "anxious-generation-lifetime": "price_1Sg714LbWfRpgEfo2jD82FC2",
+    "anxious-generation-subscription": "price_1Sg714LbWfRpgEfo6n1GqALx",
+    "strength-to-strength-lifetime": "price_1Sg715LbWfRpgEfo6vhGBd0P",
+    "strength-to-strength-subscription": "price_1Sg716LbWfRpgEfosVuF2cii",
+    "morning-routine-lifetime": "price_1Sg716LbWfRpgEfoPj54O3U3",
+    "morning-routine-subscription": "price_1Sg717LbWfRpgEfo4RdsuXmB",
+    "ideal-life-handbook-lifetime": "price_1Sg718LbWfRpgEfopXKx2Nqb",
+    "ideal-life-handbook-subscription": "price_1Sg719LbWfRpgEforchlrHor",
+    "emotional-intelligence-3-lifetime": "price_1Sg719LbWfRpgEfoLtSRt53B",
+    "emotional-intelligence-3-subscription": "price_1Sg71ALbWfRpgEfovxIWcM3h",
+    "humor-habit-lifetime": "price_1Sg71BLbWfRpgEfoo2cj5CPV",
+    "humor-habit-subscription": "price_1Sg71BLbWfRpgEfoVbWiZ2TB"
+  }
+}

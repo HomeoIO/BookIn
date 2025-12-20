@@ -36,7 +36,7 @@ export async function loadPrices(): Promise<Record<string, string>> {
 
   try {
     // Try to load from state file (development)
-    const response = await fetch('/.stripe-products.json');
+    const response = await fetch('/stripe-products.json');
 
     if (response.ok) {
       const config: PriceConfig = await response.json();

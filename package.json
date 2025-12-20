@@ -4,9 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/sync-stripe-products.js",
     "dev": "vite",
     "dev:server": "nodemon server/index.js",
     "dev:all": "npm run dev:server & npm run dev",
+    "prebuild": "node scripts/sync-stripe-products.js",
     "build": "vite build",
     "build:check": "tsc && vite build",
     "typecheck": "tsc --noEmit",

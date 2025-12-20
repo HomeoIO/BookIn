@@ -47,10 +47,8 @@ export class StripeService {
         priceId,
         bookId,
         customerEmail: userEmail,
-        userId,  // Pass userId for Firestore
-        isSubscription,
-        successUrl: `${window.location.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `${window.location.origin}/books/${bookId}`,
+        userId,
+        paymentType: isSubscription ? 'subscription' : 'lifetime',
       }),
     });
 
@@ -80,9 +78,7 @@ export class StripeService {
    * Check if Stripe is configured
    */
   static isConfigured(): boolean {
-    const publishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
-    const hasPrices = StripeState.isConfigured();
-    return !!publishableKey && publishableKey !== 'your_publishable_key' && hasPrices;
+    return StripeState.isConfigured();
   }
 
   /**
