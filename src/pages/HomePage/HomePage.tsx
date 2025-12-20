@@ -12,10 +12,10 @@ import { StreakCard } from '@components/ui/StreakCard';
 function HomePage() {
   const { t } = useTranslation(['books', 'common']);
   const { books, loading, error } = useBooks();
+  const purchases = usePurchaseStore((state) => state.purchases);
   const purchasesLoading = usePurchaseStore((state) => state.loading);
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
-  const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
-  const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
@@ -56,16 +56,29 @@ function HomePage() {
     }
 
     // Library filter
+    const hasBookAccess = (bookId: string, isFree: boolean) => {
+      if (isFree) return true;
+      const purchased = purchases.some((p) => p.bookId === bookId);
+      const activeSub = subscriptions.some((sub) =>
+        sub.bookId === bookId &&
+        (sub.status === 'active' || sub.status === 'trialing') &&
+        sub.currentPeriodEnd > Date.now()
+      );
+      return purchased || activeSub;
+    };
+
     if (libraryFilter === 'library') {
-      // Show books with progress (user has started)
+      // Show books the user owns (via purchase/subscription) or has started
       result = result.filter((book) => {
         const progress = getProgress(book.id);
-        return progress && progress.questionsCompleted.length > 0;
+        const hasProgress = Boolean(progress && progress.questionsCompleted.length > 0);
+        const hasAccess = hasBookAccess(book.id, book.isFree);
+        return hasProgress || hasAccess;
       });
     } else if (libraryFilter === 'purchased') {
-      // Show purchased books (including free books)
+      // Show only purchased books
       result = result.filter((book) =>
-        book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id)
+        book.isFree || purchases.some((p) => p.bookId === book.id)
       );
     }
 
@@ -85,7 +98,7 @@ function HomePage() {
     });
 
     return result;
-  }, [books, searchQuery, categoryFilter, difficultyFilter, libraryFilter, sortBy, getProgress, hasPurchased, hasActiveSubscription]);
+  }, [books, searchQuery, categoryFilter, difficultyFilter, libraryFilter, sortBy, getProgress, purchases, subscriptions]);
 
   if (error) {
     return (

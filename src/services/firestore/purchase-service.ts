@@ -16,7 +16,7 @@ export interface Subscription {
   id: string;  // Stripe subscription ID
   bookId: string;
   userId: string;
-  status: 'active' | 'canceled' | 'past_due' | 'incomplete';
+  status: 'active' | 'trialing' | 'past_due' | 'incomplete' | 'canceled';
   currentPeriodStart: number;
   currentPeriodEnd: number;
   cancelAtPeriodEnd: boolean;

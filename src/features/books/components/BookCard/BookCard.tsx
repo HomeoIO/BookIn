@@ -4,6 +4,7 @@ import { Card } from '@components/ui';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
+import { useTranslation } from 'react-i18next';
 
 export interface BookCardProps {
   book: Book;
@@ -11,16 +12,21 @@ export interface BookCardProps {
 }
 
 function BookCard({ book, progress: progressProp }: BookCardProps) {
-  const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
-  const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
-  const getProgress = useProgressStore((state) => state.getProgress);
+  const { i18n } = useTranslation();
+  const purchases = usePurchaseStore((state) => state.purchases);
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+  const progressData = useProgressStore((state) => state.progressByBook[book.id] || null);
 
-  // Check if user has access via free, purchase, or active subscription
-  const hasAccess = book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id);
+  const hasPurchasedBook = purchases.some((purchase) => purchase.bookId === book.id);
+  const hasSubscription = subscriptions.some((sub) =>
+    sub.bookId === book.id &&
+    sub.status === 'active' &&
+    sub.currentPeriodEnd > Date.now()
+  );
+
+  const hasAccess = book.isFree || hasPurchasedBook || hasSubscription;
   const isLocked = !hasAccess;
 
-  // Use real progress from store, or fallback to prop
-  const progressData = getProgress(book.id);
   const progress = progressProp !== undefined ? progressProp : (progressData?.masteryLevel || 0);
 
   return (
@@ -83,7 +89,9 @@ function BookCard({ book, progress: progressProp }: BookCardProps) {
           <h3 className="font-semibold text-gray-900 text-base mb-1 line-clamp-2">
             {book.title}
             {book.titleZh && (
-              <span className="block text-sm text-gray-700 mt-1">
+              <span
+                className={`block text-sm text-gray-700 mt-1 ${i18n.language?.startsWith('zh') ? '' : 'text-opacity-0'}`}
+              >
                 {book.titleZh}
               </span>
             )}

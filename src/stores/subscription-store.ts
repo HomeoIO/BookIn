@@ -15,6 +15,8 @@ interface SubscriptionState {
 // Cache duration: 5 minutes
 const CACHE_DURATION = 5 * 60 * 1000;
 
+const ACTIVE_STATUSES = new Set(['active', 'trialing']);
+
 export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
   subscriptions: [],
   loading: false,
@@ -24,8 +26,7 @@ export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
     const sub = get().subscriptions.find((s) => s.bookId === bookId);
     if (!sub) return false;
 
-    // Check if subscription is active and not expired
-    const isActive = sub.status === 'active';
+    const isActive = ACTIVE_STATUSES.has(sub.status);
     const notExpired = sub.currentPeriodEnd > Date.now();
 
     return isActive && notExpired;

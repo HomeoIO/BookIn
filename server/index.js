@@ -6,298 +6,233 @@ import admin from 'firebase-admin';
 
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 3002;
 
-// Initialize Firebase Admin
-// For local development, Firebase Admin will use application default credentials
-// For production, set GOOGLE_APPLICATION_CREDENTIALS environment variable
+if (!process.env.STRIPE_SECRET_KEY) {
+  console.warn('⚠️ STRIPE_SECRET_KEY not set. Stripe endpoints will fail.');
+}
+
+const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null;
+
 if (!admin.apps.length) {
   admin.initializeApp({
     projectId: process.env.VITE_FIREBASE_PROJECT_ID,
   });
 }
-
 const db = admin.firestore();
 
-// Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-12-18.acacia',
-});
+const app = express();
 
-// Middleware
+const allowedOrigins = (process.env.ALLOWED_ORIGINS?.split(',') || [
+  'http://localhost:3001',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]).map((origin) => origin.trim());
+
 app.use(cors({
-  origin: 'http://localhost:3001', // Vite dev server
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    console.warn('❌ CORS blocked origin:', origin);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
 
-// Stripe webhook - needs raw body for signature verification
-app.post('/api/webhook/stripe',
-  express.raw({ type: 'application/json' }),
-  async (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`, {
+    origin: req.headers.origin,
+    contentType: req.headers['content-type'],
+  });
+  next();
+});
 
-    let event;
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    environment: stripe ? 'configured' : 'missing-config',
+  });
+});
 
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
-    } catch (err) {
-      console.error(`⚠️  Webhook signature verification failed: ${err.message}`);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
+app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+  if (!stripe) {
+    return res.status(500).send('Stripe not configured');
+  }
 
-    console.log(`📬 Received Stripe webhook: ${event.type}`);
+  const sig = req.headers['stripe-signature'];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-    // Handle different event types
+  if (!webhookSecret) {
+    console.error('❌ Webhook secret not configured');
+    return res.status(500).send('Webhook secret not configured');
+  }
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    console.log('✅ Webhook signature verified:', event.type);
+  } catch (err) {
+    console.error('⚠️ Webhook signature verification failed:', err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  try {
     switch (event.type) {
       case 'checkout.session.completed': {
-        // One-time purchase or subscription started
         const session = event.data.object;
-        const bookId = session.metadata?.bookId;
-        const userId = session.metadata?.userId;
+        const { userId, bookId, paymentType } = session.metadata || {};
 
-        console.log('✅ Checkout completed:', {
-          sessionId: session.id,
-          customerEmail: session.customer_email,
-          amount: session.amount_total,
-          bookId,
-          userId,
-          mode: session.mode,
-        });
+        console.log('💰 Checkout completed:', { userId, bookId, paymentType });
 
         if (!userId || !bookId) {
-          console.error('❌ Missing userId or bookId in session metadata');
+          console.error('❌ Missing metadata in checkout session');
           break;
         }
 
-        try {
-          if (session.mode === 'subscription') {
-            // Handle subscription creation
-            const subscription = await stripe.subscriptions.retrieve(session.subscription);
-
-            await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
-              id: subscription.id,
-              bookId,
-              userId,
-              status: subscription.status,
-              currentPeriodStart: subscription.current_period_start * 1000,
-              currentPeriodEnd: subscription.current_period_end * 1000,
-              cancelAtPeriodEnd: subscription.cancel_at_period_end,
-              stripeSubscriptionId: subscription.id,
-              stripeCustomerId: subscription.customer,
-              createdAt: Date.now(),
-            });
-
-            console.log(`✅ Subscription saved to Firestore: ${subscription.id}`);
-          } else {
-            // Handle one-time purchase
-            const purchaseRef = db.collection('users').doc(userId).collection('purchases').doc();
-
-            await purchaseRef.set({
-              bookId,
-              userId,
-              purchasedAt: Date.now(),
-              price: session.amount_total / 100,  // Convert cents to dollars
-              paymentMethod: 'stripe',
-              transactionId: session.id,
-              stripeCustomerId: session.customer,
-            });
-
-            console.log(`✅ Purchase saved to Firestore: ${purchaseRef.id}`);
-          }
-        } catch (error) {
-          console.error('❌ Error saving to Firestore:', error);
+        if (paymentType === 'lifetime') {
+          await db.collection('users').doc(userId).collection('purchases').doc(bookId).set({
+            bookId,
+            purchasedAt: admin.firestore.FieldValue.serverTimestamp(),
+            price: session.amount_total / 100,
+            paymentMethod: 'stripe',
+            transactionId: session.payment_intent,
+            status: 'completed',
+          });
+          console.log('✅ Purchase recorded:', { userId, bookId });
+        } else if (paymentType === 'subscription') {
+          console.log('📋 Subscription checkout - handled by invoice.payment_succeeded');
         }
-
         break;
       }
 
       case 'invoice.payment_succeeded': {
-        // Recurring payment succeeded
         const invoice = event.data.object;
-        console.log('💰 Invoice payment succeeded:', {
-          customerId: invoice.customer,
-          amount: invoice.amount_paid,
-        });
+        if (!invoice.subscription) {
+          console.log('ℹ️ Invoice without subscription, skipping');
+          break;
+        }
 
-        // TODO: Update subscription status in Firestore
-        break;
-      }
+        const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+        const { userId, bookId } = subscription.metadata || {};
 
-      case 'invoice.payment_failed': {
-        // Recurring payment failed
-        const invoice = event.data.object;
-        console.log('❌ Invoice payment failed:', {
-          customerId: invoice.customer,
-        });
+        if (!userId || !bookId) {
+          console.error('❌ Missing metadata in subscription');
+          break;
+        }
 
-        // TODO: Notify user, update subscription status
-        break;
-      }
-
-      case 'customer.subscription.updated': {
-        // Subscription status changed
-        const subscription = event.data.object;
-        console.log('📋 Subscription updated:', {
-          subscriptionId: subscription.id,
+        await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
+          bookId,
           status: subscription.status,
+          currentPeriodStart: subscription.current_period_start * 1000,
+          currentPeriodEnd: subscription.current_period_end * 1000,
+          cancelAtPeriodEnd: subscription.cancel_at_period_end,
+          stripeSubscriptionId: subscription.id,
+          stripeCustomerId: subscription.customer,
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
-
-        try {
-          // Find the subscription in Firestore and update it
-          const usersSnapshot = await db.collection('users').get();
-
-          for (const userDoc of usersSnapshot.docs) {
-            const subscriptionDoc = await db
-              .collection('users')
-              .doc(userDoc.id)
-              .collection('subscriptions')
-              .doc(subscription.id)
-              .get();
-
-            if (subscriptionDoc.exists()) {
-              await subscriptionDoc.ref.update({
-                status: subscription.status,
-                currentPeriodStart: subscription.current_period_start * 1000,
-                currentPeriodEnd: subscription.current_period_end * 1000,
-                cancelAtPeriodEnd: subscription.cancel_at_period_end,
-              });
-
-              console.log(`✅ Subscription updated in Firestore: ${subscription.id}`);
-              break;
-            }
-          }
-        } catch (error) {
-          console.error('❌ Error updating subscription in Firestore:', error);
-        }
-
+        console.log('✅ Subscription updated:', { userId, bookId, status: subscription.status });
         break;
       }
 
+      case 'customer.subscription.updated':
       case 'customer.subscription.deleted': {
-        // Subscription cancelled/ended
         const subscription = event.data.object;
-        console.log('🚫 Subscription deleted:', {
-          subscriptionId: subscription.id,
-        });
+        const { userId, bookId } = subscription.metadata || {};
 
-        try {
-          // Find the subscription and mark as canceled
-          const usersSnapshot = await db.collection('users').get();
-
-          for (const userDoc of usersSnapshot.docs) {
-            const subscriptionDoc = await db
-              .collection('users')
-              .doc(userDoc.id)
-              .collection('subscriptions')
-              .doc(subscription.id)
-              .get();
-
-            if (subscriptionDoc.exists()) {
-              await subscriptionDoc.ref.update({
-                status: 'canceled',
-                cancelAtPeriodEnd: true,
-              });
-
-              console.log(`✅ Subscription marked as canceled in Firestore: ${subscription.id}`);
-              break;
-            }
-          }
-        } catch (error) {
-          console.error('❌ Error deleting subscription in Firestore:', error);
+        if (!userId || !bookId) {
+          console.error('❌ Missing metadata in subscription');
+          break;
         }
 
+        await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
+          bookId,
+          status: subscription.status,
+          currentPeriodStart: subscription.current_period_start * 1000,
+          currentPeriodEnd: subscription.current_period_end * 1000,
+          cancelAtPeriodEnd: subscription.cancel_at_period_end,
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        }, { merge: true });
+        console.log('✅ Subscription status updated');
         break;
       }
 
       default:
-        console.log(`Unhandled event type: ${event.type}`);
+        console.log(`ℹ️ Unhandled event type: ${event.type}`);
     }
 
     res.json({ received: true });
+  } catch (error) {
+    console.error('❌ Error processing webhook:', error);
+    res.status(500).json({ error: 'Webhook processing failed' });
   }
-);
+});
 
-// JSON parsing for other routes (after webhook route)
 app.use(express.json());
 
-// Create Stripe Checkout Session
 app.post('/api/create-checkout-session', async (req, res) => {
+  if (!stripe) {
+    return res.status(500).json({ error: 'Stripe not configured' });
+  }
+
   try {
-    const { priceId, bookId, customerEmail, userId, successUrl, cancelUrl, isSubscription } = req.body;
+    const { bookId, priceId, userId, paymentType } = req.body;
 
-    if (!priceId) {
-      return res.status(400).json({ error: 'Price ID is required' });
+    if (!bookId || !priceId || !userId || !paymentType) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        received: { bookId, priceId, userId, paymentType },
+      });
     }
 
-    if (!userId) {
-      return res.status(400).json({ error: 'User ID is required. Please sign in first.' });
-    }
+    const origin = req.headers.origin || 'http://localhost:3001';
 
-    // Determine mode based on whether it's a subscription or one-time payment
-    const mode = isSubscription ? 'subscription' : 'payment';
-
-    console.log(`Creating ${mode} checkout session for price: ${priceId}, user: ${userId}`);
-
-    // Create checkout session
     const session = await stripe.checkout.sessions.create({
-      mode,
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      customer_email: customerEmail,
+      line_items: [{
+        price: priceId,
+        quantity: 1,
+      }],
+      mode: paymentType === 'lifetime' ? 'payment' : 'subscription',
+      success_url: `${origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/books/${bookId}`,
       metadata: {
-        bookId: bookId || '',
-        userId: userId || '',  // Add userId to metadata for webhook
+        userId,
+        bookId,
+        paymentType,
       },
-      success_url: successUrl,
-      cancel_url: cancelUrl,
+      ...(paymentType === 'subscription' && {
+        subscription_data: {
+          metadata: { userId, bookId },
+        },
+      }),
     });
 
     res.json({ url: session.url });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
+    console.error('❌ Error creating checkout session:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// Verify checkout session and get details
 app.get('/api/verify-session/:sessionId', async (req, res) => {
+  if (!stripe) {
+    return res.status(500).json({ error: 'Stripe not configured' });
+  }
+
   try {
-    const { sessionId } = req.params;
-
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
-
+    const session = await stripe.checkout.sessions.retrieve(req.params.sessionId);
     res.json({
-      success: true,
-      bookId: session.metadata?.bookId,
+      status: session.payment_status,
       customerEmail: session.customer_email,
-      amountTotal: session.amount_total,
-      paymentStatus: session.payment_status,
-      mode: session.mode,
+      metadata: session.metadata,
     });
   } catch (error) {
-    console.error('Error verifying session:', error);
-    res.status(500).json({ success: false, error: error.message });
+    console.error('❌ Error verifying session:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    message: 'BookIn API server is running',
-    payment_provider: 'Stripe'
-  });
-});
-
 app.listen(PORT, () => {
-  console.log(`🚀 API server running on http://localhost:${PORT}`);
-  console.log(`💳 Stripe webhook: http://localhost:${PORT}/api/webhook/stripe`);
-  console.log(`📝 Create checkout: POST http://localhost:${PORT}/api/create-checkout-session`);
+  console.log(`Dev server listening on port ${PORT}`);
 });

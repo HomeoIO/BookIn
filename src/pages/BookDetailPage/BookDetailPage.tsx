@@ -9,28 +9,43 @@ import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
 import { StripeService } from '@services/stripe';
 import { useAuth } from '@/features/auth/hooks/useAuth';
+import { useTranslation } from 'react-i18next';
 
 type TabType = 'summary' | 'training';
 
 function BookDetailPage() {
   const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
   const { user, isAuthenticated } = useAuth();
   const { books, loading: booksLoading } = useBooks();
   const { questions, loading: questionsLoading } = useQuestions(bookId);
   const [activeTab, setActiveTab] = useState<TabType>('training');
   const [purchasing, setPurchasing] = useState(false);
 
-  const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
-  const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
+  const purchases = usePurchaseStore((state) => state.purchases);
   const purchasesLoading = usePurchaseStore((state) => state.loading);
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
 
   const book = books.find((b) => b.id === bookId);
   const loading = booksLoading || questionsLoading || purchasesLoading || subscriptionsLoading;
 
-  // User has access if: free book, purchased this book, or has active subscription for this book
-  const isPurchased = book ? (book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id)) : false;
+  const hasSubscriptionAccess = (bookId?: string) => {
+    if (!bookId) return false;
+    return subscriptions.some((sub) =>
+      sub.bookId === bookId &&
+      (sub.status === 'active' || sub.status === 'trialing') &&
+      sub.currentPeriodEnd > Date.now()
+    );
+  };
+
+  const hasPurchaseAccess = (bookId?: string) => {
+    if (!bookId) return false;
+    return purchases.some((purchase) => purchase.bookId === bookId);
+  };
+
+  const isPurchased = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id)) : false;
   const needsPurchase = book && !book.isFree && !isPurchased;
 
   // Get real progress data from store
@@ -187,7 +202,9 @@ function BookDetailPage() {
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {book.title}
                 {book.titleZh && (
-                  <span className="block text-2xl text-gray-700 mt-2">
+                  <span
+                    className={`block text-2xl text-gray-700 mt-2 ${i18n.language?.startsWith('zh') ? '' : 'text-opacity-0'}`}
+                  >
                     {book.titleZh}
                   </span>
                 )}
@@ -195,10 +212,6 @@ function BookDetailPage() {
               <p className="text-lg text-gray-600 mb-4">
                 By {book.author}
               </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                {book.description}
-              </p>
-
               {/* Difficulty Badge */}
               <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700">
                 {book.difficulty.charAt(0).toUpperCase() + book.difficulty.slice(1)} Level
