@@ -5,6 +5,7 @@ import { authHelpers } from '@/firebase/auth';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
+import { useReflectionStore } from '@stores/reflection-store';
 
 interface AuthContextType {
   user: User | null;
@@ -27,6 +28,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const clearSubscriptions = useSubscriptionStore((state) => state.clearSubscriptions);
   const fetchAllProgress = useProgressStore((state) => state.fetchAllProgress);
   const clearProgress = useProgressStore((state) => state.clearProgress);
+  const clearReflections = useReflectionStore((state) => state.clear);
 
   useEffect(() => {
     // Listen for auth state changes
@@ -48,11 +50,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         clearPurchases();
         clearSubscriptions();
         clearProgress();
+        clearReflections();
       }
     });
 
     return () => unsubscribe();
-  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress]);
+  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress, clearReflections]);
 
   const signUp = async (email: string, password: string) => {
     try {
@@ -81,6 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       clearPurchases();
       clearSubscriptions();
       clearProgress();
+      clearReflections();
       console.log('✅ User signed out');
     } catch (error: any) {
       console.error('Sign out error:', error);

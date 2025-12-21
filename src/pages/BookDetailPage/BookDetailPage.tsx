@@ -10,8 +10,9 @@ import { useProgressStore } from '@stores/progress-store';
 import { StripeService } from '@services/stripe';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 import { useTranslation } from 'react-i18next';
+import { ReflectionHistory } from '@features/reflection/components/ReflectionHistory';
 
-type TabType = 'summary' | 'training';
+type TabType = 'summary' | 'training' | 'reflection';
 
 function BookDetailPage() {
   const { bookId } = useParams<{ bookId: string }>();
@@ -355,7 +356,7 @@ function BookDetailPage() {
             ) : (
               /* Purchased or Free - Show Tabs */
               <>
-                <div className="flex gap-4 mb-8">
+                <div className="flex gap-4 flex-wrap mb-8">
                   <button
                     onClick={() => setActiveTab('summary')}
                     className={`px-6 py-3 font-medium rounded-lg transition-colors ${
@@ -364,7 +365,7 @@ function BookDetailPage() {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
-                    Summary
+                    {i18n.language === 'zh-HK' ? '概要' : 'Summary'}
                   </button>
                   <button
                     onClick={() => setActiveTab('training')}
@@ -374,7 +375,17 @@ function BookDetailPage() {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
-                    Training
+                    {i18n.language === 'zh-HK' ? '訓練' : 'Training'}
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('reflection')}
+                    className={`px-6 py-3 font-medium rounded-lg transition-colors ${
+                      activeTab === 'reflection'
+                        ? 'bg-primary-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {i18n.language === 'zh-HK' ? '心得記錄' : 'Reflections'}
                   </button>
                 </div>
 
@@ -444,6 +455,14 @@ function BookDetailPage() {
                       </Button>
                     </div>
                   </div>
+                )}
+
+                {activeTab === 'reflection' && (
+                  <ReflectionHistory
+                    bookId={book.id}
+                    userId={user?.uid}
+                    hasAccess={isPurchased}
+                  />
                 )}
               </>
             )}

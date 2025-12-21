@@ -9,6 +9,7 @@ import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useStreakStore } from '@stores/streak-store';
 import { useProgressStore } from '@stores/progress-store';
+import { useReflectionStore } from '@stores/reflection-store';
 import { useAuth } from '@features/auth/hooks/useAuth';
 
 interface Answer {
@@ -20,15 +21,16 @@ interface Answer {
 function TrainingPage() {
   const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['books']);
   const { books } = useBooks();
   const { questions, loading } = useQuestions(bookId);
   const { user } = useAuth();
-  const hasPurchased = usePurchaseStore((state) => state.hasPurchased);
-  const hasActiveSubscription = useSubscriptionStore((state) => state.hasActiveSubscription);
+  const purchases = usePurchaseStore((state) => state.purchases);
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const recordPractice = useStreakStore((state) => state.recordPractice);
   const streakStatus = useStreakStore((state) => state.getStreakStatus());
   const { recordAnswer, getProgress, fetchProgress } = useProgressStore();
+  const addReflection = useReflectionStore((state) => state.addReflection);
 
   const isChinese = i18n.language === 'zh-HK';
 
@@ -38,12 +40,29 @@ function TrainingPage() {
   const [sessionComplete, setSessionComplete] = useState(false);
   const [showStreakCelebration, setShowStreakCelebration] = useState(false);
   const [_streakBeforeSession, _setStreakBeforeSession] = useState(0); // TODO: Implement streak tracking
+  const [reflectionIndex, setReflectionIndex] = useState<number | null>(null);
+  const [reflectionDraft, setReflectionDraft] = useState('');
+  const [reflectionSubmitted, setReflectionSubmitted] = useState(false);
+  const [reflectionSaving, setReflectionSaving] = useState(false);
 
   const book = books.find((b) => b.id === bookId);
   const currentQuestion = questions[currentQuestionIndex];
 
-  // Check if user has access to this book (free, purchased this book, or has subscription for this book)
-  const hasAccess = book ? (book.isFree || hasPurchased(book.id) || hasActiveSubscription(book.id)) : false;
+  const hasSubscriptionAccess = (bookId?: string) => {
+    if (!bookId) return false;
+    return subscriptions.some((sub) =>
+      sub.bookId === bookId &&
+      (sub.status === 'active' || sub.status === 'trialing') &&
+      sub.currentPeriodEnd > Date.now()
+    );
+  };
+
+  const hasPurchaseAccess = (bookId?: string) => {
+    if (!bookId) return false;
+    return purchases.some((purchase) => purchase.bookId === bookId);
+  };
+
+  const hasAccess = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id)) : false;
 
   // Redirect to book detail if user doesn't have access
   useEffect(() => {
@@ -58,6 +77,14 @@ function TrainingPage() {
       fetchProgress(user.uid, bookId);
     }
   }, [user, bookId, fetchProgress]);
+
+  useEffect(() => {
+    if (questions.length > 0) {
+      setReflectionIndex(Math.floor(Math.random() * questions.length));
+      setReflectionDraft('');
+      setReflectionSubmitted(false);
+    }
+  }, [questions.length]);
 
   useEffect(() => {
     if (questions.length > 0 && currentQuestionIndex >= questions.length) {
@@ -106,6 +133,33 @@ function TrainingPage() {
   const handleNextQuestion = () => {
     setShowFeedback(false);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const handleReflectionSave = async () => {
+    if (!user || !book || !bookId || !currentQuestion) {
+      alert(isChinese ? '請登入以儲存心得' : 'Please sign in to save reflections.');
+      return;
+    }
+    if (!reflectionDraft.trim()) {
+      return;
+    }
+    try {
+      setReflectionSaving(true);
+      await addReflection({
+        userId: user.uid,
+        bookId,
+        questionId: currentQuestion.id,
+        content: reflectionDraft.trim(),
+        createdAt: Date.now(),
+      });
+      setReflectionDraft('');
+      setReflectionSubmitted(true);
+    } catch (error) {
+      console.error('Failed to save reflection:', error);
+      alert(isChinese ? '無法儲存心得' : 'Failed to save reflection');
+    } finally {
+      setReflectionSaving(false);
+    }
   };
 
   if (loading) {
@@ -327,6 +381,44 @@ function TrainingPage() {
           showFeedback={showFeedback}
           userAnswer={currentAnswer?.userAnswer}
         />
+
+        {showFeedback &&
+          reflectionIndex !== null &&
+          currentQuestionIndex === reflectionIndex &&
+          !reflectionSubmitted && (
+            <div className="max-w-3xl mx-auto mt-6 border border-primary-100 bg-primary-50 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {t('books:reflection_prompt_title', 'Reflection Moment')}
+              </h3>
+              <p className="text-sm text-gray-700 mb-3">
+                {t('books:reflection_prompt_description', 'Capture how you will apply this lesson today.')}
+              </p>
+              <textarea
+                rows={3}
+                value={reflectionDraft}
+                onChange={(e) => setReflectionDraft(e.target.value)}
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 mb-3"
+                placeholder={t('books:reflection_prompt_placeholder', 'Example: I will discuss this framework with my mentor tonight.')}
+              />
+              <div className="flex justify-end">
+                <Button
+                  variant="primary"
+                  onClick={handleReflectionSave}
+                  disabled={reflectionSaving}
+                >
+                  {reflectionSaving
+                    ? t('books:reflection_prompt_saving', 'Saving...')
+                    : t('books:reflection_prompt_save', 'Save Reflection')}
+                </Button>
+              </div>
+            </div>
+          )}
+
+        {showFeedback && reflectionIndex !== null && currentQuestionIndex === reflectionIndex && reflectionSubmitted && (
+          <div className="max-w-3xl mx-auto mt-6 bg-green-50 border border-green-200 text-green-800 rounded-lg p-3 text-sm">
+            {t('books:reflection_prompt_saved', 'Reflection saved!')}
+          </div>
+        )}
 
         {/* Next Button */}
         {showFeedback && (
