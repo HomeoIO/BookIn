@@ -9,4 +9,16 @@ export class ReflectionService {
   static getReflections(userId: string, bookId: string) {
     return ReflectionRepository.getReflections(userId, bookId);
   }
+
+  static getAllReflections(userId: string) {
+    return ReflectionRepository.getAllReflections(userId);
+  }
+
+  static updateReflection(
+    userId: string,
+    reflectionId: string,
+    updates: Partial<Pick<ReflectionEntry, 'content' | 'completed' | 'completedAt'>>
+  ) {
+    return ReflectionRepository.updateReflection(userId, reflectionId, updates);
+  }
 }

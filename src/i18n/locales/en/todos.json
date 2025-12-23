@@ -1,0 +1,7 @@
+{
+  "title": "Todos",
+  "subtitle": "Turn reflections into daily actions.",
+  "login_prompt": "Sign in to view your todo list.",
+  "empty": "No todos yet. Save a reflection during training to create one!",
+  "unknown_book": "Unknown book"
+}

@@ -151,6 +151,8 @@ function TrainingPage() {
         questionId: currentQuestion.id,
         content: reflectionDraft.trim(),
         createdAt: Date.now(),
+        completed: false,
+        completedAt: null,
       });
       setReflectionDraft('');
       setReflectionSubmitted(true);

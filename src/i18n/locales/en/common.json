@@ -24,5 +24,7 @@
   "summary": "Summary",
   "training": "Training",
   "progress": "Progress",
-  "language": "Language"
+  "language": "Language",
+  "nav_books": "Books",
+  "nav_todos": "Todos"
 }

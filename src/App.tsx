@@ -8,6 +8,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
 import PurchaseSuccessPage from './pages/PurchaseSuccessPage';
+import { TodosPage } from './pages/TodosPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             {/* Public routes */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/todos" element={<TodosPage />} />
             <Route path="/books/:bookId" element={<BookDetailPage />} />
             <Route path="/books/:bookId/train" element={<TrainingPage />} />
             <Route path="/purchase-success" element={<PurchaseSuccessPage />} />

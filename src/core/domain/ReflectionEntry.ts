@@ -5,4 +5,6 @@ export interface ReflectionEntry {
   questionId: string;
   content: string;
   createdAt: number;
+  completed?: boolean;
+  completedAt?: number | null;
 }

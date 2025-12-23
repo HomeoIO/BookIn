@@ -6,6 +6,7 @@ import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
 import { useReflectionStore } from '@stores/reflection-store';
+import { useTodoStore } from '@stores/todo-store';
 
 interface AuthContextType {
   user: User | null;
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchAllProgress = useProgressStore((state) => state.fetchAllProgress);
   const clearProgress = useProgressStore((state) => state.clearProgress);
   const clearReflections = useReflectionStore((state) => state.clear);
+  const clearTodos = useTodoStore((state) => state.clear);
 
   useEffect(() => {
     // Listen for auth state changes
@@ -51,11 +53,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         clearSubscriptions();
         clearProgress();
         clearReflections();
+        clearTodos();
       }
     });
 
     return () => unsubscribe();
-  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress, clearReflections]);
+  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress, clearReflections, clearTodos]);
 
   const signUp = async (email: string, password: string) => {
     try {
@@ -85,6 +88,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       clearSubscriptions();
       clearProgress();
       clearReflections();
+      clearTodos();
       console.log('✅ User signed out');
     } catch (error: any) {
       console.error('Sign out error:', error);
