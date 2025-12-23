@@ -50,5 +50,7 @@
   "reflection_prompt_save": "Save Reflection",
   "reflection_prompt_saving": "Saving...",
   "reflection_prompt_saved": "Reflection saved!",
-  "reflection_loading": "Loading reflections..."
+  "reflection_loading": "Loading reflections...",
+  "buy_book": "Buy on Amazon",
+  "listen_audible": "Listen on Audible"
 }

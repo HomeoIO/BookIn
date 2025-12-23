@@ -15,6 +15,11 @@ export interface Book {
   summary: string;
   stripeProductId?: string;
   createdAt?: number;
+  asin?: string;
+  affiliate?: {
+    amazon?: Record<string, { asin: string } | string>;
+    audible?: Record<string, { asin: string } | string>;
+  };
 }
 
 export interface BookMetadata {

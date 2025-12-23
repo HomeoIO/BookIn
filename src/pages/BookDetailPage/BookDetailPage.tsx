@@ -11,6 +11,9 @@ import { StripeService } from '@services/stripe';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 import { useTranslation } from 'react-i18next';
 import { ReflectionHistory } from '@features/reflection/components/ReflectionHistory';
+import { useRegion } from '@/hooks/useRegion';
+import { getAmazonLink, getAudibleLink } from '@/utils/affiliate';
+import type { Book } from '@core/domain';
 
 type TabType = 'summary' | 'training' | 'reflection';
 
@@ -19,6 +22,7 @@ function BookDetailPage() {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
   const { user, isAuthenticated } = useAuth();
+  const { countryCode } = useRegion();
   const { books, loading: booksLoading } = useBooks();
   const { questions, loading: questionsLoading } = useQuestions(bookId);
   const [activeTab, setActiveTab] = useState<TabType>('training');
@@ -217,6 +221,9 @@ function BookDetailPage() {
               <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700">
                 {book.difficulty.charAt(0).toUpperCase() + book.difficulty.slice(1)} Level
               </div>
+
+              {/* Affiliate Buttons */}
+              <AffiliateButtons book={book} regionCode={countryCode} />
             </div>
           </div>
 
@@ -474,3 +481,36 @@ function BookDetailPage() {
 }
 
 export default BookDetailPage;
+
+function AffiliateButtons({ book, regionCode }: { book: Book; regionCode: string | null | undefined }) {
+  const { t } = useTranslation(['books']);
+  const amazonLink = getAmazonLink(book, regionCode);
+  const audibleLink = getAudibleLink(book, regionCode);
+
+  if (!amazonLink && !audibleLink) return null;
+
+  return (
+    <div className="flex flex-wrap gap-3 mt-4">
+      {amazonLink && (
+        <a
+          href={amazonLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center px-4 py-2 bg-amber-500 text-white text-sm font-medium rounded-md hover:bg-amber-600 transition"
+        >
+          {t('books:buy_book', 'Buy on Amazon')}
+        </a>
+      )}
+      {audibleLink && (
+        <a
+          href={audibleLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center px-4 py-2 bg-orange-600 text-white text-sm font-medium rounded-md hover:bg-orange-700 transition"
+        >
+          {t('books:listen_audible', 'Listen on Audible')}
+        </a>
+      )}
+    </div>
+  );
+}

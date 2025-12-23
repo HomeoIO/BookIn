@@ -50,5 +50,7 @@
   "reflection_prompt_save": "儲存心得",
   "reflection_prompt_saving": "儲存中...",
   "reflection_prompt_saved": "心得已儲存",
-  "reflection_loading": "載入心得中..."
+  "reflection_loading": "載入心得中...",
+  "buy_book": "在 Amazon 購買",
+  "listen_audible": "在 Audible 收聽"
 }

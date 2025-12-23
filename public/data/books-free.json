@@ -7,12 +7,39 @@
     "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
     "descriptionZh": "建立好習慣、打破壞習慣的簡單有效方法",
     "coverImage": "https://placehold.co/300x400/e0f2fe/0369a1?text=Atomic+Habits",
-    "category": ["Self-Help", "Psychology"],
+    "category": [
+      "Self-Help",
+      "Psychology"
+    ],
     "difficulty": "beginner",
     "totalQuestions": 20,
     "isFree": true,
     "summary": "Atomic Habits presents a proven framework for improving every day through tiny changes. James Clear argues that small habits don't add up—they compound. The effects of your habits multiply as you repeat them, creating remarkable results over time.\n\n**Core Philosophy:** You do not rise to the level of your goals. You fall to the level of your systems. Focus on systems, not goals.\n\n**The Four Laws of Behavior Change:**\n\n1. **Make it Obvious (Cue)** - Design your environment to make good habit cues visible. Use implementation intentions: 'I will [BEHAVIOR] at [TIME] in [LOCATION].' Stack habits: 'After [CURRENT HABIT], I will [NEW HABIT].'\n\n2. **Make it Attractive (Craving)** - Use temptation bundling: pair actions you want to do with actions you need to do. Join a culture where your desired behavior is normal.\n\n3. **Make it Easy (Response)** - Reduce friction for good habits. Use the Two-Minute Rule: scale habits down to a version that takes two minutes or less. Prepare your environment for future use.\n\n4. **Make it Satisfying (Reward)** - Create immediate rewards for habits with delayed gratification. Use habit tracking. Never miss twice.\n\n**Key Concepts:**\n- The 1% Rule: Getting 1% better each day leads to being 37 times better after a year\n- Plateau of Latent Potential: breakthrough comes after pushing through the 'valley of disappointment'\n- Identity-based habits: Focus on who you wish to become, not what you want to achieve\n- The Goldilocks Rule: Peak motivation occurs when facing challenges at the edge of your abilities\n\nClear emphasizes that habits are the compound interest of self-improvement. The same way money multiplies through compound interest, the effects of your habits multiply as you repeat them.",
-    "summaryZh": "《原子習慣》提供了一個經過驗證的框架，透過微小的改變來改善每一天。詹姆斯·克利爾認為，小習慣不會相加——它們會複利成長。當你重複這些習慣時，它們的效果會倍增，隨著時間創造出驚人的結果。\n\n**核心哲學：** 你不會上升到你的目標水平。你會下降到你的系統水平。專注於系統，而非目標。\n\n**行為改變的四個法則：**\n\n1. **讓提示顯而易見** - 設計你的環境，讓好習慣的提示變得明顯。使用執行意圖：「我將在[時間]在[地點]做[行為]」。堆疊習慣：「在[現有習慣]之後，我將[新習慣]」。\n\n2. **讓習慣有吸引力** - 使用誘惑綑綁：將你想做的事與你需要做的事配對。加入一個你想要的行為是正常的文化。\n\n3. **讓行動輕而易舉** - 減少好習慣的阻力。使用兩分鐘法則：將習慣縮減到只需兩分鐘或更少的版本。為未來的使用準備好你的環境。\n\n4. **讓獎賞令人滿足** - 為延遲滿足的習慣創造即時獎勵。使用習慣追蹤。永遠不要連續錯過兩次。\n\n**關鍵概念：**\n- 1%法則：每天進步1%，一年後會進步37倍\n- 潛在潛力高原：突破發生在推過「失望谷」之後\n- 以身份為基礎的習慣：專注於你想成為誰，而不是你想達成什麼\n- 金髮姑娘法則：當面對處於你能力邊緣的挑戰時，動機最高\n\n克利爾強調習慣是自我改善的複利。就像金錢透過複利倍增一樣，當你重複習慣時，習慣的效果也會倍增。"
+    "summaryZh": "《原子習慣》提供了一個經過驗證的框架，透過微小的改變來改善每一天。詹姆斯·克利爾認為，小習慣不會相加——它們會複利成長。當你重複這些習慣時，它們的效果會倍增，隨著時間創造出驚人的結果。\n\n**核心哲學：** 你不會上升到你的目標水平。你會下降到你的系統水平。專注於系統，而非目標。\n\n**行為改變的四個法則：**\n\n1. **讓提示顯而易見** - 設計你的環境，讓好習慣的提示變得明顯。使用執行意圖：「我將在[時間]在[地點]做[行為]」。堆疊習慣：「在[現有習慣]之後，我將[新習慣]」。\n\n2. **讓習慣有吸引力** - 使用誘惑綑綁：將你想做的事與你需要做的事配對。加入一個你想要的行為是正常的文化。\n\n3. **讓行動輕而易舉** - 減少好習慣的阻力。使用兩分鐘法則：將習慣縮減到只需兩分鐘或更少的版本。為未來的使用準備好你的環境。\n\n4. **讓獎賞令人滿足** - 為延遲滿足的習慣創造即時獎勵。使用習慣追蹤。永遠不要連續錯過兩次。\n\n**關鍵概念：**\n- 1%法則：每天進步1%，一年後會進步37倍\n- 潛在潛力高原：突破發生在推過「失望谷」之後\n- 以身份為基礎的習慣：專注於你想成為誰，而不是你想達成什麼\n- 金髮姑娘法則：當面對處於你能力邊緣的挑戰時，動機最高\n\n克利爾強調習慣是自我改善的複利。就像金錢透過複利倍增一樣，當你重複習慣時，習慣的效果也會倍增。",
+    "asin": "0735211299",
+    "affiliate": {
+      "amazon": {
+        "default": "0735211299"
+      },
+      "audible": {
+        "default": "B07LC91PHL",
+        "UK": {
+          "asin": "B07J1XQSNK"
+        },
+        "US": {
+          "asin": "B07J1PMF1H"
+        },
+        "CA": {
+          "asin": "B07GBKBL1B"
+        },
+        "AU": {
+          "asin": "B07J1LQDWD"
+        },
+        "JP": {
+          "asin": "B07GBJN31K"
+        }
+      }
+    }
   },
   {
     "id": "sapiens",
@@ -22,11 +49,38 @@
     "description": "A Brief History of Humankind",
     "descriptionZh": "從動物到上帝",
     "coverImage": "https://placehold.co/300x400/fef3c7/a16207?text=Sapiens",
-    "category": ["History", "Science"],
+    "category": [
+      "History",
+      "Science"
+    ],
     "difficulty": "intermediate",
     "totalQuestions": 20,
     "isFree": true,
-    "summary": "Sapiens explores how Homo sapiens came to dominate the world through a series of revolutions. Yuval Noah Harari argues that our success stems not from individual superiority but from our unique ability to cooperate flexibly in large numbers through shared myths and beliefs.\n\n**The Three Revolutions:**\n\n**1. The Cognitive Revolution (70,000 years ago)**\nSapiens developed the ability to create and believe in things that exist purely in imagination: gods, nations, money, human rights. This 'fiction' enables cooperation among millions of strangers and allows rapid innovation in social behavior.\n\n**2. The Agricultural Revolution (12,000 years ago)**\nHarari controversially calls this 'history's biggest fraud.' While it allowed populations to grow, it made life harder for individuals: longer working hours, worse nutrition, more disease, and increased violence. We didn't domesticate wheat—wheat domesticated us.\n\n**3. The Scientific Revolution (500 years ago)**\nThe key breakthrough wasn't new knowledge but the admission of ignorance. Pre-modern knowledge systems claimed to have all the answers. Modern science starts with 'we don't know' and uses observation and mathematics to build knowledge.\n\n**Key Themes:**\n\n- **Imagined Orders**: Money, nations, corporations, and human rights exist because we collectively believe in them. These shared fictions are humanity's superpower.\n\n- **The Role of Empire**: Despite their brutality, empires have been the main driver of cultural mixing and many of humanity's greatest achievements.\n\n- **Capitalism and Growth**: The modern economy is based on trust in the future and the belief in perpetual growth—itself an imagined order.\n\n- **Future of Sapiens**: Biotechnology, AI, and genetic engineering may soon allow us to redesign ourselves, potentially creating post-human species. The question is: what do we want to become?\n\nHarari challenges readers to see culture, politics, and economics not as natural or inevitable but as imagined orders that we created and can potentially reshape."
+    "summary": "Sapiens explores how Homo sapiens came to dominate the world through a series of revolutions. Yuval Noah Harari argues that our success stems not from individual superiority but from our unique ability to cooperate flexibly in large numbers through shared myths and beliefs.\n\n**The Three Revolutions:**\n\n**1. The Cognitive Revolution (70,000 years ago)**\nSapiens developed the ability to create and believe in things that exist purely in imagination: gods, nations, money, human rights. This 'fiction' enables cooperation among millions of strangers and allows rapid innovation in social behavior.\n\n**2. The Agricultural Revolution (12,000 years ago)**\nHarari controversially calls this 'history's biggest fraud.' While it allowed populations to grow, it made life harder for individuals: longer working hours, worse nutrition, more disease, and increased violence. We didn't domesticate wheat—wheat domesticated us.\n\n**3. The Scientific Revolution (500 years ago)**\nThe key breakthrough wasn't new knowledge but the admission of ignorance. Pre-modern knowledge systems claimed to have all the answers. Modern science starts with 'we don't know' and uses observation and mathematics to build knowledge.\n\n**Key Themes:**\n\n- **Imagined Orders**: Money, nations, corporations, and human rights exist because we collectively believe in them. These shared fictions are humanity's superpower.\n\n- **The Role of Empire**: Despite their brutality, empires have been the main driver of cultural mixing and many of humanity's greatest achievements.\n\n- **Capitalism and Growth**: The modern economy is based on trust in the future and the belief in perpetual growth—itself an imagined order.\n\n- **Future of Sapiens**: Biotechnology, AI, and genetic engineering may soon allow us to redesign ourselves, potentially creating post-human species. The question is: what do we want to become?\n\nHarari challenges readers to see culture, politics, and economics not as natural or inevitable but as imagined orders that we created and can potentially reshape.",
+    "asin": "0062316117",
+    "affiliate": {
+      "amazon": {
+        "default": "006342200X"
+      },
+      "audible": {
+        "default": "B00VXKB596",
+        "UK": {
+          "asin": "B00VXKB596"
+        },
+        "US": {
+          "asin": "B00VXJQ88K"
+        },
+        "CA": {
+          "asin": "B075LZSVMH"
+        },
+        "AU": {
+          "asin": "B00VY26M78"
+        },
+        "JP": {
+          "asin": "B07DNSB9M4"
+        }
+      }
+    }
   },
   {
     "id": "thinking-fast-slow",
@@ -36,10 +90,27 @@
     "description": "A groundbreaking tour of the mind and explains the two systems that drive the way we think",
     "descriptionZh": "探索大腦的突破性之旅，解釋驅動我們思考方式的兩個系統",
     "coverImage": "https://placehold.co/300x400/f3e8ff/7e22ce?text=Thinking+Fast+and+Slow",
-    "category": ["Psychology", "Science"],
+    "category": [
+      "Psychology",
+      "Science"
+    ],
     "difficulty": "advanced",
     "totalQuestions": 20,
     "isFree": true,
-    "summary": "Thinking, Fast and Slow synthesizes decades of research in psychology and behavioral economics to explain how we make decisions. Daniel Kahneman, winner of the Nobel Prize in Economics, introduces two systems that drive how we think and reveals how these systems shape our judgment.\n\n**The Two Systems:**\n\n**System 1** - Fast, automatic, intuitive, emotional:\n- Operates automatically with no effort\n- Detects simple relations, completes phrases\n- Generates impressions and feelings\n- Cannot be turned off\n- Examples: recognizing faces, detecting that one object is more distant than another, understanding simple sentences\n\n**System 2** - Slow, deliberate, logical, effortful:\n- Allocates attention to effortful mental activities\n- Handles complex computations\n- Can follow rules and make comparisons\n- Often lazy and accepts System 1's suggestions with minimal checking\n- Examples: counting occurrences of a letter in text, parking in a narrow space, checking validity of a complex logical argument\n\n**Key Biases and Heuristics:**\n\n- **Anchoring Effect**: We rely too heavily on the first piece of information offered\n- **Availability Heuristic**: We judge probability by how easily examples come to mind\n- **Loss Aversion**: Losses loom larger than gains (losing $100 hurts more than gaining $100 feels good)\n- **Framing Effect**: Decisions are influenced by how options are presented\n- **WYSIATI** (What You See Is All There Is): System 1 creates coherent stories from available information, ignoring absent information\n- **Planning Fallacy**: We underestimate time, costs, and risks of future actions\n- **Hindsight Bias**: After an event, we convince ourselves we predicted it\n\n**Prospect Theory:**\nKahneman and Amos Tversky's alternative to expected utility theory. People make decisions based on potential gains and losses relative to a reference point, not final outcomes. We're risk-averse for gains but risk-seeking to avoid losses.\n\n**The Two Selves:**\n- **Experiencing Self**: Lives in the present, moment by moment\n- **Remembering Self**: Keeps score and makes choices based on memories\n\nOur remembering self often makes decisions that conflict with the experiencing self's well-being. We optimize for peak moments and endings rather than overall experience.\n\nKahneman concludes that while we cannot eliminate cognitive biases, we can improve decision-making by recognizing when mistakes are likely and creating environments that help System 2 engage when needed."
+    "summary": "Thinking, Fast and Slow synthesizes decades of research in psychology and behavioral economics to explain how we make decisions. Daniel Kahneman, winner of the Nobel Prize in Economics, introduces two systems that drive how we think and reveals how these systems shape our judgment.\n\n**The Two Systems:**\n\n**System 1** - Fast, automatic, intuitive, emotional:\n- Operates automatically with no effort\n- Detects simple relations, completes phrases\n- Generates impressions and feelings\n- Cannot be turned off\n- Examples: recognizing faces, detecting that one object is more distant than another, understanding simple sentences\n\n**System 2** - Slow, deliberate, logical, effortful:\n- Allocates attention to effortful mental activities\n- Handles complex computations\n- Can follow rules and make comparisons\n- Often lazy and accepts System 1's suggestions with minimal checking\n- Examples: counting occurrences of a letter in text, parking in a narrow space, checking validity of a complex logical argument\n\n**Key Biases and Heuristics:**\n\n- **Anchoring Effect**: We rely too heavily on the first piece of information offered\n- **Availability Heuristic**: We judge probability by how easily examples come to mind\n- **Loss Aversion**: Losses loom larger than gains (losing $100 hurts more than gaining $100 feels good)\n- **Framing Effect**: Decisions are influenced by how options are presented\n- **WYSIATI** (What You See Is All There Is): System 1 creates coherent stories from available information, ignoring absent information\n- **Planning Fallacy**: We underestimate time, costs, and risks of future actions\n- **Hindsight Bias**: After an event, we convince ourselves we predicted it\n\n**Prospect Theory:**\nKahneman and Amos Tversky's alternative to expected utility theory. People make decisions based on potential gains and losses relative to a reference point, not final outcomes. We're risk-averse for gains but risk-seeking to avoid losses.\n\n**The Two Selves:**\n- **Experiencing Self**: Lives in the present, moment by moment\n- **Remembering Self**: Keeps score and makes choices based on memories\n\nOur remembering self often makes decisions that conflict with the experiencing self's well-being. We optimize for peak moments and endings rather than overall experience.\n\nKahneman concludes that while we cannot eliminate cognitive biases, we can improve decision-making by recognizing when mistakes are likely and creating environments that help System 2 engage when needed.",
+    "asin": "0374533555",
+    "affiliate": {
+      "amazon": {
+        "default": "0374533555"
+      },
+      "audible": {
+        "default": "B006QXGLA8",
+        "US": "B006QVEQ1Q",
+        "UK": "B006QXGLA8",
+        "CA": "B071F5Y27V",
+        "AU": "B00NGIA6G6",
+        "JP": "B07DWHDT48"
+      }
+    }
   }
 ]
