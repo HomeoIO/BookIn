@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@components/ui/LanguageSwitcher';
 import { useAuth } from '@/features/auth/hooks/useAuth';
 import { Button } from '@components/ui';
+import { BookOpen } from 'lucide-react';
 
 export interface HeaderProps {
   showDashboardLink?: boolean;
@@ -34,8 +35,8 @@ function Header(_props: HeaderProps) {
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 bg-gray-900 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-xl">📚</span>
+              <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold text-gray-900">{t('app_name')}</span>
             </Link>

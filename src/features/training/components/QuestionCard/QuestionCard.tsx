@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Question, QuestionHelpers } from '@core/domain';
 import { Button } from '@components/ui';
+import { Progress } from '@components/ui/progress';
+import { Card } from '@components/ui/card';
 
 export interface QuestionCardProps {
   question: Question;
@@ -42,20 +44,15 @@ function QuestionCard({
     : false;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-3xl mx-auto">
+    <Card className="p-8 max-w-3xl mx-auto">
       {/* Progress Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-muted-foreground font-medium">
             Question {questionNumber}/{totalQuestions}
           </span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
-          <div
-            className="bg-primary-500 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
-          />
-        </div>
+        <Progress value={(questionNumber / totalQuestions) * 100} className="h-2" />
       </div>
 
       {/* Question */}
@@ -211,16 +208,16 @@ function QuestionCard({
       {/* Submit Button */}
       {!showFeedback && (
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
-          fullWidth
+          className="w-full"
           onClick={handleSubmit}
           disabled={!selectedAnswer}
         >
           {isChinese ? '檢查答案' : 'Check Answer'}
         </Button>
       )}
-    </div>
+    </Card>
   );
 }
 

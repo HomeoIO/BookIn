@@ -8,17 +8,27 @@ BookIn is a client-side focused React web application that helps users learn and
 
 **Current Phase**: Production-Ready MVP 🚀
 
+### Recent Updates (December 2024)
+
+- ✅ **Design System Migration**: Migrated from custom Tailwind components to shadcn/ui
+- ✅ **Icon System**: Replaced all emoji icons with professional Lucide React icons
+- ✅ **HomePage Redesign**: Implemented sidebar layout with enhanced filters (category dropdown, multi-select difficulty checkboxes)
+- ✅ **BookDetailPage Redesign**: Added shadcn Tabs component for cleaner navigation between Summary/Training/Reflections
+- ✅ **TrainingPage Enhancement**: Updated quiz interface with shadcn Card and Progress components
+- ✅ **Accessibility**: All components now follow shadcn/ui accessibility standards
+
 ### Completed Features
 
 **Foundation:**
 - ✅ Vite + React 18 + TypeScript 5 project initialization
 - ✅ Complete folder structure following feature-driven architecture
 - ✅ Core dependencies installed (React Router, Zustand, React Query, Firebase, Tailwind CSS, Stripe)
-- ✅ Tailwind CSS configuration with primary theme
+- ✅ Tailwind CSS configuration with shadcn/ui design system
 - ✅ TypeScript configuration with path aliases
 - ✅ Core domain models (Book, Question, UserProgress, Purchase, Subscription)
 - ✅ Firebase integration (Auth, Firestore, Storage)
-- ✅ Design system components (Button, Card, Input, CircularProgress, StreakCard, LanguageSwitcher)
+- ✅ shadcn/ui components (Button, Card, Input, Tabs, Progress, Badge, Checkbox, Select, Separator)
+- ✅ Lucide icons for consistent iconography
 - ✅ Build system configured and optimized
 
 **Content & Data:**
@@ -35,16 +45,20 @@ BookIn is a client-side focused React web application that helps users learn and
 - ✅ Question files excluded from Git repository
 
 **UI/UX Features:**
-- ✅ HomePage with search, filters (category, difficulty), and sorting
-- ✅ BookCard component with lock/unlock states
-- ✅ BookDetailPage with purchase options and book previews
-- ✅ TrainingPage with interactive Q&A interface
+- ✅ HomePage with sidebar filters (category dropdown, multi-select difficulty checkboxes) and responsive grid layout
+- ✅ BookCard component with lock/unlock states and hover effects
+- ✅ BookDetailPage with shadcn Tabs (Summary/Training/Reflections) and improved progress display
+- ✅ TrainingPage with simplified quiz interface using shadcn Card and Progress components
 - ✅ QuestionCard supporting multiple question types (multiple-choice, true-false)
 - ✅ Real-time answer feedback with bilingual explanations
 - ✅ Session complete page with score, mastery tracking, and streak celebration
+- ✅ StreakCard with Lucide icons (Flame for active streaks, Sparkles for new streaks)
 - ✅ Language switcher (English ⇄ 繁體中文)
 - ✅ Loading states during data fetching
 - ✅ Full routing setup with React Router
+- ✅ Reflection experience: random "reflection moment" prompts during training and a history tab per book
+- ✅ Todos workspace that turns reflections into a crossable daily checklist, accessible from the global nav
+- ✅ Region-aware affiliate buttons on book pages that surface Amazon + Audible links with the right storefront/tag per locale
 
 **Authentication & Security:**
 - ✅ Firebase Authentication (Email/Password)
@@ -66,6 +80,7 @@ BookIn is a client-side focused React web application that helps users learn and
 - ✅ Lock/unlock state based on purchases and subscriptions
 - ✅ Express API server for webhooks (port 3002)
 - ✅ Makefile for easy development workflow
+- ✅ Affiliate infrastructure with geo-detected Amazon/Audible referral links for each book
 
 **Progress Tracking:**
 - ✅ Per-book progress tracking (questions completed, correct answers)
@@ -76,6 +91,7 @@ BookIn is a client-side focused React web application that helps users learn and
 - ✅ Real-time progress updates during training
 - ✅ "My Library" filter (books with progress)
 - ✅ "Purchased" filter (books user owns)
+- ✅ Reflections saved to Firestore with completion state so they double as todos
 
 **Developer Experience:**
 - ✅ Upload script for questions (`npm run questions:upload`)
@@ -92,7 +108,8 @@ BookIn is a client-side focused React web application that helps users learn and
 - **Build Tool**: Vite 5
 - **Routing**: React Router v6
 - **State Management**: Zustand (client state) + React Query (server state)
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS with shadcn/ui component library
+- **Icons**: Lucide React
 - **Forms**: React Hook Form + Zod validation
 
 ### Backend (Firebase)
@@ -108,13 +125,14 @@ BookIn is a client-side focused React web application that helps users learn and
 bookin/
 ├── src/
 │   ├── components/        # Shared UI components
-│   │   ├── ui/           # Design system (Button, Card, Input)
-│   │   └── layout/       # Layout components
+│   │   ├── ui/           # shadcn/ui components (button, card, input, tabs, etc.)
+│   │   └── layout/       # Layout components (Header, Container, Footer)
 │   ├── features/         # Feature modules
 │   │   ├── auth/        # Authentication
 │   │   ├── books/       # Book collection
 │   │   ├── training/    # Q&A training
-│   │   └── progress/    # Progress tracking
+│   │   ├── progress/    # Progress tracking
+│   │   └── reflection/  # Reflections and todos
 │   ├── pages/           # Route pages
 │   ├── core/            # Business logic (platform-agnostic)
 │   │   ├── domain/      # Domain models
@@ -125,10 +143,12 @@ bookin/
 │   ├── stores/          # Zustand stores
 │   ├── shared/          # Shared utilities
 │   ├── firebase/        # Firebase configuration
-│   └── styles/          # Global styles
+│   ├── lib/             # Utility functions (cn helper)
+│   └── styles/          # Global styles (Tailwind + shadcn)
 ├── public/
 │   ├── data/            # Free sample content (JSON)
 │   └── images/          # Static images
+├── components.json      # shadcn/ui configuration
 └── docs/
     ├── PRD.md          # Product Requirements Document
     └── ARCHITECTURE.md  # (planned)
@@ -357,7 +377,8 @@ firebase deploy
 3. **Start Training** → Begin interactive Q&A session
 4. **Answer Questions** → Choose from multiple-choice, true/false, or short answer
 5. **Get Immediate Feedback** → See explanations after each answer
-6. **Complete Session** → View score and mastery improvement
+6. **Capture Reflection** → A randomized prompt lets you jot down how you'll apply a lesson; entries save to Firestore
+7. **Manage Todos** → Use the top-nav Todos page to review every reflection as a checkable to-do list
 
 ## Next Steps
 
@@ -393,30 +414,57 @@ firebase deploy
 
 ## Design System
 
+Based on **shadcn/ui** (New York style) with Tailwind CSS.
+
 ### Colors
 
-- **Primary**: Blue (from Tailwind's blue palette)
-- **Gray Scale**: Tailwind's gray palette
-- **Status Colors**: Green (success), Red (error), Yellow (warning)
+- **Primary**: Neutral-based with CSS variables for theming
+- **Semantic Colors**: Defined via HSL CSS variables (background, foreground, primary, secondary, muted, accent, destructive)
+- **Status Colors**: Destructive (red), Primary (green), Muted (gray)
 
-### Components
+### Components (shadcn/ui)
 
 **Button**
 
-- Variants: primary, secondary, outline, ghost, danger
-- Sizes: sm, md, lg
-- Loading state support
+- Variants: default, destructive, outline, secondary, ghost, link
+- Sizes: default, sm, lg, icon
+- Accessible with keyboard navigation
 
 **Card**
 
-- Variants: default, outlined, elevated
-- Composable: CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+- Simple, composable Card component
+- Used with className for custom styling
+- Supports gradients and borders
 
 **Input**
 
-- Label support
-- Error and helper text
-- Full width option
+- Integrated with form libraries (React Hook Form)
+- Focus states with ring utility
+- Error handling via form validation
+
+**Tabs**
+
+- Horizontal tab navigation (TabsList, TabsTrigger, TabsContent)
+- Used for multi-section layouts (Book Detail page)
+
+**Progress**
+
+- Horizontal progress bar with customizable height
+- Used for question progress and mastery levels
+
+**Select, Checkbox, Badge, Separator**
+
+- Accessible form components
+- Consistent styling with design system
+
+### Icons (Lucide React)
+
+- **BookOpen**: App logo and branding
+- **Flame**: Active streaks (≥3 days), high scores
+- **Sparkles**: New streaks, celebrations
+- **BookX**: 404 page
+- **AlertTriangle**: Warnings and at-risk streaks
+- **Search**: Search inputs
 
 ## Firebase Security Rules
 

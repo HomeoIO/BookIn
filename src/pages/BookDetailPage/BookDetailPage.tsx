@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Header, Container } from '@components/layout';
 import { Button, CircularProgress } from '@components/ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/tabs';
 import { useBooks, useQuestions } from '@features/books/hooks';
 import { SummaryView } from '@features/books/components/SummaryView';
 import { usePurchaseStore } from '@stores/purchase-store';
@@ -15,8 +16,6 @@ import { useRegion } from '@/hooks/useRegion';
 import { getAmazonLink, getAudibleLink } from '@/utils/affiliate';
 import type { Book } from '@core/domain';
 
-type TabType = 'summary' | 'training' | 'reflection';
-
 function BookDetailPage() {
   const { bookId } = useParams<{ bookId: string }>();
   const navigate = useNavigate();
@@ -25,7 +24,6 @@ function BookDetailPage() {
   const { countryCode } = useRegion();
   const { books, loading: booksLoading } = useBooks();
   const { questions, loading: questionsLoading } = useQuestions(bookId);
-  const [activeTab, setActiveTab] = useState<TabType>('training');
   const [purchasing, setPurchasing] = useState(false);
 
   const purchases = usePurchaseStore((state) => state.purchases);
@@ -301,9 +299,9 @@ function BookDetailPage() {
                     </ul>
 
                     <Button
-                      variant="primary"
+                      variant="default"
                       size="lg"
-                      fullWidth
+                      className="w-full"
                       onClick={handlePurchaseBook}
                       disabled={purchasing}
                     >
@@ -351,7 +349,7 @@ function BookDetailPage() {
                     <Button
                       variant="outline"
                       size="lg"
-                      fullWidth
+                      className="w-full"
                       onClick={handleSubscribeBook}
                       disabled={purchasing}
                     >
@@ -362,116 +360,90 @@ function BookDetailPage() {
               </div>
             ) : (
               /* Purchased or Free - Show Tabs */
-              <>
-                <div className="flex gap-4 flex-wrap mb-8">
-                  <button
-                    onClick={() => setActiveTab('summary')}
-                    className={`px-6 py-3 font-medium rounded-lg transition-colors ${
-                      activeTab === 'summary'
-                        ? 'bg-primary-500 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
+              <Tabs defaultValue="training" className="w-full">
+                <TabsList className="mb-8">
+                  <TabsTrigger value="summary">
                     {i18n.language === 'zh-HK' ? '概要' : 'Summary'}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('training')}
-                    className={`px-6 py-3 font-medium rounded-lg transition-colors ${
-                      activeTab === 'training'
-                        ? 'bg-primary-500 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
+                  </TabsTrigger>
+                  <TabsTrigger value="training">
                     {i18n.language === 'zh-HK' ? '訓練' : 'Training'}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('reflection')}
-                    className={`px-6 py-3 font-medium rounded-lg transition-colors ${
-                      activeTab === 'reflection'
-                        ? 'bg-primary-500 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
+                  </TabsTrigger>
+                  <TabsTrigger value="reflection">
                     {i18n.language === 'zh-HK' ? '心得記錄' : 'Reflections'}
-                  </button>
-                </div>
+                  </TabsTrigger>
+                </TabsList>
 
-                {/* Tab Content */}
-                {activeTab === 'summary' && (
-                  <div>
-                    <SummaryView book={book} />
-                  </div>
-                )}
+                <TabsContent value="summary">
+                  <SummaryView book={book} />
+                </TabsContent>
 
-                {activeTab === 'training' && (
-                  <div>
-                    {/* Progress Section */}
-                    <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
-                      {/* Circular Progress */}
-                      <div className="flex-shrink-0">
-                        <CircularProgress value={masteryLevel} size={140} strokeWidth={10} />
+                <TabsContent value="training">
+                  {/* Progress Section */}
+                  <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+                    {/* Circular Progress */}
+                    <div className="flex-shrink-0">
+                      <CircularProgress value={masteryLevel} size={140} strokeWidth={10} />
+                    </div>
+
+                    {/* Stats */}
+                    <div className="flex-1 grid grid-cols-3 gap-6">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                          {questions.length}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Total Questions
+                        </div>
                       </div>
-
-                      {/* Stats */}
-                      <div className="flex-1 grid grid-cols-3 gap-6">
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-gray-900 mb-1">
-                            {questions.length}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            Total Questions
-                          </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                          {questionsAnswered}
                         </div>
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-gray-900 mb-1">
-                            {questionsAnswered}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            Questions Answered
-                          </div>
+                        <div className="text-sm text-gray-600">
+                          Questions Answered
                         </div>
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-gray-900 mb-1">
-                            {questionsCorrect}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            Correct Streak
-                          </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-gray-900 mb-1">
+                          {questionsCorrect}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Correct Streak
                         </div>
                       </div>
                     </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Button
-                        variant="primary"
-                        size="lg"
-                        fullWidth
-                        onClick={() => navigate(`/books/${bookId}/train`)}
-                      >
-                        {questionsAnswered > 0 ? 'Continue Session' : 'Start Training'}
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        fullWidth
-                        disabled={true}
-                        onClick={() => {}}
-                      >
-                        Review Mode (Coming Soon)
-                      </Button>
-                    </div>
                   </div>
-                )}
 
-                {activeTab === 'reflection' && (
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button
+                      variant="default"
+                      size="lg"
+                      className="w-full"
+                      onClick={() => navigate(`/books/${bookId}/train`)}
+                    >
+                      {questionsAnswered > 0 ? 'Continue Session' : 'Start Training'}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full"
+                      disabled={true}
+                      onClick={() => {}}
+                    >
+                      Review Mode (Coming Soon)
+                    </Button>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="reflection">
                   <ReflectionHistory
                     bookId={book.id}
                     userId={user?.uid}
                     hasAccess={isPurchased}
                   />
-                )}
-              </>
+                </TabsContent>
+              </Tabs>
             )}
           </div>
         </div>

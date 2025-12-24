@@ -11,6 +11,7 @@ import { useStreakStore } from '@stores/streak-store';
 import { useProgressStore } from '@stores/progress-store';
 import { useReflectionStore } from '@stores/reflection-store';
 import { useAuth } from '@features/auth/hooks/useAuth';
+import { Flame, Sparkles } from 'lucide-react';
 
 interface Answer {
   questionId: string;
@@ -267,7 +268,7 @@ function TrainingPage() {
               {/* Fire Icon for celebration */}
               {score >= 80 && (
                 <div className="flex justify-center mb-4">
-                  <span className="text-6xl">🔥</span>
+                  <Flame className="w-24 h-24 text-orange-500" />
                 </div>
               )}
             </div>
@@ -275,9 +276,11 @@ function TrainingPage() {
             {/* Streak Info */}
             <div className="bg-gradient-to-br from-primary-50 to-white rounded-lg border-2 border-primary-200 p-6 mb-8">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <span className="text-4xl">
-                  {newStreak >= 3 ? '🔥' : '✨'}
-                </span>
+                {newStreak >= 3 ? (
+                  <Flame className="w-16 h-16 text-orange-500" />
+                ) : (
+                  <Sparkles className="w-16 h-16 text-yellow-500" />
+                )}
                 <div>
                   <div className="text-3xl font-bold text-gray-900">{newStreak}</div>
                   <div className="text-sm text-gray-600">
@@ -307,9 +310,9 @@ function TrainingPage() {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
-                fullWidth
+                className="w-full"
                 onClick={() => {
                   setCurrentQuestionIndex(0);
                   setAnswers([]);
@@ -322,7 +325,7 @@ function TrainingPage() {
               <Button
                 variant="outline"
                 size="lg"
-                fullWidth
+                className="w-full"
                 onClick={() => navigate(`/books/${bookId}`)}
               >
                 {isChinese ? '查看錯誤' : 'Review Mistakes'}
@@ -404,7 +407,7 @@ function TrainingPage() {
               />
               <div className="flex justify-end">
                 <Button
-                  variant="primary"
+                  variant="default"
                   onClick={handleReflectionSave}
                   disabled={reflectionSaving}
                 >
@@ -426,9 +429,9 @@ function TrainingPage() {
         {showFeedback && (
           <div className="max-w-3xl mx-auto mt-6">
             <Button
-              variant="primary"
+              variant="default"
               size="lg"
-              fullWidth
+              className="w-full"
               onClick={handleNextQuestion}
             >
               {currentQuestionIndex < questions.length - 1

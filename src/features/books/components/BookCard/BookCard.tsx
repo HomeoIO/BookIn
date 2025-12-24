@@ -32,9 +32,7 @@ function BookCard({ book, progress: progressProp }: BookCardProps) {
   return (
     <Link to={`/books/${book.id}`}>
       <Card
-        hoverable
-        padding="none"
-        className="overflow-hidden h-full"
+        className="overflow-hidden h-full p-0 transition-shadow hover:shadow-lg"
       >
         {/* Book Cover */}
         <div className="aspect-[3/4] bg-gray-100 overflow-hidden relative">

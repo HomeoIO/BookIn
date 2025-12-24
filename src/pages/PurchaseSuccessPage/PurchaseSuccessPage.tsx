@@ -148,7 +148,7 @@ function PurchaseSuccessPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {bookId && (
               <Button
-                variant="primary"
+                variant="default"
                 size="lg"
                 onClick={() => navigate(`/books/${bookId}`)}
               >
@@ -156,7 +156,7 @@ function PurchaseSuccessPage() {
               </Button>
             )}
             <Button
-              variant={bookId ? 'outline' : 'primary'}
+              variant={bookId ? 'outline' : 'default'}
               size="lg"
               onClick={() => navigate('/')}
             >

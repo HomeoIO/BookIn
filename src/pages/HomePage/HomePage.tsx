@@ -6,8 +6,12 @@ import { useBooks } from '@features/books/hooks';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
-// import type { Book } from '@core/domain'; // TODO: Use for type annotations
 import { StreakCard } from '@components/ui/StreakCard';
+import { Input } from '@components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@components/ui/select';
+import { Checkbox } from '@components/ui/checkbox';
+import { Separator } from '@components/ui/separator';
+import { Search } from 'lucide-react';
 
 function HomePage() {
   const { t } = useTranslation(['books', 'common']);
@@ -18,7 +22,7 @@ function HomePage() {
   const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
-  const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
+  const [difficultyFilters, setDifficultyFilters] = useState<string[]>([]);
   const [libraryFilter, setLibraryFilter] = useState<string>('all'); // 'all' | 'library' | 'purchased'
   const [sortBy, setSortBy] = useState<string>('title');
 
@@ -50,9 +54,9 @@ function HomePage() {
       result = result.filter((book) => book.category.includes(categoryFilter));
     }
 
-    // Difficulty filter
-    if (difficultyFilter !== 'all') {
-      result = result.filter((book) => book.difficulty === difficultyFilter);
+    // Difficulty filter (supports multiple selections)
+    if (difficultyFilters.length > 0) {
+      result = result.filter((book) => difficultyFilters.includes(book.difficulty));
     }
 
     // Library filter
@@ -98,7 +102,7 @@ function HomePage() {
     });
 
     return result;
-  }, [books, searchQuery, categoryFilter, difficultyFilter, libraryFilter, sortBy, getProgress, purchases, subscriptions]);
+  }, [books, searchQuery, categoryFilter, difficultyFilters, libraryFilter, sortBy, getProgress, purchases, subscriptions]);
 
   if (error) {
     return (
@@ -114,6 +118,14 @@ function HomePage() {
     );
   }
 
+  const toggleDifficulty = (difficulty: string) => {
+    setDifficultyFilters(prev =>
+      prev.includes(difficulty)
+        ? prev.filter(d => d !== difficulty)
+        : [...prev, difficulty]
+    );
+  };
+
   return (
     <>
       <Header />
@@ -123,114 +135,141 @@ function HomePage() {
           <StreakCard />
         </div>
 
-        {/* Search and Filters */}
-        <div className="mb-8">
-          {/* Search Bar */}
-          <div className="mb-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder={t('books:search_placeholder')}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-              <svg
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+        {/* Main Layout: Sidebar + Content */}
+        <div className="flex gap-6">
+          {/* Sidebar Filters */}
+          <aside className="w-64 flex-shrink-0">
+            <div className="bg-background border rounded-lg p-6 sticky top-4">
+              <h2 className="text-lg font-semibold mb-4">Filters</h2>
+
+              {/* Search */}
+              <div className="mb-6">
+                <label className="text-sm font-medium mb-2 block">Search</label>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder={t('books:search_placeholder')}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-9"
+                  />
+                </div>
+              </div>
+
+              <Separator className="my-4" />
+
+              {/* Library Filter */}
+              <div className="mb-6">
+                <label className="text-sm font-medium mb-2 block">Library</label>
+                <Select value={libraryFilter} onValueChange={setLibraryFilter}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">{t('books:all_books', 'All Books')}</SelectItem>
+                    <SelectItem value="library">{t('books:my_library', 'My Library')}</SelectItem>
+                    <SelectItem value="purchased">{t('books:purchased', 'Purchased')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Category Filter */}
+              <div className="mb-6">
+                <label className="text-sm font-medium mb-2 block">{t('books:category')}</label>
+                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t('books:category')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Categories</SelectItem>
+                    {categories.map((cat) => (
+                      <SelectItem key={cat} value={cat}>
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Difficulty Filter (Checkboxes) */}
+              <div className="mb-6">
+                <label className="text-sm font-medium mb-3 block">{t('books:difficulty')}</label>
+                <div className="space-y-2">
+                  {[
+                    { value: 'beginner', label: t('books:difficulty_beginner') },
+                    { value: 'intermediate', label: t('books:difficulty_intermediate') },
+                    { value: 'advanced', label: t('books:difficulty_advanced') }
+                  ].map(({ value, label }) => (
+                    <div key={value} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`difficulty-${value}`}
+                        checked={difficultyFilters.includes(value)}
+                        onCheckedChange={() => toggleDifficulty(value)}
+                      />
+                      <label
+                        htmlFor={`difficulty-${value}`}
+                        className="text-sm cursor-pointer"
+                      >
+                        {label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Separator className="my-4" />
+
+              {/* Sort By */}
+              <div>
+                <label className="text-sm font-medium mb-2 block">Sort By</label>
+                <Select value={sortBy} onValueChange={setSortBy}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="title">{t('books:sort_by_title')}</SelectItem>
+                    <SelectItem value="author">{t('books:sort_by_author')}</SelectItem>
+                    <SelectItem value="difficulty">{t('books:sort_by_difficulty')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-          </div>
+          </aside>
 
-          {/* Filters and Sort */}
-          <div className="flex flex-wrap gap-4">
-            {/* Library Filter */}
-            <select
-              value={libraryFilter}
-              onChange={(e) => setLibraryFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            >
-              <option value="all">{t('books:all_books', 'All Books')}</option>
-              <option value="library">{t('books:my_library', 'My Library')}</option>
-              <option value="purchased">{t('books:purchased', 'Purchased')}</option>
-            </select>
+          {/* Main Content */}
+          <div className="flex-1 min-w-0">
 
-            {/* Category Filter */}
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            >
-              <option value="all">{t('books:category')}</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+            {/* Loading State */}
+            {(loading || purchasesLoading || subscriptionsLoading) && (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                <p className="mt-4 text-gray-600">{t('books:loading_books')}</p>
+              </div>
+            )}
 
-            {/* Difficulty Filter */}
-            <select
-              value={difficultyFilter}
-              onChange={(e) => setDifficultyFilter(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            >
-              <option value="all">{t('books:difficulty')}</option>
-              <option value="beginner">{t('books:difficulty_beginner')}</option>
-              <option value="intermediate">{t('books:difficulty_intermediate')}</option>
-              <option value="advanced">{t('books:difficulty_advanced')}</option>
-            </select>
+            {/* Books Grid */}
+            {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredBooks.map((book) => (
+                  <BookCard key={book.id} book={book} progress={0} />
+                ))}
+              </div>
+            )}
 
-            {/* Sort By */}
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent ml-auto"
-            >
-              <option value="title">{t('books:sort_by_title')}</option>
-              <option value="author">{t('books:sort_by_author')}</option>
-              <option value="difficulty">{t('books:sort_by_difficulty')}</option>
-            </select>
+            {/* Empty State */}
+            {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length === 0 && (
+              <div className="text-center py-12">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {t('books:no_books_found')}
+                </h3>
+                <p className="text-gray-600">
+                  {t('books:no_books_found_message')}
+                </p>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Loading State */}
-        {(loading || purchasesLoading || subscriptionsLoading) && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">{t('books:loading_books')}</p>
-          </div>
-        )}
-
-        {/* Books Grid */}
-        {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredBooks.map((book) => (
-              <BookCard key={book.id} book={book} progress={0} />
-            ))}
-          </div>
-        )}
-
-        {/* Empty State */}
-        {!loading && !purchasesLoading && !subscriptionsLoading && filteredBooks.length === 0 && (
-          <div className="text-center py-12">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              {t('books:no_books_found')}
-            </h3>
-            <p className="text-gray-600">
-              {t('books:no_books_found_message')}
-            </p>
-          </div>
-        )}
       </Container>
     </>
   );

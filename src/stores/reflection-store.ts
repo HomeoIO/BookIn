@@ -10,7 +10,7 @@ interface ReflectionState {
   clear: () => void;
 }
 
-export const useReflectionStore = create<ReflectionState>((set, get) => ({
+export const useReflectionStore = create<ReflectionState>((set) => ({
   reflectionsByBook: {},
   loading: false,
 
