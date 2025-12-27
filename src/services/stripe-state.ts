@@ -25,8 +25,8 @@ let priceIds: Record<string, string> = {};
 /**
  * Load price IDs from state file
  *
- * In development, this reads from .stripe-products.json
- * In production, you would load this from environment variables or a database
+ * Loads from stripe-products.test.json or stripe-products.production.json
+ * based on VITE_STRIPE_MODE environment variable (defaults to 'test')
  */
 export async function loadPrices(): Promise<Record<string, string>> {
   // If already loaded, return cached version
@@ -34,22 +34,28 @@ export async function loadPrices(): Promise<Record<string, string>> {
     return priceIds;
   }
 
+  // Determine which file to load based on environment
+  const stripeMode = import.meta.env.VITE_STRIPE_MODE || 'test';
+  const fileName = `/stripe-products.${stripeMode}.json`;
+
   try {
-    // Try to load from state file (development)
-    const response = await fetch('/stripe-products.json');
+    // Try to load from mode-specific state file
+    const response = await fetch(fileName);
 
     if (response.ok) {
       const config: PriceConfig = await response.json();
       priceIds = config.priceIds;
-      console.log(`✅ Loaded ${Object.keys(priceIds).length} Stripe price IDs from state file`);
+      console.log(`✅ Loaded ${Object.keys(priceIds).length} Stripe price IDs from ${fileName}`);
       return priceIds;
+    } else {
+      console.warn(`⚠️ Could not load ${fileName} (status: ${response.status})`);
     }
   } catch (error) {
-    console.warn('⚠️ Could not load .stripe-products.json - using fallback');
+    console.warn(`⚠️ Could not load ${fileName} - using fallback`);
   }
 
   // Fallback: return empty object (will show "not configured" error)
-  console.warn('⚠️ No Stripe products configured. Run: npm run stripe:create');
+  console.warn(`⚠️ No Stripe products configured for mode "${stripeMode}". Run: npm run stripe:create`);
   return {};
 }
 

@@ -3,6 +3,7 @@ import { Book } from '@core/domain';
 import { Card } from '@components/ui';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useCollectionStore } from '@stores/collection-store';
 import { useProgressStore } from '@stores/progress-store';
 import { useTranslation } from 'react-i18next';
 
@@ -15,6 +16,7 @@ function BookCard({ book, progress: progressProp }: BookCardProps) {
   const { i18n } = useTranslation();
   const purchases = usePurchaseStore((state) => state.purchases);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+  const hasPurchasedCollection = useCollectionStore((state) => state.hasPurchasedCollection);
   const progressData = useProgressStore((state) => state.progressByBook[book.id] || null);
 
   const hasPurchasedBook = purchases.some((purchase) => purchase.bookId === book.id);
@@ -24,7 +26,12 @@ function BookCard({ book, progress: progressProp }: BookCardProps) {
     sub.currentPeriodEnd > Date.now()
   );
 
-  const hasAccess = book.isFree || hasPurchasedBook || hasSubscription;
+  // Check if book is part of a purchased collection
+  const hasCollectionAccess = book.collection
+    ? book.collection.some((collectionId) => hasPurchasedCollection(collectionId))
+    : false;
+
+  const hasAccess = book.isFree || hasPurchasedBook || hasSubscription || hasCollectionAccess;
   const isLocked = !hasAccess;
 
   const progress = progressProp !== undefined ? progressProp : (progressData?.masteryLevel || 0);

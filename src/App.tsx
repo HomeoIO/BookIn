@@ -9,6 +9,7 @@ import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
 import PurchaseSuccessPage from './pages/PurchaseSuccessPage';
 import { TodosPage } from './pages/TodosPage';
+import { FoundingCollectionPage } from './pages/FoundingCollectionPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             {/* Public routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/todos" element={<TodosPage />} />
+            <Route path="/founding-collection" element={<FoundingCollectionPage />} />
             <Route path="/books/:bookId" element={<BookDetailPage />} />
             <Route path="/books/:bookId/train" element={<TrainingPage />} />
             <Route path="/purchase-success" element={<PurchaseSuccessPage />} />

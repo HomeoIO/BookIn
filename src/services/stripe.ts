@@ -22,6 +22,19 @@ export interface CheckoutOptions {
   isSubscription?: boolean;
 }
 
+export interface CollectionCheckoutOptions {
+  priceId: string;
+  userId: string;
+  userEmail?: string;
+  successUrl: string;
+  cancelUrl: string;
+  metadata: {
+    type: string;
+    collectionId: string;
+    userId: string;
+  };
+}
+
 // Stripe initialization (for future client-side use if needed)
 // Currently using server-side checkout flow
 
@@ -65,6 +78,47 @@ export class StripeService {
 
     // Redirect to Stripe Checkout using standard redirect
     window.location.href = url;
+  }
+
+  /**
+   * Create checkout session (for collections or custom flows)
+   * Returns session object with URL for redirect
+   */
+  static async createCheckoutSession(options: CollectionCheckoutOptions): Promise<{ url: string }> {
+    const { priceId, userId, userEmail, successUrl, cancelUrl, metadata } = options;
+
+    if (!userId) {
+      throw new Error('User must be signed in to make a purchase');
+    }
+
+    // Create checkout session via backend
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/create-checkout-session`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        priceId,
+        userId,
+        customerEmail: userEmail,
+        successUrl,
+        cancelUrl,
+        metadata,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to create checkout session');
+    }
+
+    const { url } = await response.json();
+
+    if (!url) {
+      throw new Error('No checkout URL returned');
+    }
+
+    return { url };
   }
 
   /**

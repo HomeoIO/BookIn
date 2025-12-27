@@ -7,6 +7,7 @@ import { useBooks, useQuestions } from '@features/books/hooks';
 import { QuestionCard } from '@features/training/components';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useCollectionStore } from '@stores/collection-store';
 import { useStreakStore } from '@stores/streak-store';
 import { useProgressStore } from '@stores/progress-store';
 import { useReflectionStore } from '@stores/reflection-store';
@@ -28,6 +29,7 @@ function TrainingPage() {
   const { user } = useAuth();
   const purchases = usePurchaseStore((state) => state.purchases);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+  const hasPurchasedCollection = useCollectionStore((state) => state.hasPurchasedCollection);
   const recordPractice = useStreakStore((state) => state.recordPractice);
   const streakStatus = useStreakStore((state) => state.getStreakStatus());
   const { recordAnswer, getProgress, fetchProgress } = useProgressStore();
@@ -63,7 +65,11 @@ function TrainingPage() {
     return purchases.some((purchase) => purchase.bookId === bookId);
   };
 
-  const hasAccess = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id)) : false;
+  const hasCollectionAccess = book && book.collection
+    ? book.collection.some((collectionId) => hasPurchasedCollection(collectionId))
+    : false;
+
+  const hasAccess = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id) || hasCollectionAccess) : false;
 
   // Redirect to book detail if user doesn't have access
   useEffect(() => {

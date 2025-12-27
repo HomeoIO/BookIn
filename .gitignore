@@ -43,6 +43,7 @@ CLI_DOCS
 # Payment Provider State Files (contain product/price IDs)
 stripe-products.json
 public/stripe-products.json
+public/stripe-products.*.json
 
 # Question files (managed via Firebase Storage)
 public/data/questions/

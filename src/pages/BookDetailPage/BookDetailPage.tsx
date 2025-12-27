@@ -7,6 +7,7 @@ import { useBooks, useQuestions } from '@features/books/hooks';
 import { SummaryView } from '@features/books/components/SummaryView';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
+import { useCollectionStore } from '@stores/collection-store';
 import { useProgressStore } from '@stores/progress-store';
 import { StripeService } from '@services/stripe';
 import { useAuth } from '@/features/auth/hooks/useAuth';
@@ -30,6 +31,7 @@ function BookDetailPage() {
   const purchasesLoading = usePurchaseStore((state) => state.loading);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
+  const hasPurchasedCollection = useCollectionStore((state) => state.hasPurchasedCollection);
 
   const book = books.find((b) => b.id === bookId);
   const loading = booksLoading || questionsLoading || purchasesLoading || subscriptionsLoading;
@@ -48,7 +50,12 @@ function BookDetailPage() {
     return purchases.some((purchase) => purchase.bookId === bookId);
   };
 
-  const isPurchased = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id)) : false;
+  const hasCollectionAccess = (book?: Book) => {
+    if (!book || !book.collection) return false;
+    return book.collection.some((collectionId) => hasPurchasedCollection(collectionId));
+  };
+
+  const isPurchased = book ? (book.isFree || hasPurchaseAccess(book.id) || hasSubscriptionAccess(book.id) || hasCollectionAccess(book)) : false;
   const needsPurchase = book && !book.isFree && !isPurchased;
 
   // Get real progress data from store
@@ -266,7 +273,7 @@ function BookDetailPage() {
                     <div className="text-center mb-4">
                       <h4 className="text-xl font-bold text-gray-900 mb-2">Lifetime Access</h4>
                       <div className="text-4xl font-bold text-primary-600 mb-1">
-                        $9
+                        US$9
                       </div>
                       <p className="text-sm text-gray-500">One-time payment • Forever</p>
                     </div>
@@ -314,7 +321,7 @@ function BookDetailPage() {
                     <div className="text-center mb-4">
                       <h4 className="text-xl font-bold text-gray-900 mb-2">Subscription</h4>
                       <div className="text-4xl font-bold text-gray-900 mb-1">
-                        $3<span className="text-lg text-gray-600">/3mo</span>
+                        US$3<span className="text-lg text-gray-600">/3mo</span>
                       </div>
                       <p className="text-sm text-gray-500">Billed quarterly • Cancel anytime</p>
                     </div>

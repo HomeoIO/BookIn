@@ -16,6 +16,7 @@ export interface Book {
   stripeProductId?: string;
   createdAt?: number;
   asin?: string;
+  collection?: string[]; // Collection identifiers (e.g., ["2026-founding-collection"])
   affiliate?: {
     amazon?: Record<string, { asin: string } | string>;
     audible?: Record<string, { asin: string } | string>;
@@ -42,7 +43,7 @@ export const BookHelpers = {
 
   formatPrice(book: Book): string {
     if (book.isFree) return 'FREE';
-    return book.price ? `$${book.price.toFixed(2)}` : 'N/A';
+    return book.price ? `US$${book.price.toFixed(2)}` : 'N/A';
   },
 
   getDifficultyLabel(difficulty: BookDifficulty): string {

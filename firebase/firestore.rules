@@ -40,6 +40,15 @@ service cloud.firestore {
         allow write: if false;
       }
 
+      // Collection purchases subcollection
+      match /collectionPurchases/{collectionId} {
+        // Users can only read their own collection purchases
+        allow read: if isOwner(userId);
+        // CRITICAL: Only server (via Admin SDK) can write collection purchases
+        // This prevents users from faking purchases by manipulating Firestore
+        allow write: if false;
+      }
+
       // Progress subcollection (user learning progress)
       match /progress/{bookId} {
         // Users can read and write their own progress

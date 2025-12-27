@@ -39,7 +39,10 @@
           "asin": "B07GBJN31K"
         }
       }
-    }
+    },
+    "collection": [
+      "2026-founding-collection"
+    ]
   },
   {
     "id": "sapiens",
@@ -80,7 +83,10 @@
           "asin": "B07DNSB9M4"
         }
       }
-    }
+    },
+    "collection": [
+      "2026-founding-collection"
+    ]
   },
   {
     "id": "thinking-fast-slow",
@@ -111,6 +117,9 @@
         "AU": "B00NGIA6G6",
         "JP": "B07DWHDT48"
       }
-    }
+    },
+    "collection": [
+      "2026-founding-collection"
+    ]
   }
 ]

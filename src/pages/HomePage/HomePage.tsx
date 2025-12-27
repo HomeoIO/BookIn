@@ -6,7 +6,10 @@ import { useBooks } from '@features/books/hooks';
 import { usePurchaseStore } from '@stores/purchase-store';
 import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
+import { useCollectionStore } from '@stores/collection-store';
+import { useAuth } from '@features/auth/hooks/useAuth';
 import { StreakCard } from '@components/ui/StreakCard';
+import { FoundingCollectionBanner } from '@components/ui/FoundingCollectionBanner';
 import { Input } from '@components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@components/ui/select';
 import { Checkbox } from '@components/ui/checkbox';
@@ -15,11 +18,13 @@ import { Search } from 'lucide-react';
 
 function HomePage() {
   const { t } = useTranslation(['books', 'common']);
+  const { user } = useAuth();
   const { books, loading, error } = useBooks();
   const purchases = usePurchaseStore((state) => state.purchases);
   const purchasesLoading = usePurchaseStore((state) => state.loading);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const subscriptionsLoading = useSubscriptionStore((state) => state.loading);
+  const hasPurchasedCollection = useCollectionStore((state) => state.hasPurchasedCollection);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [difficultyFilters, setDifficultyFilters] = useState<string[]>([]);
@@ -60,14 +65,24 @@ function HomePage() {
     }
 
     // Library filter
-    const hasBookAccess = (bookId: string, isFree: boolean) => {
+    const hasBookAccess = (bookId: string, isFree: boolean, collection?: string[]) => {
       if (isFree) return true;
+
+      // Check collection purchase
+      if (collection && collection.some((collectionId) => hasPurchasedCollection(collectionId))) {
+        return true;
+      }
+
+      // Check individual book purchase
       const purchased = purchases.some((p) => p.bookId === bookId);
+
+      // Check subscription
       const activeSub = subscriptions.some((sub) =>
         sub.bookId === bookId &&
         (sub.status === 'active' || sub.status === 'trialing') &&
         sub.currentPeriodEnd > Date.now()
       );
+
       return purchased || activeSub;
     };
 
@@ -76,13 +91,15 @@ function HomePage() {
       result = result.filter((book) => {
         const progress = getProgress(book.id);
         const hasProgress = Boolean(progress && progress.questionsCompleted.length > 0);
-        const hasAccess = hasBookAccess(book.id, book.isFree);
+        const hasAccess = hasBookAccess(book.id, book.isFree, book.collection);
         return hasProgress || hasAccess;
       });
     } else if (libraryFilter === 'purchased') {
-      // Show only purchased books
+      // Show only purchased books (individual or collection)
       result = result.filter((book) =>
-        book.isFree || purchases.some((p) => p.bookId === book.id)
+        book.isFree ||
+        purchases.some((p) => p.bookId === book.id) ||
+        (book.collection && book.collection.some((collectionId) => hasPurchasedCollection(collectionId)))
       );
     }
 
@@ -133,6 +150,11 @@ function HomePage() {
         {/* Streak Card */}
         <div className="mb-8">
           <StreakCard />
+        </div>
+
+        {/* Founding Collection Banner */}
+        <div className="mb-8">
+          <FoundingCollectionBanner />
         </div>
 
         {/* Main Layout: Sidebar + Content */}

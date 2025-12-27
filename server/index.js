@@ -55,7 +55,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+app.post('/api/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
   if (!stripe) {
     return res.status(500).send('Stripe not configured');
   }
@@ -81,12 +81,32 @@ app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (re
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object;
-        const { userId, bookId, paymentType } = session.metadata || {};
+        const { userId, bookId, paymentType, type, collectionId } = session.metadata || {};
 
-        console.log('💰 Checkout completed:', { userId, bookId, paymentType });
+        console.log('💰 Checkout completed:', { userId, bookId, paymentType, type, collectionId });
 
-        if (!userId || !bookId) {
-          console.error('❌ Missing metadata in checkout session');
+        if (!userId) {
+          console.error('❌ Missing userId in checkout session');
+          break;
+        }
+
+        // Handle collection purchase
+        if (type === 'collection' && collectionId) {
+          await db.collection('users').doc(userId).collection('collectionPurchases').doc(collectionId).set({
+            collectionId,
+            purchasedAt: admin.firestore.FieldValue.serverTimestamp(),
+            price: session.amount_total / 100,
+            paymentMethod: 'stripe',
+            transactionId: session.payment_intent,
+            status: 'completed',
+          });
+          console.log('✅ Collection purchase recorded:', { userId, collectionId });
+          break;
+        }
+
+        // Handle individual book purchase
+        if (!bookId) {
+          console.error('❌ Missing bookId in checkout session');
           break;
         }
 
@@ -113,7 +133,15 @@ app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (re
           break;
         }
 
-        const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+        // For subscriptions, wait for customer.subscription.created event instead
+        // invoice.payment_succeeded fires before subscription periods are finalized
+        console.log('📋 Subscription invoice paid - waiting for subscription.created event');
+        break;
+      }
+
+      case 'customer.subscription.created': {
+        // This event fires when a new subscription is created with proper period data
+        const subscription = event.data.object;
         const { userId, bookId } = subscription.metadata || {};
 
         if (!userId || !bookId) {
@@ -121,17 +149,30 @@ app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (re
           break;
         }
 
+        console.log('📋 Subscription created from Stripe:', {
+          id: subscription.id,
+          status: subscription.status,
+          current_period_start: subscription.current_period_start,
+          current_period_end: subscription.current_period_end,
+        });
+
+        if (!subscription.current_period_start || !subscription.current_period_end) {
+          console.error('❌ Missing period start/end times');
+          break;
+        }
+
         await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
           bookId,
+          userId,
           status: subscription.status,
-          currentPeriodStart: subscription.current_period_start * 1000,
-          currentPeriodEnd: subscription.current_period_end * 1000,
-          cancelAtPeriodEnd: subscription.cancel_at_period_end,
+          currentPeriodStart: admin.firestore.Timestamp.fromMillis(subscription.current_period_start * 1000),
+          currentPeriodEnd: admin.firestore.Timestamp.fromMillis(subscription.current_period_end * 1000),
+          cancelAtPeriodEnd: subscription.cancel_at_period_end || false,
           stripeSubscriptionId: subscription.id,
           stripeCustomerId: subscription.customer,
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
-        console.log('✅ Subscription updated:', { userId, bookId, status: subscription.status });
+        console.log('✅ Subscription saved to Firestore:', { userId, bookId, status: subscription.status });
         break;
       }
 
@@ -145,12 +186,25 @@ app.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (re
           break;
         }
 
+        console.log('📋 Subscription update from Stripe:', {
+          id: subscription.id,
+          status: subscription.status,
+          current_period_start: subscription.current_period_start,
+          current_period_end: subscription.current_period_end,
+        });
+
+        if (!subscription.current_period_start || !subscription.current_period_end) {
+          console.error('❌ Missing period start/end times in subscription update');
+          break;
+        }
+
         await db.collection('users').doc(userId).collection('subscriptions').doc(subscription.id).set({
           bookId,
+          userId,
           status: subscription.status,
-          currentPeriodStart: subscription.current_period_start * 1000,
-          currentPeriodEnd: subscription.current_period_end * 1000,
-          cancelAtPeriodEnd: subscription.cancel_at_period_end,
+          currentPeriodStart: admin.firestore.Timestamp.fromMillis(subscription.current_period_start * 1000),
+          currentPeriodEnd: admin.firestore.Timestamp.fromMillis(subscription.current_period_end * 1000),
+          cancelAtPeriodEnd: subscription.cancel_at_period_end || false,
           updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         }, { merge: true });
         console.log('✅ Subscription status updated');
@@ -176,8 +230,34 @@ app.post('/api/create-checkout-session', async (req, res) => {
   }
 
   try {
-    const { bookId, priceId, userId, paymentType } = req.body;
+    const { bookId, priceId, userId, paymentType, successUrl, cancelUrl, metadata } = req.body;
 
+    // Handle collection purchases (new format with metadata)
+    if (metadata && metadata.type === 'collection') {
+      if (!priceId || !userId) {
+        return res.status(400).json({
+          error: 'Missing required fields for collection purchase',
+          received: { priceId, userId, metadata },
+        });
+      }
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [{
+          price: priceId,
+          quantity: 1,
+        }],
+        mode: 'payment',
+        success_url: successUrl,
+        cancel_url: cancelUrl,
+        metadata,
+      });
+
+      console.log('✅ Collection checkout session created:', { userId, collectionId: metadata.collectionId });
+      return res.json({ url: session.url });
+    }
+
+    // Handle individual book purchases (legacy format)
     if (!bookId || !priceId || !userId || !paymentType) {
       return res.status(400).json({
         error: 'Missing required fields',

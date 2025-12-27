@@ -34,10 +34,19 @@ export const purchaseService = {
       const purchasesRef = collection(db, 'users', userId, 'purchases');
       const querySnapshot = await getDocs(purchasesRef);
 
-      return querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      } as Purchase));
+      return querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          bookId: data.bookId,
+          userId: data.userId,
+          purchasedAt: data.purchasedAt?.toMillis ? data.purchasedAt.toMillis() : data.purchasedAt,
+          price: data.price,
+          paymentMethod: data.paymentMethod,
+          transactionId: data.transactionId,
+          stripeCustomerId: data.stripeCustomerId,
+        } as Purchase;
+      });
     } catch (error) {
       console.error('Error getting user purchases:', error);
       return [];
@@ -53,9 +62,16 @@ export const purchaseService = {
       const purchaseDoc = await getDoc(purchaseRef);
 
       if (purchaseDoc.exists()) {
+        const data = purchaseDoc.data();
         return {
           id: purchaseDoc.id,
-          ...purchaseDoc.data(),
+          bookId: data.bookId,
+          userId: data.userId,
+          purchasedAt: data.purchasedAt?.toMillis ? data.purchasedAt.toMillis() : data.purchasedAt,
+          price: data.price,
+          paymentMethod: data.paymentMethod,
+          transactionId: data.transactionId,
+          stripeCustomerId: data.stripeCustomerId,
         } as Purchase;
       }
 
@@ -107,10 +123,38 @@ export const purchaseService = {
       const subscriptionsRef = collection(db, 'users', userId, 'subscriptions');
       const querySnapshot = await getDocs(subscriptionsRef);
 
-      return querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      } as Subscription));
+      return querySnapshot.docs.map(doc => {
+        const data = doc.data();
+
+        // Debug log raw Firestore data
+        console.log('[Purchase Service] Raw subscription data from Firestore:', {
+          id: doc.id,
+          currentPeriodEndRaw: data.currentPeriodEnd,
+          currentPeriodEndType: typeof data.currentPeriodEnd,
+          hasToMillis: data.currentPeriodEnd?.toMillis !== undefined,
+        });
+
+        const converted = {
+          id: doc.id,
+          bookId: data.bookId,
+          userId: data.userId,
+          status: data.status,
+          currentPeriodStart: data.currentPeriodStart?.toMillis ? data.currentPeriodStart.toMillis() : data.currentPeriodStart,
+          currentPeriodEnd: data.currentPeriodEnd?.toMillis ? data.currentPeriodEnd.toMillis() : data.currentPeriodEnd,
+          cancelAtPeriodEnd: data.cancelAtPeriodEnd,
+          stripeSubscriptionId: data.stripeSubscriptionId,
+          stripeCustomerId: data.stripeCustomerId,
+          createdAt: data.createdAt?.toMillis ? data.createdAt.toMillis() : data.createdAt,
+        } as Subscription;
+
+        console.log('[Purchase Service] Converted subscription:', {
+          id: converted.id,
+          currentPeriodEnd: converted.currentPeriodEnd,
+          currentPeriodEndType: typeof converted.currentPeriodEnd,
+        });
+
+        return converted;
+      });
     } catch (error) {
       console.error('Error getting user subscriptions:', error);
       return [];
@@ -126,9 +170,18 @@ export const purchaseService = {
       const subscriptionDoc = await getDoc(subscriptionRef);
 
       if (subscriptionDoc.exists()) {
+        const data = subscriptionDoc.data();
         return {
           id: subscriptionDoc.id,
-          ...subscriptionDoc.data(),
+          bookId: data.bookId,
+          userId: data.userId,
+          status: data.status,
+          currentPeriodStart: data.currentPeriodStart?.toMillis ? data.currentPeriodStart.toMillis() : data.currentPeriodStart,
+          currentPeriodEnd: data.currentPeriodEnd?.toMillis ? data.currentPeriodEnd.toMillis() : data.currentPeriodEnd,
+          cancelAtPeriodEnd: data.cancelAtPeriodEnd,
+          stripeSubscriptionId: data.stripeSubscriptionId,
+          stripeCustomerId: data.stripeCustomerId,
+          createdAt: data.createdAt?.toMillis ? data.createdAt.toMillis() : data.createdAt,
         } as Subscription;
       }
 

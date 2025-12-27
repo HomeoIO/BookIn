@@ -45,7 +45,7 @@ export const PurchaseHelpers = {
   },
 
   formatPrice(price: number): string {
-    return `$${price.toFixed(2)}`;
+    return `US$${price.toFixed(2)}`;
   },
 
   getStatusLabel(status: PurchaseStatus): string {

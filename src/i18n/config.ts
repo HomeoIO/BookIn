@@ -9,6 +9,7 @@ import zhHKTraining from './locales/zh-HK/training.json';
 import zhHKStreak from './locales/zh-HK/streak.json';
 import zhHKPayment from './locales/zh-HK/payment.json';
 import zhHKTodos from './locales/zh-HK/todos.json';
+import zhHKCollection from './locales/zh-HK/collection.json';
 
 import enCommon from './locales/en/common.json';
 import enBooks from './locales/en/books.json';
@@ -16,6 +17,7 @@ import enTraining from './locales/en/training.json';
 import enStreak from './locales/en/streak.json';
 import enPayment from './locales/en/payment.json';
 import enTodos from './locales/en/todos.json';
+import enCollection from './locales/en/collection.json';
 
 // Language resources
 const resources = {
@@ -26,6 +28,7 @@ const resources = {
     streak: zhHKStreak,
     payment: zhHKPayment,
     todos: zhHKTodos,
+    collection: zhHKCollection,
   },
   'en': {
     common: enCommon,
@@ -34,6 +37,7 @@ const resources = {
     streak: enStreak,
     payment: enPayment,
     todos: enTodos,
+    collection: enCollection,
   },
 };
 
@@ -47,7 +51,7 @@ i18n
     resources,
     fallbackLng: 'zh-HK', // Cantonese (Hong Kong) as primary
     defaultNS: 'common',
-    ns: ['common', 'books', 'training', 'streak', 'payment', 'todos'],
+    ns: ['common', 'books', 'training', 'streak', 'payment', 'todos', 'collection'],
 
     // Language detection options
     detection: {

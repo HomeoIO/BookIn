@@ -7,6 +7,7 @@ import { useSubscriptionStore } from '@stores/subscription-store';
 import { useProgressStore } from '@stores/progress-store';
 import { useReflectionStore } from '@stores/reflection-store';
 import { useTodoStore } from '@stores/todo-store';
+import { useCollectionStore } from '@stores/collection-store';
 
 interface AuthContextType {
   user: User | null;
@@ -31,6 +32,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const clearProgress = useProgressStore((state) => state.clearProgress);
   const clearReflections = useReflectionStore((state) => state.clear);
   const clearTodos = useTodoStore((state) => state.clear);
+  const fetchCollectionPurchases = useCollectionStore((state) => state.fetchPurchases);
+  const clearCollectionPurchases = useCollectionStore((state) => state.clear);
 
   useEffect(() => {
     // Listen for auth state changes
@@ -40,25 +43,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (user) {
         console.log('✅ User signed in:', user.email);
-        // Automatically fetch purchases, subscriptions, and progress from Firestore
+        // Automatically fetch purchases, subscriptions, progress, and collection purchases from Firestore
         await Promise.all([
           fetchPurchases(user.uid),
           fetchSubscriptions(user.uid),
-          fetchAllProgress(user.uid)
+          fetchAllProgress(user.uid),
+          fetchCollectionPurchases(user.uid)
         ]);
       } else {
         console.log('👤 User signed out');
-        // Clear purchases, subscriptions, and progress from store
+        // Clear purchases, subscriptions, progress, and collection purchases from store
         clearPurchases();
         clearSubscriptions();
         clearProgress();
         clearReflections();
         clearTodos();
+        clearCollectionPurchases();
       }
     });
 
     return () => unsubscribe();
-  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress, clearReflections, clearTodos]);
+  }, [fetchPurchases, clearPurchases, fetchSubscriptions, clearSubscriptions, fetchAllProgress, clearProgress, clearReflections, clearTodos, fetchCollectionPurchases, clearCollectionPurchases]);
 
   const signUp = async (email: string, password: string) => {
     try {
@@ -83,12 +88,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     try {
       await authHelpers.signOut();
-      // Clear purchases, subscriptions, and progress (also done in onAuthStateChanged, but belt-and-suspenders)
+      // Clear purchases, subscriptions, progress, and collection purchases (also done in onAuthStateChanged, but belt-and-suspenders)
       clearPurchases();
       clearSubscriptions();
       clearProgress();
       clearReflections();
       clearTodos();
+      clearCollectionPurchases();
       console.log('✅ User signed out');
     } catch (error: any) {
       console.error('Sign out error:', error);

@@ -24,10 +24,26 @@ export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
 
   hasActiveSubscription: (bookId: string) => {
     const sub = get().subscriptions.find((s) => s.bookId === bookId);
-    if (!sub) return false;
+    if (!sub) {
+      console.log(`[Subscription Check] No subscription found for bookId: ${bookId}`);
+      console.log(`[Subscription Check] Available subscriptions:`, get().subscriptions.map(s => ({ bookId: s.bookId, status: s.status })));
+      return false;
+    }
 
     const isActive = ACTIVE_STATUSES.has(sub.status);
     const notExpired = sub.currentPeriodEnd > Date.now();
+
+    console.log(`[Subscription Check] bookId: ${bookId}`, {
+      found: true,
+      status: sub.status,
+      isActive,
+      currentPeriodEnd: sub.currentPeriodEnd,
+      currentPeriodEndDate: new Date(sub.currentPeriodEnd).toISOString(),
+      now: Date.now(),
+      nowDate: new Date().toISOString(),
+      notExpired,
+      hasAccess: isActive && notExpired
+    });
 
     return isActive && notExpired;
   },
@@ -54,7 +70,14 @@ export const useSubscriptionStore = create<SubscriptionState>()((set, get) => ({
         loading: false,
         lastFetched: Date.now()
       });
-      console.log(`✅ Fetched ${subscriptions.length} subscriptions`);
+      console.log(`✅ Fetched ${subscriptions.length} subscriptions`, subscriptions.map(s => ({
+        bookId: s.bookId,
+        status: s.status,
+        currentPeriodEnd: s.currentPeriodEnd,
+        currentPeriodEndType: typeof s.currentPeriodEnd,
+        currentPeriodEndDate: s.currentPeriodEnd && !isNaN(s.currentPeriodEnd) ? new Date(s.currentPeriodEnd).toISOString() : 'Invalid',
+        isExpired: s.currentPeriodEnd && !isNaN(s.currentPeriodEnd) ? s.currentPeriodEnd < Date.now() : 'Unknown'
+      })));
     } catch (error) {
       console.error('❌ Failed to fetch subscriptions:', error);
       set({ loading: false });

@@ -126,7 +126,12 @@ async function main() {
     process.exit(1);
   }
 
+  // Detect if using test or live keys
+  const isTestMode = STRIPE_SECRET_KEY.startsWith('sk_test_');
+  const mode = isTestMode ? 'test' : 'production';
+
   console.log('💳 Stripe Product Creator\n');
+  console.log(`Mode: ${mode.toUpperCase()} (${isTestMode ? 'Test' : 'Live'} API key detected)`);
   console.log(`Creating ${BOOKS.length * 2} products (${BOOKS.length} books × 2 payment options)`);
   console.log(`This will take approximately ${Math.ceil(BOOKS.length / 10)} minutes...\n`);
 
@@ -167,17 +172,20 @@ async function main() {
       }, {}),
     };
 
-    const outputPath = join(__dirname, '../.stripe-products.json');
+    const outputPath = join(__dirname, `../public/stripe-products.${mode}.json`);
     fs.writeFileSync(outputPath, JSON.stringify(config, null, 2));
 
     console.log(`💾 Configuration saved to: ${outputPath}`);
-    console.log(`📝 This file is gitignored and contains your Stripe price IDs`);
+    console.log(`📝 This file contains your Stripe ${mode} price IDs`);
 
     console.log('\n🎉 Next steps:');
     console.log('1. Products are live in Stripe (you can view them in the dashboard)');
-    console.log('2. Price IDs are saved to .stripe-products.json');
-    console.log('3. Run `npm run dev` to test checkout flow');
-    console.log('4. Use test card: 4242 4242 4242 4242 to test payments');
+    console.log(`2. Price IDs are saved to stripe-products.${mode}.json`);
+    console.log(`3. Ensure .env has VITE_STRIPE_MODE=${mode}`);
+    console.log('4. Run `npm run dev` to test checkout flow');
+    if (isTestMode) {
+      console.log('5. Use test card: 4242 4242 4242 4242 to test payments');
+    }
 
   } catch (error) {
     console.error('\n❌ Error creating products:', error.message);
