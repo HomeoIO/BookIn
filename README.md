@@ -8,8 +8,20 @@ BookIn is a client-side focused React web application that helps users learn and
 
 **Current Phase**: Production-Ready MVP 🚀
 
-### Recent Updates (December 2024)
+### Recent Updates (December 2025)
 
+- ✅ **Founding Collection Feature**: Added 2026 Founding Collection with lifetime access to all 107 books
+  - Dedicated landing page with countdown timer and feature highlights
+  - Collection purchase flow with Stripe integration
+  - Bilingual collection content (English + Traditional Chinese)
+  - Collection store for managing collection purchases
+- ✅ **Payment System Improvements**:
+  - Fixed Stripe test vs production mode with dual configuration files
+  - Added VITE_STRIPE_MODE environment variable for mode switching
+  - Fixed subscription webhook handling (switched to customer.subscription.created event)
+  - Fixed Firestore Timestamp conversion to prevent NaN errors
+  - Improved store cleanup on logout to prevent data leakage
+- ✅ **API Infrastructure**: Refactored server routes to match Cloud Function structure using Express Router
 - ✅ **Design System Migration**: Migrated from custom Tailwind components to shadcn/ui
 - ✅ **Icon System**: Replaced all emoji icons with professional Lucide React icons
 - ✅ **HomePage Redesign**: Implemented sidebar layout with enhanced filters (category dropdown, multi-select difficulty checkboxes)
@@ -46,6 +58,8 @@ BookIn is a client-side focused React web application that helps users learn and
 
 **UI/UX Features:**
 - ✅ HomePage with sidebar filters (category dropdown, multi-select difficulty checkboxes) and responsive grid layout
+- ✅ Founding Collection banner with countdown timer, pricing, and feature highlights
+- ✅ Dedicated Founding Collection landing page with bilingual content
 - ✅ BookCard component with lock/unlock states and hover effects
 - ✅ BookDetailPage with shadcn Tabs (Summary/Training/Reflections) and improved progress display
 - ✅ TrainingPage with simplified quiz interface using shadcn Card and Progress components
@@ -70,15 +84,17 @@ BookIn is a client-side focused React web application that helps users learn and
 - ✅ Purchase/subscription state persisted across page reloads
 
 **Payment Integration:**
-- ✅ Stripe integration (test mode)
-- ✅ Two payment options per book:
-  - Lifetime access: $9 one-time payment
-  - Subscription: $3 every 3 months
-- ✅ Stripe webhook handler for payment events
-- ✅ Purchase tracking in Firestore
-- ✅ Subscription management
-- ✅ Lock/unlock state based on purchases and subscriptions
+- ✅ Stripe integration (test and production modes)
+- ✅ Payment options:
+  - Individual books: Lifetime access ($9) or Subscription ($3/3 months)
+  - Founding Collection: Lifetime access to all 107 books ($9.99, limited time offer)
+- ✅ Stripe webhook handler for payment events (checkout.session.completed, customer.subscription.created/updated/deleted)
+- ✅ Purchase and subscription tracking in Firestore
+- ✅ Collection purchase tracking in Firestore
+- ✅ Subscription management with proper period handling
+- ✅ Lock/unlock state based on purchases, subscriptions, and collections
 - ✅ Express API server for webhooks (port 3002)
+- ✅ Dual Stripe configuration (test/production) with automatic mode detection
 - ✅ Makefile for easy development workflow
 - ✅ Affiliate infrastructure with geo-detected Amazon/Audible referral links for each book
 
@@ -95,10 +111,13 @@ BookIn is a client-side focused React web application that helps users learn and
 
 **Developer Experience:**
 - ✅ Upload script for questions (`npm run questions:upload`)
-- ✅ Stripe product creation script (`npm run stripe:create`)
+- ✅ Stripe product creation script with test/production mode detection (`npm run stripe:create`)
+- ✅ Collection product creation script (`node scripts/create-collection-product.js`)
+- ✅ Collection debugging tools (`debug-collection-purchase.js`, `add-collection-field.js`)
 - ✅ Makefile commands (`make dev`, `make questions-upload`, etc.)
-- ✅ Comprehensive documentation (TODO.md, scripts/README.md, CONTENT_FORMAT.md)
+- ✅ Comprehensive documentation (TODO.md, scripts/README.md, CONTENT_FORMAT.md, DEPLOYMENT.md)
 - ✅ Development server with hot reload
+- ✅ Express Router architecture matching Cloud Functions structure
 
 ## Tech Stack
 
@@ -125,7 +144,7 @@ BookIn is a client-side focused React web application that helps users learn and
 bookin/
 ├── src/
 │   ├── components/        # Shared UI components
-│   │   ├── ui/           # shadcn/ui components (button, card, input, tabs, etc.)
+│   │   ├── ui/           # shadcn/ui components + custom (FoundingCollectionBanner)
 │   │   └── layout/       # Layout components (Header, Container, Footer)
 │   ├── features/         # Feature modules
 │   │   ├── auth/        # Authentication
@@ -133,25 +152,33 @@ bookin/
 │   │   ├── training/    # Q&A training
 │   │   ├── progress/    # Progress tracking
 │   │   └── reflection/  # Reflections and todos
-│   ├── pages/           # Route pages
+│   ├── pages/           # Route pages (including FoundingCollectionPage)
 │   ├── core/            # Business logic (platform-agnostic)
-│   │   ├── domain/      # Domain models
+│   │   ├── domain/      # Domain models (Book, Question, Purchase, Collection, etc.)
 │   │   ├── services/    # Business services
 │   │   ├── repositories/# Data access layer
 │   │   ├── storage/     # Storage strategies
 │   │   └── utils/       # Utilities
-│   ├── stores/          # Zustand stores
+│   ├── stores/          # Zustand stores (collection-store, subscription-store, etc.)
 │   ├── shared/          # Shared utilities
 │   ├── firebase/        # Firebase configuration
+│   ├── i18n/            # Internationalization (en, zh-HK namespaces)
 │   ├── lib/             # Utility functions (cn helper)
 │   └── styles/          # Global styles (Tailwind + shadcn)
 ├── public/
 │   ├── data/            # Free sample content (JSON)
-│   └── images/          # Static images
+│   ├── images/          # Static images
+│   └── stripe-products.*.json  # Stripe price configurations (gitignored)
+├── scripts/             # Utility scripts
+│   ├── create-stripe-products.js
+│   ├── create-collection-product.js
+│   └── debug-collection-purchase.js
+├── server/              # Local development API server
+├── functions/           # Firebase Cloud Functions
 ├── components.json      # shadcn/ui configuration
 └── docs/
     ├── PRD.md          # Product Requirements Document
-    └── ARCHITECTURE.md  # (planned)
+    └── DEPLOYMENT.md   # Deployment guide
 ```
 
 ## Key Architectural Decisions
@@ -246,6 +273,34 @@ interface Purchase {
 }
 ```
 
+### Collection
+
+```typescript
+interface Collection {
+  id: string;
+  name: string;
+  description: string;
+  translationKey: string;
+  price: number;
+  originalPrice: number;
+  bookIds: string[];
+  stripePriceId: string;
+  active: boolean;
+  endsAt?: number;
+}
+
+interface CollectionPurchase {
+  id: string;
+  userId: string;
+  collectionId: string;
+  purchasedAt: number;
+  price: number;
+  paymentMethod: string;
+  transactionId: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+}
+```
+
 ## Getting Started
 
 ### Prerequisites
@@ -300,9 +355,19 @@ npm run questions:upload
 make questions-upload
 
 # Create Stripe products (107 books × 2 payment options = 214 products)
+# Automatically detects test/live mode from STRIPE_SECRET_KEY
 npm run stripe:create
 # or
 make stripe-products
+
+# Create collection product in Stripe
+node scripts/create-collection-product.js
+
+# Add collection field to existing books
+node scripts/add-collection-field.js
+
+# Debug collection purchases in Firestore
+node scripts/debug-collection-purchase.js
 
 # Generate book metadata
 npm run books:generate
@@ -328,9 +393,13 @@ VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
 # Stripe Configuration
 STRIPE_SECRET_KEY=sk_test_your_secret_key_here
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
+VITE_STRIPE_MODE=test  # 'test' or 'production' - determines which stripe-products file to load
 
 # Webhook signing secret (get from Stripe CLI or Dashboard)
 STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# Collection Price ID (optional - for founding collection)
+VITE_STRIPE_COLLECTION_PRICE_ID=price_test_your_collection_price_id
 
 # API Server
 VITE_API_URL=http://localhost:3002
@@ -384,10 +453,11 @@ firebase deploy
 
 ### Remaining Core Features
 
-- [ ] Create progress dashboard page (ProgressPage with detailed analytics)
 - [ ] Add remaining paid book content (104 books need questions)
-- [ ] Create admin interface for content management
-- [ ] Email notifications (purchase confirmations, progress reports)
+  - Expand Q&A content per book (currently 10 questions per session, consider 20-30 total questions per book)
+  - Add chapter/page references to question explanations (especially for wrong answers to guide users back to source material)
+  - Format: "See Chapter 3: The Four Laws" or "Reference: Pages 45-52"
+- [ ] Email notifications via Stripe (purchase confirmations can be handled by Stripe's built-in emails; progress reports would need custom implementation)
 
 ### Completed ✅
 
@@ -468,12 +538,35 @@ Based on **shadcn/ui** (New York style) with Tailwind CSS.
 
 ## Firebase Security Rules
 
-### Firestore Rules (Planned)
+### Firestore Rules (Deployed)
 
 ```javascript
 // Users can only read/write their own data
 match /users/{userId} {
   allow read, write: if request.auth != null && request.auth.uid == userId;
+
+  // User purchases (server-write only)
+  match /purchases/{purchaseId} {
+    allow read: if request.auth != null && request.auth.uid == userId;
+    allow write: if false;
+  }
+
+  // User subscriptions (server-write only)
+  match /subscriptions/{subscriptionId} {
+    allow read: if request.auth != null && request.auth.uid == userId;
+    allow write: if false;
+  }
+
+  // Collection purchases (server-write only)
+  match /collectionPurchases/{collectionId} {
+    allow read: if request.auth != null && request.auth.uid == userId;
+    allow write: if false;
+  }
+
+  // User progress (user can read/write)
+  match /progress/{bookId} {
+    allow read, write: if request.auth != null && request.auth.uid == userId;
+  }
 }
 
 // Books metadata is public read

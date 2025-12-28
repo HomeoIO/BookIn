@@ -55,7 +55,10 @@ app.get('/health', (req, res) => {
   });
 });
 
-app.post('/api/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+// Create API router (mounted at /api to match Cloud Function structure)
+const apiRouter = express.Router();
+
+apiRouter.post('/webhook/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
   if (!stripe) {
     return res.status(500).send('Stripe not configured');
   }
@@ -222,9 +225,7 @@ app.post('/api/webhook/stripe', express.raw({ type: 'application/json' }), async
   }
 });
 
-app.use(express.json());
-
-app.post('/api/create-checkout-session', async (req, res) => {
+apiRouter.post('/create-checkout-session', express.json(), async (req, res) => {
   if (!stripe) {
     return res.status(500).json({ error: 'Stripe not configured' });
   }
@@ -295,7 +296,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
   }
 });
 
-app.get('/api/verify-session/:sessionId', async (req, res) => {
+apiRouter.get('/verify-session/:sessionId', async (req, res) => {
   if (!stripe) {
     return res.status(500).json({ error: 'Stripe not configured' });
   }
@@ -312,6 +313,9 @@ app.get('/api/verify-session/:sessionId', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Mount API router at /api (matches Cloud Function export name)
+app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
   console.log(`Dev server listening on port ${PORT}`);
