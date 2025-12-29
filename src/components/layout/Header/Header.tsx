@@ -38,7 +38,12 @@ function Header(_props: HeaderProps) {
               <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-gray-900">{t('app_name')}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-xl font-bold text-gray-900">{t('app_name')}</span>
+                <span className="hidden sm:inline text-sm text-gray-500 font-normal">
+                  {t('tagline')}
+                </span>
+              </div>
             </Link>
 
             <nav className="flex items-center space-x-4">
